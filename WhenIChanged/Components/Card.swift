@@ -9,14 +9,14 @@ import SwiftUI
 
 struct Card: View {
     
-    var name : String = "Demo Name"
+    var name : String
     var time : String = "250  days"
     var started : String = "Statred ad Jan 05 2020"
     
     var body: some View {
         VStack(alignment: .leading){
             Text(name)
-                .font(.largeTitle)
+                .font(.title)
             
             Text(time)
                 .font(.title2)
@@ -27,7 +27,7 @@ struct Card: View {
             
             
         }
-        .frame(width: 200, height: 150)
+        .frame(width: 180, height: 100)
         .background(Color.orange)
         .clipShape(RoundedRectangle(cornerRadius: 5))
     }
@@ -35,6 +35,6 @@ struct Card: View {
 
 struct Card_Previews: PreviewProvider {
     static var previews: some View {
-        Card()
+        Card(name: "demo")
     }
 }

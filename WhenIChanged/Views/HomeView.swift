@@ -10,7 +10,12 @@ import SwiftUI
 struct HomeView: View {
     
     
-    private var cards = ["Smoking", "Alcohole", "VideoGames", "Fats Food"]
+    private var cards = ["Smoking", "Alcohole", "VideoGames", "Fats Food", "" , "" ]
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+           
+       ]
     
     var body: some View {
         
@@ -18,18 +23,25 @@ struct HomeView: View {
         NavigationView {
     
             VStack{
-                Spacer()
-                List{
-                    ForEach(cards, id: \.self){ card in
-                        Text(card)
+               
+               
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(cards, id: \.self) { item in
+                        Card(name: item)
                     }
                 }
-                
                 
                 Spacer()
             }
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
+                
+                
+                
+                
+            
+            }
+           
             
             
             
@@ -38,7 +50,7 @@ struct HomeView: View {
         
         
     }
-}
+
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
