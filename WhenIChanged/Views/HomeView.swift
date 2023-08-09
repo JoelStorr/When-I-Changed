@@ -11,6 +11,10 @@ struct HomeView: View {
     
     
     private var cards = ["Smoking", "Alcohole", "VideoGames", "Fats Food", "" , "" ]
+    
+    @State private var showEditSheet = false
+    @State private var cardName = ""
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -30,6 +34,8 @@ struct HomeView: View {
                         Card(name: item)
                             .onTapGesture {
                                 //Runs wehn given card is clicked
+                                showEditSheet.toggle()
+                                cardName = item
                             }
                     }
                 }
@@ -41,11 +47,15 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
                 
             }
+        .sheet(isPresented: $showEditSheet) {
+            Text(cardName)
+        }
            
             
             
             
         }
+        
         
         
         
