@@ -16,10 +16,10 @@ struct Card: View {
     var body: some View {
         VStack(alignment: .leading){
             Text(name)
-                .font(.title)
+                .font(.title2)
             
             Text(time)
-                .font(.title2)
+                
             
             Text(started)
                 .font(.caption)
@@ -27,7 +27,7 @@ struct Card: View {
             
             
         }
-        .frame(width: 180, height: 100)
+        .frame(width: 175, height: 100)
         .background(Color.orange)
         .clipShape(RoundedRectangle(cornerRadius: 5))
     }

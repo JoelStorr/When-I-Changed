@@ -25,21 +25,21 @@ struct HomeView: View {
             VStack{
                
                
-                LazyVGrid(columns: columns, spacing: 20) {
+                LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(cards, id: \.self) { item in
                         Card(name: item)
+                            .onTapGesture {
+                                //Runs wehn given card is clicked
+                            }
                     }
                 }
                 
                 Spacer()
             }
+            .padding()
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
                 
-                
-                
-                
-            
             }
            
             
