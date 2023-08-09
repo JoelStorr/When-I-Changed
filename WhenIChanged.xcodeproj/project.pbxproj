@@ -14,6 +14,9 @@
 		400DC0802A839425000349E3 /* WhenIChangedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC07F2A839425000349E3 /* WhenIChangedTests.swift */; };
 		400DC08A2A839425000349E3 /* WhenIChangedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0892A839425000349E3 /* WhenIChangedUITests.swift */; };
 		400DC08C2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC08B2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift */; };
+		400DC09A2A839666000349E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0992A839666000349E3 /* HomeView.swift */; };
+		400DC09C2A839707000349E3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09B2A839707000349E3 /* CalendarView.swift */; };
+		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		400DC0852A839425000349E3 /* WhenIChangedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhenIChangedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		400DC0892A839425000349E3 /* WhenIChangedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedUITests.swift; sourceTree = "<group>"; };
 		400DC08B2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		400DC0992A839666000349E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		400DC09B2A839707000349E3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 		400DC06D2A839422000349E3 /* WhenIChanged */ = {
 			isa = PBXGroup;
 			children = (
+				400DC0982A839655000349E3 /* Views */,
 				400DC0722A839424000349E3 /* Assets.xcassets */,
 				400DC06E2A839422000349E3 /* WhenIChangedApp.swift */,
 				400DC0702A839422000349E3 /* ContentView.swift */,
@@ -125,6 +132,16 @@
 				400DC08B2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift */,
 			);
 			path = WhenIChangedUITests;
+			sourceTree = "<group>";
+		};
+		400DC0982A839655000349E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				400DC0992A839666000349E3 /* HomeView.swift */,
+				400DC09B2A839707000349E3 /* CalendarView.swift */,
+				400DC09D2A8398E6000349E3 /* SettingsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
+				400DC09A2A839666000349E3 /* HomeView.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
+				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,
 				400DC06F2A839422000349E3 /* WhenIChangedApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
