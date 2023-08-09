@@ -94,9 +94,9 @@
 		400DC06D2A839422000349E3 /* WhenIChanged */ = {
 			isa = PBXGroup;
 			children = (
+				400DC0722A839424000349E3 /* Assets.xcassets */,
 				400DC06E2A839422000349E3 /* WhenIChangedApp.swift */,
 				400DC0702A839422000349E3 /* ContentView.swift */,
-				400DC0722A839424000349E3 /* Assets.xcassets */,
 				400DC0742A839424000349E3 /* Preview Content */,
 			);
 			path = WhenIChanged;
