@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     
-    private var cards = ["Smoking", "Alcohole", "VideoGames", "Fats Food", "" , "" ]
+    private var cards = [HabbitData(habbitName: "Smoking")]
     
     @State private var showEditSheet = false
     @State private var cardName = ""
@@ -31,11 +31,11 @@ struct HomeView: View {
                
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(cards, id: \.self) { item in
-                        Card(name: item)
+                        Card(name: item.habbitName, time: item.timeSpan())
                             .onTapGesture {
                                 //Runs wehn given card is clicked
                                 showEditSheet.toggle()
-                                cardName = item
+                                cardName = item.habbitName
                             }
                     }
                 }
