@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    
+    private var cards = ["Smoking", "Alcohole", "VideoGames", "Fats Food"]
+    
     var body: some View {
-        Text("Home View")
-            .font(.title)
+        
+        
+        NavigationView {
+    
+            VStack{
+                Spacer()
+                List{
+                    ForEach(cards, id: \.self){ card in
+                        Text(card)
+                    }
+                }
+                
+                
+                Spacer()
+            }
+            .navigationTitle("Home")
+            .navigationBarTitleDisplayMode(.inline)
+            
+            
+            
+        }
+        
+        
+        
     }
 }
 

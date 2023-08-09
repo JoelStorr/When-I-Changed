@@ -17,6 +17,7 @@
 		400DC09A2A839666000349E3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0992A839666000349E3 /* HomeView.swift */; };
 		400DC09C2A839707000349E3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09B2A839707000349E3 /* CalendarView.swift */; };
 		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
+		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		400DC0992A839666000349E3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		400DC09B2A839707000349E3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		400DC06D2A839422000349E3 /* WhenIChanged */ = {
 			isa = PBXGroup;
 			children = (
+				400DC09F2A8399B3000349E3 /* Components */,
 				400DC0982A839655000349E3 /* Views */,
 				400DC0722A839424000349E3 /* Assets.xcassets */,
 				400DC06E2A839422000349E3 /* WhenIChangedApp.swift */,
@@ -142,6 +145,14 @@
 				400DC09D2A8398E6000349E3 /* SettingsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		400DC09F2A8399B3000349E3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				400DC0A02A8399E0000349E3 /* Card.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
+				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				400DC09A2A839666000349E3 /* HomeView.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,
