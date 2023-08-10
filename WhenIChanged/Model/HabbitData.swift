@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct HabbitData : Hashable{
+struct HabbitData : Hashable, Identifiable{
+    let id = UUID()
     var habbitName : String
     var startDate : Date = Date.now
     var latestDate : Date = Date().addingTimeInterval(-200000)
@@ -20,7 +21,7 @@ struct HabbitData : Hashable{
         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: latestDate, to: Date.now)
 
            let seconds = "\(difference.second ?? 0)s"
-           let minutes = "\(difference.minute ?? 0)m" 
+           let minutes = "\(difference.minute ?? 0)m"
            let hours = "\(difference.hour ?? 0)h" + " " + minutes
            let days = "\(difference.day ?? 0)d" + " " + hours
 

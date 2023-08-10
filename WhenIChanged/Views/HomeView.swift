@@ -10,10 +10,12 @@ import SwiftUI
 struct HomeView: View {
     
     
-    private var cards = [HabbitData(habbitName: "Smoking")]
+    @State private var cards = [HabbitData(habbitName: "Smoking"), ]
     
     @State private var showEditSheet = false
-    @State private var cardName = ""
+    @State private var editCard : HabbitData = HabbitData(habbitName: "")
+    @State var isPresented : Bool = false
+    
     
     let columns = [
         GridItem(.flexible()),
@@ -34,8 +36,8 @@ struct HomeView: View {
                         Card(name: item.habbitName, time: item.timeSpan())
                             .onTapGesture {
                                 //Runs wehn given card is clicked
-                                showEditSheet.toggle()
-                                cardName = item.habbitName
+                                editCard = item
+                                isPresented.toggle()
                             }
                     }
                 }
@@ -47,16 +49,31 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
                 
             }
-        .sheet(isPresented: $showEditSheet) {
-            Text(cardName)
-        }
+            .sheet(isPresented: $isPresented) {
+                EditSheetView(isPresented: $isPresented, editIem: $editCard, saveFunc: saveCardItem)
+            }
+        
            
             
             
             
         }
         
+       
+    //NOTE: Change saving funcvtion when data is saved
+     func saveCardItem() -> Void {
         
+        for index in 0..<cards.count {
+            if self.cards[index].id == self.editCard.id {
+                self.cards[index] = self.editCard
+            }
+        }
+        
+        
+        
+    }
+    
+    
         
         
     }
