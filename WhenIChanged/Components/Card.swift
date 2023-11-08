@@ -9,31 +9,79 @@ import SwiftUI
 
 struct Card: View {
     
-    var name : String
-    var time : String
-    var startedString : String
+    var habit: HabitData
+    
+    // var name : String
+    // var time : () -> String
+    @State var timeString: String = ""
+    // var startedString : String
+    @State var firstCall = true
+    
+    let earlyDate = Calendar.current.date(
+      byAdding: .minute,
+      value: -1,
+      to: Date())
     
     var body: some View {
         VStack(alignment: .leading){
-            Text(name)
+            Text(habit.habitName)
                 .font(.title2)
                 .fontWeight(.bold)
-            Text(time)
+            Text(timeString)
                 .fontWeight(.bold)
             
-            Text("Started: \(startedString)")
+            Text("Started: \(habit.startDateString)")
                 .font(.caption)
         }
         .frame(width: 175, height: 100)
         .background(Color.orange)
         .clipShape(RoundedRectangle(cornerRadius: 5))
         .foregroundColor(.white)
-        
+        .onAppear(perform: timeManager)
     }
+    
+    
+    
+    
+     func timeManager(){
+         let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
+         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: habit.latestDate, to: Date.now)
+         
+         
+         if firstCall {
+             firstCall = false
+             DispatchQueue.main.asyncAfter(deadline: .now()){
+                 timeString = habit.timeSpan()
+                 timeManager()
+                 return
+             }
+             
+         }
+         
+         guard let hour = difference.hour else { return }
+         
+         if hour > 0 {
+             DispatchQueue.main.asyncAfter(deadline: .now() + 60){
+                 timeString = habit.timeSpan()
+                 timeManager()
+             }
+         } else {
+             
+             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                 timeString = habit.timeSpan()
+                 timeManager()
+             }
+         }
+         
+         
+         
+         
+//         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+//           timeString =  time()
+//        })
+    }
+    
+    
 }
 
-struct Card_Previews: PreviewProvider {
-    static var previews: some View {
-        Card(name: "demo", time: " 5.0", startedString: "Jan 05 2020")
-    }
-}
+

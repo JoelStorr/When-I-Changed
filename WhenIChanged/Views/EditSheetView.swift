@@ -19,14 +19,14 @@ struct EditSheetView: View {
     var body: some View {
         VStack{
             Form{
-                TextField(editItem.habbitName, text: $name)
+                TextField(editItem.habitName, text: $name)
                 Button("Done"){
                     
                     if name.isEmpty {
                         isPresented = false
                         return
                     }
-                    editItem.habbitName = name
+                    editItem.habitName = name
                     
                     isPresented = false
                     

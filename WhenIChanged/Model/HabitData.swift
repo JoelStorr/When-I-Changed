@@ -14,13 +14,13 @@ class HabitData : Identifiable, ObservableObject{
     }
     
     let id = UUID()
-    var habbitName : String
+    var habitName : String
     var startDate : Date = Date.now
     var latestDate : Date = Date().addingTimeInterval(-10) // Nedds to be Date.now when ever it gets reseted
     var pastResets : [Date] = [Date.now]
     
     init(habbitName: String) {
-        self.habbitName = habbitName
+        self.habitName = habbitName
     }
     
     var startDateString: String {
@@ -34,29 +34,38 @@ class HabitData : Identifiable, ObservableObject{
     func timeSpan()-> String{
         
         
-        let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
+        let dayHourMinuteSecond: Set<Calendar.Component> = [.year, .day, .hour, .minute, .second]
         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: latestDate, to: Date.now)
-
-           let seconds = "\(difference.second ?? 0)s"
-           let minutes = "\(difference.minute ?? 0)m"
-           let hours = "\(difference.hour ?? 0)h" + " " + minutes
-           let days = "\(difference.day ?? 0)d" + " " + hours
-
-           if let day = difference.day, day          > 0 { return days }
-           if let hour = difference.hour, hour       > 0 { return hours }
-           if let minute = difference.minute, minute > 0 { return minutes }
-           if let second = difference.second, second > 0 { return seconds }
-           return ""
+        
+        let seconds = "\(difference.second ?? 0)s"
+        
+        let minutes = "\(difference.minute ?? 0)m" + " " + seconds
+        let minutes2 = "\(difference.minute ?? 0)m"
+        
+        let hours = "\(difference.hour ?? 0)h" + " " + minutes2
+        let hours2 = "\(difference.hour ?? 0)h"
+        
+        let days = "\(difference.day ?? 0)d" + " " + hours
+        let days2 = "\(difference.day ?? 0)d"
+        
+        // let yeary = "\(difference.year ?? 0)y" + " " + days2
+        
+        if let highDay = difference.day, highDay > 100 { return days2 }
+        if let day = difference.day, day          > 0 { return days }
+        if let hour = difference.hour, hour       > 0 { return hours }
+        if let minute = difference.minute, minute > 0 { return minutes }
+        if let second = difference.second, second > 0 { return seconds }
+        return ""
         
         
         
         
         /*
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        let relativeDate = formatter.localizedString(for: latestDate, relativeTo: Date())
-        return relativeDate
-        */
+         let formatter = RelativeDateTimeFormatter()
+         formatter.unitsStyle = .full
+         let relativeDate = formatter.localizedString(for: latestDate, relativeTo: Date())
+         return relativeDate
+         */
         
         //return latestDate.distance(to: Date.now)
     }

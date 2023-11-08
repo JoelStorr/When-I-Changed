@@ -24,7 +24,7 @@ struct HomeHabitView: View {
         VStack{
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(cards, id: \.id) { item in
-                    Card(name: item.habbitName, time: item.timeSpan(), startedString: item.startDateString)
+                    Card(habit: item)
                         .onTapGesture {
                             //Runs wehn given card is clicked
                             editCard = item
