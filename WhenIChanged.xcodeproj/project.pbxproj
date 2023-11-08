@@ -23,6 +23,7 @@
 		40A79AF92AFBB86A006A56F5 /* HomeViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */; };
 		40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */; };
 		40A79AFD2AFBC241006A56F5 /* HomeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */; };
+		40A79AFF2AFBEC65006A56F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFE2AFBEC65006A56F5 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewToolbar.swift; sourceTree = "<group>"; };
 		40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHabitView.swift; sourceTree = "<group>"; };
 		40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEditView.swift; sourceTree = "<group>"; };
+		40A79AFE2AFBEC65006A56F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */,
 				40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */,
 				40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */,
+				40A79AFE2AFBEC65006A56F5 /* HomeViewModel.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				400DC09A2A839666000349E3 /* HomeView.swift in Sources */,
+				40A79AFF2AFBEC65006A56F5 /* HomeViewModel.swift in Sources */,
 				40A79AF92AFBB86A006A56F5 /* HomeViewToolbar.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,

@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var cards = [HabitData(habbitName: "Smoking") ]
-    @State var showEditView = false
-    @State var addingHabit: Bool = false
-    @State var addingAutoHabit: Bool = true
+    @StateObject var viewModel: ViewModel
+    
+    init(){
+        let viewModel = ViewModel()
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         
@@ -20,10 +22,10 @@ struct HomeView: View {
         NavigationView {
             VStack{
                 
-                if showEditView {
-                    HomeEditView(saveFunc: saveNewHabit)
+                if viewModel.showEditView {
+                    HomeEditView(saveFunc: viewModel.saveNewHabit)
                 } else {
-                    HomeHabitView(cards: $cards)
+                    HomeHabitView(cards: $viewModel.cards)
                 }
                 
             }
@@ -31,15 +33,11 @@ struct HomeView: View {
                 .navigationTitle("Home")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    HomeViewToolbar(showEditSheet: $showEditView)
+                    HomeViewToolbar(showEditSheet: $viewModel.showEditView)
                 }
         }
     }
     
-    func saveNewHabit(name:String) -> Void{
-        let habit = HabitData(habbitName: name)
-        cards.append(habit)
-        showEditView.toggle()
-    }
+    
     
 }
