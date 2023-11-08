@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+
+enum HomeViewType {
+    case habitView,
+         newPassivHabitView,
+         editPassivHabitView,
+         newActiveHabitView,
+         editActiveHabitView
+}
+
 struct HomeView: View {
     
     @StateObject var viewModel: ViewModel
@@ -22,18 +31,24 @@ struct HomeView: View {
         NavigationView {
             VStack{
                 
-                if viewModel.showEditView {
-                    HomeEditView(saveFunc: viewModel.saveNewHabit)
-                } else {
+                switch viewModel.changeView {
+                case .habitView:
                     HomeHabitView(cards: $viewModel.cards)
+                case .newPassivHabitView:
+                    HomeEditView(saveFunc: viewModel.saveNewHabit)
+                case .editPassivHabitView:
+                    EmptyView()
+                case .newActiveHabitView:
+                    HomeEditView(saveFunc: viewModel.saveNewHabit)
+                case .editActiveHabitView:
+                    EmptyView()
                 }
-                
             }
                 .padding()
                 .navigationTitle("Home")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    HomeViewToolbar(showEditSheet: $viewModel.showEditView)
+                    HomeViewToolbar(changeView: $viewModel.changeView)
                 }
         }
     }

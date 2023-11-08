@@ -13,12 +13,19 @@ struct HomeEditView: View {
     let saveFunc : (_: String) -> Void
     
     var body: some View {
-        TextField("New Habit name", text: $nameField)
-        Button("Save") {
-            //Run save function
-            saveFunc(nameField)
+        
+     
+            VStack{
+                TextField("New Habit name", text: $nameField)
+                Button("Save") {
+                    //Run save function
+                    saveFunc(nameField)
+                    
+                }
+            }
             
-        }
+        
+        
     }
 }
 
