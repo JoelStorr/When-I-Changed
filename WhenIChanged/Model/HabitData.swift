@@ -1,5 +1,5 @@
 //
-//  HabbitData.swift
+//  HabitData.swift
 //  WhenIChanged
 //
 //  Created by Joel Storr on 09.08.23.
@@ -8,21 +8,28 @@
 import Foundation
 
 
-class HabbitData : Identifiable, ObservableObject{
-    static func == (lhs: HabbitData, rhs: HabbitData) -> Bool {
+class HabitData : Identifiable, ObservableObject{
+    static func == (lhs: HabitData, rhs: HabitData) -> Bool {
         lhs.id == rhs.id
     }
     
     let id = UUID()
     var habbitName : String
     var startDate : Date = Date.now
-    var latestDate : Date = Date().addingTimeInterval(-200000) // Nedds to be Date.now when ever it gets reseted
+    var latestDate : Date = Date().addingTimeInterval(-10) // Nedds to be Date.now when ever it gets reseted
     var pastResets : [Date] = [Date.now]
     
     init(habbitName: String) {
         self.habbitName = habbitName
     }
     
+    var startDateString: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "de_DE")
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: startDate)
+    }
     
     func timeSpan()-> String{
         

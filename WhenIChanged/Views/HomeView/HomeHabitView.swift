@@ -10,8 +10,8 @@ import SwiftUI
 struct HomeHabitView: View {
     
     
-    @State var cards = [HabbitData(habbitName: "Smoking") ]
-    @State private var editCard : HabbitData = HabbitData(habbitName: "")
+    @Binding var cards: [HabitData]
+    @State private var editCard : HabitData = HabitData(habbitName: "")
     @State var isPresented : Bool = false
     
     let columns = [
@@ -24,7 +24,7 @@ struct HomeHabitView: View {
         VStack{
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(cards, id: \.id) { item in
-                    Card(name: item.habbitName, time: item.timeSpan())
+                    Card(name: item.habbitName, time: item.timeSpan(), startedString: item.startDateString)
                         .onTapGesture {
                             //Runs wehn given card is clicked
                             editCard = item

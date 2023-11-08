@@ -11,7 +11,7 @@ struct Card: View {
     
     var name : String
     var time : String
-    var started : String = "Statred ad Jan 05 2020"
+    var startedString : String
     
     var body: some View {
         VStack(alignment: .leading){
@@ -21,7 +21,7 @@ struct Card: View {
             Text(time)
                 .fontWeight(.bold)
             
-            Text(started)
+            Text("Started: \(startedString)")
                 .font(.caption)
         }
         .frame(width: 175, height: 100)
@@ -34,6 +34,6 @@ struct Card: View {
 
 struct Card_Previews: PreviewProvider {
     static var previews: some View {
-        Card(name: "demo", time: " 5.0")
+        Card(name: "demo", time: " 5.0", startedString: "Jan 05 2020")
     }
 }

@@ -18,10 +18,11 @@
 		400DC09C2A839707000349E3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09B2A839707000349E3 /* CalendarView.swift */; };
 		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
-		401D1D122A8420FF00F6CA1F /* HabbitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401D1D112A8420FF00F6CA1F /* HabbitData.swift */; };
+		401D1D122A8420FF00F6CA1F /* HabitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401D1D112A8420FF00F6CA1F /* HabitData.swift */; };
 		4038B9982A84DA0D008E17C7 /* EditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* EditSheetView.swift */; };
 		40A79AF92AFBB86A006A56F5 /* HomeViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */; };
 		40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */; };
+		40A79AFD2AFBC241006A56F5 /* HomeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +57,11 @@
 		400DC09B2A839707000349E3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		401D1D112A8420FF00F6CA1F /* HabbitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitData.swift; sourceTree = "<group>"; };
+		401D1D112A8420FF00F6CA1F /* HabitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitData.swift; sourceTree = "<group>"; };
 		4038B9972A84DA0D008E17C7 /* EditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetView.swift; sourceTree = "<group>"; };
 		40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewToolbar.swift; sourceTree = "<group>"; };
 		40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHabitView.swift; sourceTree = "<group>"; };
+		40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +170,7 @@
 		401D1D132A84210700F6CA1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				401D1D112A8420FF00F6CA1F /* HabbitData.swift */,
+				401D1D112A8420FF00F6CA1F /* HabitData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +181,7 @@
 				400DC0992A839666000349E3 /* HomeView.swift */,
 				40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */,
 				40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */,
+				40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -247,7 +250,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					400DC06A2A839422000349E3 = {
 						CreatedOnToolsVersion = 14.2;
@@ -313,9 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A79AFD2AFBC241006A56F5 /* HomeEditView.swift in Sources */,
 				40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */,
 				4038B9982A84DA0D008E17C7 /* EditSheetView.swift in Sources */,
-				401D1D122A8420FF00F6CA1F /* HabbitData.swift in Sources */,
+				401D1D122A8420FF00F6CA1F /* HabitData.swift in Sources */,
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				400DC09A2A839666000349E3 /* HomeView.swift in Sources */,
@@ -395,6 +399,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -455,6 +460,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

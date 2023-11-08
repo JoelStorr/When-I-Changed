@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct HomeViewToolbar: View {
+    
+    @Binding var showEditSheet: Bool
+    
     var body: some View {
         Menu {
-            Button("Add Passiv Habit"){}
-            Button("Add Active Habit"){}
+            Button("Add Passiv Habit"){showEditSheet = true}
+            Button("Add Active Habit"){showEditSheet = true}
         } label: {
             Label("Add", systemImage: "plus.circle")
         }
     }
-}
-
-#Preview {
-    HomeViewToolbar()
 }

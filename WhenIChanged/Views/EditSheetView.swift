@@ -11,14 +11,11 @@ struct EditSheetView: View {
     
     
     @Binding var  isPresented : Bool
-    @Binding var editItem: HabbitData
+    @Binding var editItem: HabitData
     @State private var name = ""
     
     var saveFunc : ()->()
-    
-    
-    
-    
+
     var body: some View {
         VStack{
             Form{
