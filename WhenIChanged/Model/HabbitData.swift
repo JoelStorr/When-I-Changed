@@ -8,11 +8,21 @@
 import Foundation
 
 
-struct HabbitData : Hashable, Identifiable{
+class HabbitData : Identifiable, ObservableObject{
+    static func == (lhs: HabbitData, rhs: HabbitData) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id = UUID()
     var habbitName : String
     var startDate : Date = Date.now
-    var latestDate : Date = Date().addingTimeInterval(-200000)
+    var latestDate : Date = Date().addingTimeInterval(-200000) // Nedds to be Date.now when ever it gets reseted
+    var pastResets : [Date] = [Date.now]
+    
+    init(habbitName: String) {
+        self.habbitName = habbitName
+    }
+    
     
     func timeSpan()-> String{
         

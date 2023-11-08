@@ -13,10 +13,6 @@ struct Card: View {
     var time : String
     var started : String = "Statred ad Jan 05 2020"
     
-    
-    
-    
-    
     var body: some View {
         VStack(alignment: .leading){
             Text(name)
@@ -27,9 +23,6 @@ struct Card: View {
             
             Text(started)
                 .font(.caption)
-                
-            
-            
         }
         .frame(width: 175, height: 100)
         .background(Color.orange)

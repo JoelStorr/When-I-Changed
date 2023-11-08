@@ -20,6 +20,8 @@
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
 		401D1D122A8420FF00F6CA1F /* HabbitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401D1D112A8420FF00F6CA1F /* HabbitData.swift */; };
 		4038B9982A84DA0D008E17C7 /* EditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* EditSheetView.swift */; };
+		40A79AF92AFBB86A006A56F5 /* HomeViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */; };
+		40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		401D1D112A8420FF00F6CA1F /* HabbitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbitData.swift; sourceTree = "<group>"; };
 		4038B9972A84DA0D008E17C7 /* EditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetView.swift; sourceTree = "<group>"; };
+		40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewToolbar.swift; sourceTree = "<group>"; };
+		40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +149,7 @@
 		400DC0982A839655000349E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				400DC0992A839666000349E3 /* HomeView.swift */,
+				40A79AF72AFBB83F006A56F5 /* HomeView */,
 				400DC09B2A839707000349E3 /* CalendarView.swift */,
 				400DC09D2A8398E6000349E3 /* SettingsView.swift */,
 				4038B9972A84DA0D008E17C7 /* EditSheetView.swift */,
@@ -167,6 +171,16 @@
 				401D1D112A8420FF00F6CA1F /* HabbitData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		40A79AF72AFBB83F006A56F5 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				400DC0992A839666000349E3 /* HomeView.swift */,
+				40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */,
+				40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,11 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */,
 				4038B9982A84DA0D008E17C7 /* EditSheetView.swift in Sources */,
 				401D1D122A8420FF00F6CA1F /* HabbitData.swift in Sources */,
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				400DC09A2A839666000349E3 /* HomeView.swift in Sources */,
+				40A79AF92AFBB86A006A56F5 /* HomeViewToolbar.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,
 				400DC06F2A839422000349E3 /* WhenIChangedApp.swift in Sources */,

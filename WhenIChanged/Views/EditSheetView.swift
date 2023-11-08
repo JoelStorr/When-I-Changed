@@ -11,7 +11,7 @@ struct EditSheetView: View {
     
     
     @Binding var  isPresented : Bool
-    @Binding var editIem: HabbitData
+    @Binding var editItem: HabbitData
     @State private var name = ""
     
     var saveFunc : ()->()
@@ -22,10 +22,14 @@ struct EditSheetView: View {
     var body: some View {
         VStack{
             Form{
-                TextField(editIem.habbitName, text: $name)
+                TextField(editItem.habbitName, text: $name)
                 Button("Done"){
                     
-                    editIem.habbitName = name
+                    if name.isEmpty {
+                        isPresented = false
+                        return
+                    }
+                    editItem.habbitName = name
                     
                     isPresented = false
                     
