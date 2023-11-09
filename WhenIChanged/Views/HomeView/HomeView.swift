@@ -47,7 +47,6 @@ struct HomeView: View {
                 .padding()
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    
                     if viewModel.changeView != .habitView {
                         ToolbarItem(placement: .topBarLeading) {
                             HomeViewToolbarButtonLeading(changeView: $viewModel.changeView)

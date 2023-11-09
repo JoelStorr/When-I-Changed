@@ -34,13 +34,11 @@ struct Card: View {
                 .font(.caption)
         }
         .frame(width: 175, height: 100)
-        .background(Color.orange)
+        .background(cardColorConverter(color: habit.habitColor))
         .clipShape(RoundedRectangle(cornerRadius: 5))
         .foregroundColor(.white)
         .onAppear(perform: timeManager)
     }
-    
-    
     
     
      func timeManager(){

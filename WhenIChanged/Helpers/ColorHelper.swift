@@ -13,13 +13,15 @@ enum CardColor:String {
 }
 
 
-func cardColorConverter(color: CardColor) -> Color{
+func cardColorConverter(color: String) -> Color{
     switch color {
-    case .red:
+    case "red":
         return Color.red
-    case .green:
+    case "green":
         return Color.green
-    case .blue:
+    case "blue":
         return Color.blue
+    default:
+        return Color.red
     }
 }

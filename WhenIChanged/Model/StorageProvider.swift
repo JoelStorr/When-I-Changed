@@ -90,3 +90,12 @@ extension StorageProvider {
         }
     }
 }
+
+
+// NOTE: Reset Current Streak time
+extension StorageProvider {
+    func resetCurrentHabitStreak(_ habit: PassivHabit){
+        habit.latestDate = .now
+        save()
+    }
+}
