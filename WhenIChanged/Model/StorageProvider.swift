@@ -78,4 +78,15 @@ extension StorageProvider {
     
 }
 
-
+// NOTE: Delete Elements
+extension StorageProvider {
+    func deletePassiveHabit(_ habit: PassivHabit) {
+        persistentConteiner.viewContext.delete(habit)
+        do {
+            try persistentConteiner.viewContext.save()
+        } catch {
+            persistentConteiner.viewContext.rollback()
+            print("Habit: \(habit.habitName) could not be deleted. \(error)")
+        }
+    }
+}

@@ -12,11 +12,17 @@ struct HomeViewToolbar: View {
     @Binding var changeView: HomeViewType
     
     var body: some View {
-        Menu {
-            Button("Add Passiv Habit"){changeView = .newPassivHabitView}
-            Button("Add Active Habit"){changeView = .newActiveHabitView}
-        } label: {
-            Label("Add", systemImage: "plus.circle")
+        if changeView == .habitView {
+            Menu {
+                Button("Add Passiv Habit"){changeView = .newPassivHabitView}
+                Button("Add Active Habit"){changeView = .newActiveHabitView}
+            } label: {
+                Label("Add", systemImage: "plus.circle")
+            }
+        } else {
+            Button("Cancle"){
+                changeView = .habitView
+            }
         }
     }
 }

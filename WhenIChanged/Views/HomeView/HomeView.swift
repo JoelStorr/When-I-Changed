@@ -53,7 +53,7 @@ struct HomeView: View {
                 .onAppear{
                     viewModel.loadPassivHabits()
                 }
-                .onChange(of: viewModel.changeView){ _ in
+                .onChange(of: viewModel.changeView){_ in
                     viewModel.loadPassivHabits()
                 }
         }

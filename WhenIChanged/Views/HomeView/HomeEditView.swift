@@ -24,6 +24,7 @@ struct HomeEditView: View {
                     
                 }
             }
+            .navigationTitle("Edit")
             
         
         

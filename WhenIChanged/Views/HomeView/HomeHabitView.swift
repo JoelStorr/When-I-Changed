@@ -38,6 +38,8 @@ struct HomeHabitView: View {
         .sheet(isPresented: $isPresented) {
             EditSheetView(isPresented: $isPresented, editItem: $editCard)
         }
+        .navigationTitle("Home")
+        
     }
     
 }
