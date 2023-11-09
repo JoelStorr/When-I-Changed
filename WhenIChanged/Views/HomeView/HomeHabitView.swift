@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeHabitView: View {
     
     
-    @Binding var cards: [HabitData]
+    @Binding var cards: [PassivHabit]
     @State private var editCard : HabitData = HabitData(habbitName: "")
     @State var isPresented : Bool = false
     

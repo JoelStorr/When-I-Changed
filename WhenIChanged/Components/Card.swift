@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Card: View {
     
-    var habit: HabitData
+    var habit: PassivHabit
     
     // var name : String
     // var time : () -> String
@@ -24,7 +24,7 @@ struct Card: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text(habit.habitName)
+            Text(habit.name)
                 .font(.title2)
                 .fontWeight(.bold)
             Text(timeString)

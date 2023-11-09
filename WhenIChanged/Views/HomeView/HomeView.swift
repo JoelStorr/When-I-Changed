@@ -50,6 +50,9 @@ struct HomeView: View {
                 .toolbar {
                     HomeViewToolbar(changeView: $viewModel.changeView)
                 }
+                .onAppear{
+                    viewModel.loadPassivHabits()
+                }
         }
     }
     

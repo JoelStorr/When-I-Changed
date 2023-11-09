@@ -19,7 +19,7 @@ struct HomeEditView: View {
                 TextField("New Habit name", text: $nameField)
                 Button("Save") {
                     //Run save function
-                    saveFunc(nameField)
+                    StorageProvider.shared.savePassiveHabit(name: nameField)
                     
                 }
             }
