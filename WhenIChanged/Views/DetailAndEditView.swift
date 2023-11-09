@@ -15,14 +15,14 @@ struct DetailAndEditView: View {
     
     var body: some View {
         
-        if editing {
-            VStack{
+        VStack{
+            if editing {
                 Form{
                     TextField(selectedHabit.habitName, text: $name)
                     Button("Done"){
                         
                         if name.isEmpty {
-                           
+                            
                             return
                         }
                         selectedHabit.habitName = name
@@ -30,9 +30,11 @@ struct DetailAndEditView: View {
                         StorageProvider.shared.save()
                     }
                 }
+                
+            } else {
+                Text("Detail View")
             }
-        } else {
-            Text("Detail View")
         }
+        .navigationTitle(editing ? "Edit" : "Detail")
     }
 }

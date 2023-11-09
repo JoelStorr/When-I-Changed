@@ -45,10 +45,18 @@ struct HomeView: View {
                 }
             }
                 .padding()
-                .navigationTitle("Home")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    HomeViewToolbar(changeView: $viewModel.changeView, detailEditing: $viewModel.detailEditing)
+                    
+                    if viewModel.changeView != .habitView {
+                        ToolbarItem(placement: .topBarLeading) {
+                            HomeViewToolbarButtonLeading(changeView: $viewModel.changeView)
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HomeViewToolbarButtonTrailing(changeView: $viewModel.changeView, detailEditing: $viewModel.detailEditing)
+                    }
                 }
                 .onAppear{
                     viewModel.loadPassivHabits()

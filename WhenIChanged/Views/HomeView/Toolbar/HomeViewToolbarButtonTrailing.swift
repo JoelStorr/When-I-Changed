@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeViewToolbar: View {
+struct HomeViewToolbarButtonTrailing: View {
     
     @Binding var changeView: HomeViewType
     @Binding var detailEditing: Bool
