@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeViewToolbar: View {
     
     @Binding var changeView: HomeViewType
+    @Binding var detailEditing: Bool
     
     var body: some View {
         if changeView == .habitView {
@@ -19,6 +20,22 @@ struct HomeViewToolbar: View {
             } label: {
                 Label("Add", systemImage: "plus.circle")
             }
+        } else if changeView == .editPassivHabitView {
+            
+            if detailEditing {
+                Button("Cancle"){
+                    detailEditing.toggle()
+                }
+            } else {
+                Button{
+                    detailEditing.toggle()
+                } label: {
+                    Label("Edit", systemImage: "ellipsis.circle")
+                }
+            }
+            
+            
+            
         } else {
             Button("Cancle"){
                 changeView = .habitView

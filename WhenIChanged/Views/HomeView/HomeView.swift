@@ -33,13 +33,13 @@ struct HomeView: View {
                 
                 switch viewModel.changeView {
                 case .habitView:
-                    HomeHabitView(cards: $viewModel.cards)
+                    HomeHabitView(cards: $viewModel.cards, selectedHabit: $viewModel.selectedHabit, changeView: $viewModel.changeView)
                 case .newPassivHabitView:
                     HomeEditView(changeView: $viewModel.changeView)
                 case .editPassivHabitView:
-                    EmptyView()
+                    DetailAndEditView(selectedHabit: $viewModel.selectedHabit, editing: $viewModel.detailEditing)
                 case .newActiveHabitView:
-                    HomeEditView(changeView: $viewModel.changeView)
+                    EmptyView()
                 case .editActiveHabitView:
                     EmptyView()
                 }
@@ -48,7 +48,7 @@ struct HomeView: View {
                 .navigationTitle("Home")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    HomeViewToolbar(changeView: $viewModel.changeView)
+                    HomeViewToolbar(changeView: $viewModel.changeView, detailEditing: $viewModel.detailEditing)
                 }
                 .onAppear{
                     viewModel.loadPassivHabits()

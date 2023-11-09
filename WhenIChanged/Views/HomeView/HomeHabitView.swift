@@ -11,13 +11,13 @@ struct HomeHabitView: View {
     
     
     @Binding var cards: [PassivHabit]
-    @State var editCard: PassivHabit = PassivHabit()
-    @State var isPresented : Bool = false
+    @Binding var selectedHabit: PassivHabit
+    @Binding var changeView: HomeViewType
+   
     
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
-           
        ]
     
     var body: some View {
@@ -27,21 +27,15 @@ struct HomeHabitView: View {
                     Card(habit: item)
                         .onTapGesture {
                             //Runs wehn given card is clicked
-                            editCard = item
-                            isPresented.toggle()
+                            selectedHabit = item
+                            changeView = .editPassivHabitView
                         }
                 }
             }
-            
             Spacer()
         }
-        .sheet(isPresented: $isPresented) {
-            EditSheetView(isPresented: $isPresented, editItem: $editCard)
-        }
         .navigationTitle("Home")
-        
     }
-    
 }
  
 

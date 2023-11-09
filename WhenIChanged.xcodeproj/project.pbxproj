@@ -18,7 +18,7 @@
 		400DC09C2A839707000349E3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09B2A839707000349E3 /* CalendarView.swift */; };
 		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
-		4038B9982A84DA0D008E17C7 /* EditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* EditSheetView.swift */; };
+		4038B9982A84DA0D008E17C7 /* DetailAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* DetailAndEditView.swift */; };
 		40A79AF92AFBB86A006A56F5 /* HomeViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */; };
 		40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */; };
 		40A79AFD2AFBC241006A56F5 /* HomeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */; };
@@ -61,7 +61,7 @@
 		400DC09B2A839707000349E3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		4038B9972A84DA0D008E17C7 /* EditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetView.swift; sourceTree = "<group>"; };
+		4038B9972A84DA0D008E17C7 /* DetailAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAndEditView.swift; sourceTree = "<group>"; };
 		40A79AF82AFBB86A006A56F5 /* HomeViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewToolbar.swift; sourceTree = "<group>"; };
 		40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHabitView.swift; sourceTree = "<group>"; };
 		40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEditView.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				40A79AF72AFBB83F006A56F5 /* HomeView */,
 				400DC09B2A839707000349E3 /* CalendarView.swift */,
 				400DC09D2A8398E6000349E3 /* SettingsView.swift */,
-				4038B9972A84DA0D008E17C7 /* EditSheetView.swift */,
+				4038B9972A84DA0D008E17C7 /* DetailAndEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				40FA54F22AFD0288000B0E83 /* ColorHelper.swift in Sources */,
 				40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */,
 				40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */,
-				4038B9982A84DA0D008E17C7 /* EditSheetView.swift in Sources */,
+				4038B9982A84DA0D008E17C7 /* DetailAndEditView.swift in Sources */,
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */,
