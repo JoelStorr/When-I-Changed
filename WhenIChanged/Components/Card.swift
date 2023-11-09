@@ -24,7 +24,7 @@ struct Card: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text(habit.name)
+            Text(habit.habitName)
                 .font(.title2)
                 .fontWeight(.bold)
             Text(timeString)
@@ -45,7 +45,7 @@ struct Card: View {
     
      func timeManager(){
          let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
-         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: habit.latestDate, to: Date.now)
+         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: habit.habitLatestDate, to: Date.now)
          
          
          if firstCall {

@@ -11,7 +11,7 @@ struct HomeHabitView: View {
     
     
     @Binding var cards: [PassivHabit]
-    @State private var editCard : HabitData = HabitData(habbitName: "")
+    @State var editCard: PassivHabit = PassivHabit()
     @State var isPresented : Bool = false
     
     let columns = [
@@ -36,23 +36,10 @@ struct HomeHabitView: View {
             Spacer()
         }
         .sheet(isPresented: $isPresented) {
-            EditSheetView(isPresented: $isPresented, editItem: $editCard, saveFunc: saveCardItem)
+            EditSheetView(isPresented: $isPresented, editItem: $editCard)
         }
     }
     
-    
-    //NOTE: Change saving funcvtion when data is saved
-     func saveCardItem() -> Void {
-        
-        for index in 0..<cards.count {
-            if cards[index].id == editCard.id {
-                cards[index] = editCard
-            }
-        }
-        
-        
-        
-    }
 }
  
 

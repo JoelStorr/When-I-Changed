@@ -50,6 +50,14 @@ extension StorageProvider {
             print("Failed to save habit: \(error)")
         }
     }
+    
+    
+    func save () {
+        if persistentConteiner.viewContext.hasChanges {
+            try? persistentConteiner.viewContext.save()
+        }
+    }
+    
 }
 
 
@@ -69,3 +77,5 @@ extension StorageProvider {
     }
     
 }
+
+

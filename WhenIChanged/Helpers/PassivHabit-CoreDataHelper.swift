@@ -1,41 +1,47 @@
 //
-//  HabitData.swift
+//  PassivHabit-CoreDataHelper.swift
 //  WhenIChanged
 //
-//  Created by Joel Storr on 09.08.23.
+//  Created by Joel Storr on 09.11.23.
 //
 
 import Foundation
 
-
-class HabitData : Identifiable, ObservableObject{
-    static func == (lhs: HabitData, rhs: HabitData) -> Bool {
-        lhs.id == rhs.id
+// removes Optionality from CoreData types
+extension PassivHabit {
+    var habitName: String {
+        get { name ?? "" }
+        set { name = newValue }
     }
     
-    let id = UUID()
-    var habitName : String
-    var startDate : Date = Date.now
-    var latestDate : Date = Date().addingTimeInterval(-10) // Nedds to be Date.now when ever it gets reseted
-    var pastResets : [Date] = [Date.now]
-    
-    init(habbitName: String) {
-        self.habitName = habbitName
+    var habitColor: String {
+        get { cardColor ?? "" }
+        set { cardColor = newValue }
     }
+    
+    var habitStartDate: Date {
+        startDate ?? .now
+    }
+    
+    var habitLatestDate: Date {
+        latestDate ?? .now
+    }
+    
     
     var startDateString: String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "de_DE")
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        return formatter.string(from: startDate)
+        return formatter.string(from: habitStartDate)
     }
+    
     
     func timeSpan()-> String{
         
         
         let dayHourMinuteSecond: Set<Calendar.Component> = [.year, .day, .hour, .minute, .second]
-        let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: latestDate, to: Date.now)
+        let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: habitLatestDate, to: Date.now)
         
         let seconds = "\(difference.second ?? 0)s"
         
@@ -69,5 +75,4 @@ class HabitData : Identifiable, ObservableObject{
         
         //return latestDate.distance(to: Date.now)
     }
-    
 }

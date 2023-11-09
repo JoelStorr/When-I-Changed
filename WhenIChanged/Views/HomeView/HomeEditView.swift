@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeEditView: View {
     
     @State var nameField: String = ""
-    let saveFunc : (_: String) -> Void
+    @Binding var changeView: HomeViewType
     
     var body: some View {
         
@@ -20,6 +20,7 @@ struct HomeEditView: View {
                 Button("Save") {
                     //Run save function
                     StorageProvider.shared.savePassiveHabit(name: nameField)
+                    changeView = .habitView
                     
                 }
             }

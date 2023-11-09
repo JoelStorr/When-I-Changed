@@ -11,10 +11,10 @@ struct EditSheetView: View {
     
     
     @Binding var  isPresented : Bool
-    @Binding var editItem: HabitData
+    @Binding var editItem: PassivHabit
     @State private var name = ""
     
-    var saveFunc : ()->()
+
 
     var body: some View {
         VStack{
@@ -30,7 +30,7 @@ struct EditSheetView: View {
                     
                     isPresented = false
                     
-                    saveFunc()
+                    StorageProvider.shared.save()
                 }
             }
         }

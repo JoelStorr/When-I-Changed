@@ -35,11 +35,11 @@ struct HomeView: View {
                 case .habitView:
                     HomeHabitView(cards: $viewModel.cards)
                 case .newPassivHabitView:
-                    HomeEditView(saveFunc: viewModel.saveNewHabit)
+                    HomeEditView(changeView: $viewModel.changeView)
                 case .editPassivHabitView:
                     EmptyView()
                 case .newActiveHabitView:
-                    HomeEditView(saveFunc: viewModel.saveNewHabit)
+                    HomeEditView(changeView: $viewModel.changeView)
                 case .editActiveHabitView:
                     EmptyView()
                 }
@@ -51,6 +51,9 @@ struct HomeView: View {
                     HomeViewToolbar(changeView: $viewModel.changeView)
                 }
                 .onAppear{
+                    viewModel.loadPassivHabits()
+                }
+                .onChange(of: viewModel.changeView){ _ in
                     viewModel.loadPassivHabits()
                 }
         }
