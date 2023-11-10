@@ -66,7 +66,6 @@ struct DetailAndEditView: View {
                 Button{
                     StorageProvider.shared.resetCurrentHabitStreak(selectedHabit)
                 } label: {
-                    
                     ZStack{
                         RoundedRectangle(cornerRadius: 5)
                             .fill(.red.opacity(0.9))
@@ -75,8 +74,49 @@ struct DetailAndEditView: View {
                             .foregroundStyle(.white)
                             .padding()
                     }
+                }
+                
+                List {
+                    ForEach( selectedHabit.habitResetDates, id: \.self ) { reset in
+                        Text("\(reset.wrappedResetDate)")
+                    }
+                }
+                
+                
+                
+                ZStack{
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(cardColorConverter(color: selectedHabit.habitColor).opacity(0.5))
+                        .frame(maxHeight: 150)
                     
-                    
+                    VStack{
+                        HStack {
+                            Text("States")
+                            Spacer()
+                        }
+                        HStack {
+                            VStack{
+                                Text("\(selectedHabit.habitResetDates.count > 0 ? selectedHabit.habitResetDates.count - 1 : 0)")
+                                Text("Resets")
+                            }
+                            Spacer()
+                            VStack {
+                                Text("\(selectedHabit.calculateLongestStreak()) days")
+                                Text("Longest Streak")
+                            }
+                        }
+                        HStack {
+                            VStack{
+                                Text("\(selectedHabit.timeSinceStart())")
+                                Text("Since Started")
+                            }
+                            Spacer()
+                            VStack {
+                                Text("\(selectedHabit.calculateAvaregStreakLength()) days")
+                                Text("Avarage Streak")
+                            }
+                        }
+                    }.padding()
                 }
                 
                 Spacer()
@@ -91,11 +131,10 @@ struct DetailAndEditView: View {
         let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: selectedHabit.habitLatestDate, to: Date.now)
         
-        
         if firstCall {
             firstCall = false
             DispatchQueue.main.asyncAfter(deadline: .now()){
-                timeString = selectedHabit.timeSpan()
+                timeString = selectedHabit.timeFromLastReset()
                 timeManager()
                 return
             }
@@ -106,13 +145,13 @@ struct DetailAndEditView: View {
         
         if hour > 0 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 60){
-                timeString = selectedHabit.timeSpan()
+                timeString = selectedHabit.timeFromLastReset()
                 timeManager()
             }
         } else {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                timeString = selectedHabit.timeSpan()
+                timeString = selectedHabit.timeFromLastReset()
                 timeManager()
             }
         }
