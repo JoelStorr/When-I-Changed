@@ -8,11 +8,6 @@
 import Foundation
 import CoreData
 
-
-
-
-
-
 final class StorageProvider {
     
     static let shared = StorageProvider()
@@ -27,6 +22,7 @@ final class StorageProvider {
                 fatalError("Core data store failed to load with error: \(error)")
             }
         })
+        
     }
 }
 
@@ -95,7 +91,12 @@ extension StorageProvider {
 // NOTE: Reset Current Streak time
 extension StorageProvider {
     func resetCurrentHabitStreak(_ habit: PassivHabit){
+        
+        let resetDate = PastResets(context: persistentConteiner.viewContext)
+        resetDate.resetDate = habit.latestDate
+        habit.addToResetDates(resetDate)
         habit.latestDate = .now
+        
         save()
     }
 }

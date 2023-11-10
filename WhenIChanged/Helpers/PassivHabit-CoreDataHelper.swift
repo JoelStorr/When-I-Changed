@@ -28,6 +28,13 @@ extension PassivHabit {
     }
     
     
+    var habitResetDates: [PastResets] {
+        let set = resetDates as? Set<PastResets> ?? []
+        return set.sorted {
+            $0.wrappedResetDate > $1.wrappedResetDate
+        }
+    }
+    
     var startDateString: String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "de_DE")
@@ -37,11 +44,21 @@ extension PassivHabit {
     }
     
     
-    func timeSpan()-> String{
+    func timeFromLastReset() -> String {
+        return timeSpan(from: habitLatestDate)
+    }
+    
+    func timeSinceStart () -> String {
+        return timeSpan(from: habitStartDate)
+    }
+    
+    
+    
+    private func timeSpan(from: Date, to: Date = Date.now)-> String{
         
         
         let dayHourMinuteSecond: Set<Calendar.Component> = [.year, .day, .hour, .minute, .second]
-        let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: habitLatestDate, to: Date.now)
+        let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: from, to: to)
         
         let seconds = "\(difference.second ?? 0)s"
         
@@ -75,4 +92,50 @@ extension PassivHabit {
         
         //return latestDate.distance(to: Date.now)
     }
+    
+    
+    func calculateLongestStreak () -> Int {
+        var streakArray: [Int] = calculateStreakArray()
+        
+        streakArray = streakArray.sorted {
+            $0 > $1
+        }
+        
+        return streakArray.first ?? 0
+    }
+    
+    
+    func calculateAvaregStreakLength() -> Int{
+        let streakArray: [Int] = calculateStreakArray()
+        var sum = 0
+        
+        for number in streakArray {
+            sum += number
+        }
+        
+        if streakArray.count == 0 {
+                return 0
+        }
+        return Int(sum / streakArray.count)
+    }
+    
+    
+    func calculateStreakArray() -> [Int]{
+        var streakArray: [Int] = []
+        let calendar = Calendar.current
+        let count = habitResetDates.count
+        for(index, element) in habitResetDates.enumerated() {
+            if index >= count-1 {
+                break
+            }
+            
+            let days = calendar.numberOfDaysBetween(from: habitResetDates[index + 1].wrappedResetDate, to: element.wrappedResetDate)
+            streakArray.append(days)
+            
+        }
+        
+        return streakArray
+    }
+    
+    
 }

@@ -49,7 +49,7 @@ struct Card: View {
          if firstCall {
              firstCall = false
              DispatchQueue.main.asyncAfter(deadline: .now()){
-                 timeString = habit.timeSpan()
+                 timeString = habit.timeFromLastReset()
                  timeManager()
                  return
              }
@@ -60,13 +60,13 @@ struct Card: View {
          
          if hour > 0 {
              DispatchQueue.main.asyncAfter(deadline: .now() + 60){
-                 timeString = habit.timeSpan()
+                 timeString = habit.timeFromLastReset()
                  timeManager()
              }
          } else {
              
              DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                 timeString = habit.timeSpan()
+                 timeString = habit.timeFromLastReset()
                  timeManager()
              }
          }

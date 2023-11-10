@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension PastResets {
+    var wrappedResetDate: Date {
+        resetDate ?? Date.now
+    }
+}

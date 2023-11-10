@@ -19,6 +19,8 @@
 		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
 		4038B9982A84DA0D008E17C7 /* DetailAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* DetailAndEditView.swift */; };
+		40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */; };
+		40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD532AFE4D6300F32C66 /* DateHelper.swift */; };
 		40A79AF92AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AF82AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift */; };
 		40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */; };
 		40A79AFD2AFBC241006A56F5 /* HomeEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */; };
@@ -63,6 +65,8 @@
 		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4038B9972A84DA0D008E17C7 /* DetailAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAndEditView.swift; sourceTree = "<group>"; };
+		40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PastRestes-CoreDataHelper.swift"; sourceTree = "<group>"; };
+		40A3DD532AFE4D6300F32C66 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		40A79AF82AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewToolbarButtonTrailing.swift; sourceTree = "<group>"; };
 		40A79AFA2AFBBA67006A56F5 /* HomeHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHabitView.swift; sourceTree = "<group>"; };
 		40A79AFC2AFBC241006A56F5 /* HomeEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEditView.swift; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 			children = (
 				40FA54F12AFD0288000B0E83 /* ColorHelper.swift */,
 				40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */,
+				40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */,
+				40A3DD532AFE4D6300F32C66 /* DateHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				40A79AFB2AFBBA67006A56F5 /* HomeHabitView.swift in Sources */,
 				40A95A152AFD6AF600D16A45 /* HomeViewToolbarButtonLeading.swift in Sources */,
 				4038B9982A84DA0D008E17C7 /* DetailAndEditView.swift in Sources */,
+				40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */,
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */,
@@ -361,6 +368,7 @@
 				40A79AF92AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,
+				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,
 				40FA54E22AFCDFC6000B0E83 /* Model.xcdatamodeld in Sources */,
 				400DC06F2A839422000349E3 /* WhenIChangedApp.swift in Sources */,
 			);
