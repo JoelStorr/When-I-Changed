@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-
 enum CardColor:String {
     case red, green, blue
 }
-
 
 func cardColorConverter(color: String) -> Color{
     switch color {

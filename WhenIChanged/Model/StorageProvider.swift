@@ -9,12 +9,11 @@ import Foundation
 import CoreData
 
 final class StorageProvider {
-    
+
     static let shared = StorageProvider()
-    
+
     let persistentConteiner: NSPersistentContainer
-    
-    
+
     private init(){
         persistentConteiner = NSPersistentContainer(name: "Model")
         persistentConteiner.loadPersistentStores(completionHandler: {description, error in
@@ -22,14 +21,12 @@ final class StorageProvider {
                 fatalError("Core data store failed to load with error: \(error)")
             }
         })
-        
     }
 }
 
-
 // NOTE: Save Data
 extension StorageProvider {
-    
+
     func savePassiveHabit(name: String) {
         let habit = PassivHabit(context: persistentConteiner.viewContext)
         habit.id = UUID()
@@ -37,7 +34,6 @@ extension StorageProvider {
         habit.cardColor = CardColor.red.rawValue
         habit.startDate = .now
         habit.latestDate = .now
-        
         do {
             try persistentConteiner.viewContext.save()
             print("Saved new habit")
@@ -47,20 +43,16 @@ extension StorageProvider {
         }
     }
     
-    
     func save () {
         if persistentConteiner.viewContext.hasChanges {
             try? persistentConteiner.viewContext.save()
         }
     }
-    
 }
-
-
 
 // NOTE: Load Data
 extension StorageProvider {
-    
+
     func loadAllPassivHabits() -> [PassivHabit] {
         let fetchRequest: NSFetchRequest<PassivHabit> = PassivHabit.fetchRequest()
         
@@ -86,7 +78,6 @@ extension StorageProvider {
         }
     }
 }
-
 
 // NOTE: Reset Current Streak time
 extension StorageProvider {

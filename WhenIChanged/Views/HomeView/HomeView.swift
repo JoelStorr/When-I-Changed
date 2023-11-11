@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 enum HomeViewType {
     case habitView,
          newPassivHabitView,
@@ -17,20 +16,18 @@ enum HomeViewType {
 }
 
 struct HomeView: View {
-    
+
     @StateObject var viewModel: ViewModel
-    
+
     init(){
         let viewModel = ViewModel()
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-    
+
     var body: some View {
-        
-        
+
         NavigationView {
             VStack{
-                
                 switch viewModel.changeView {
                 case .habitView:
                     HomeHabitView(cards: $viewModel.cards, selectedHabit: $viewModel.selectedHabit, changeView: $viewModel.changeView)
@@ -52,7 +49,6 @@ struct HomeView: View {
                             HomeViewToolbarButtonLeading(changeView: $viewModel.changeView)
                         }
                     }
-                    
                     ToolbarItem(placement: .topBarTrailing) {
                         HomeViewToolbarButtonTrailing(changeView: $viewModel.changeView, detailEditing: $viewModel.detailEditing)
                     }
@@ -65,7 +61,4 @@ struct HomeView: View {
                 }
         }
     }
-    
-    
-    
 }
