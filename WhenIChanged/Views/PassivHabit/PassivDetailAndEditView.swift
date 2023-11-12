@@ -8,24 +8,43 @@
 import SwiftUI
 
 struct PassivDetailAndEditView: View {
+    
+    @Binding var changeView: PassivViewType
     @Binding var selectedHabit: PassivHabit
     @State private var name = ""
     @State var timeString: String = ""
     @State var firstCall = true
     @Binding var editing: Bool
     @State var showSheet = false
+    @State var showColorSheet = false
+    @State var selectedColor: String? = nil
     
     var body: some View {
         VStack{
             if editing {
                 Form{
                     TextField(selectedHabit.habitName, text: $name)
-                    Button("Done"){
-                        if name.isEmpty {
-                            return
+                    
+                    HStack {
+                        Button("Select Color") {
+                            showColorSheet.toggle()
                         }
-                        selectedHabit.habitName = name
+                        Spacer()
+                            .frame(minWidth: 20)
+                        RoundedRectangle(cornerRadius: 5.0)
+                            .fill(selectedColor == nil ?  cardColorConverter(color: selectedHabit.habitColor) : cardColorConverter(color: selectedColor!))
+                    }
+                    Button("Done"){
+                        if !name.isEmpty {
+                            selectedHabit.habitName = name
+                        }
+                        
+                        if selectedColor != nil {
+                            selectedHabit.habitColor = selectedColor!
+                        }
                         StorageProvider.shared.save()
+                        editing.toggle()
+                        changeView = .editPassivHabitView
                     }
                 }
             } else {
@@ -116,6 +135,20 @@ struct PassivDetailAndEditView: View {
             List {
                 ForEach( selectedHabit.habitResetDates, id: \.self ) { reset in
                     Text("\(reset.wrappedResetDate)")
+                }
+            }
+        }
+        .sheet(isPresented: $showColorSheet) {
+            List {
+                ForEach(CardColor.allCases, id: \.rawValue) {color in
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(cardColorConverter(color: color.rawValue))
+                        .onTapGesture {
+                            showColorSheet.toggle()
+                            selectedColor = color.rawValue
+                        }
+                    
+                    
                 }
             }
         }

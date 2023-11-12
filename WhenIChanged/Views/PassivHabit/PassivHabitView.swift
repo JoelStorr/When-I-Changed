@@ -32,7 +32,7 @@ struct PassivHabitView: View {
                 case .newPassivHabitView:
                     PassivHabitAddView(changeView: $viewModel.changeView)
                 case .editPassivHabitView:
-                    PassivDetailAndEditView(selectedHabit: $viewModel.selectedHabit, editing: $viewModel.detailEditing)
+                    PassivDetailAndEditView(changeView: $viewModel.changeView, selectedHabit: $viewModel.selectedHabit, editing: $viewModel.detailEditing)
                 }
             }
                 .padding()

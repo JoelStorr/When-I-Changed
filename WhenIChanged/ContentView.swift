@@ -15,7 +15,7 @@ enum Views {
 
 struct ContentView: View {
     
-    @State private var showScreen : Views = Views.activeHabit
+    @State private var showScreen : Views = Views.passivHabit
     
     var body: some View {
         TabView(selection: $showScreen){
@@ -45,8 +45,4 @@ struct ContentView: View {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+
