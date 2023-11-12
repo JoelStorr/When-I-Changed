@@ -30,7 +30,7 @@ struct PassivHabitView: View {
                 case .habitView:
                     HomePassivHabitView(cards: $viewModel.cards, selectedHabit: $viewModel.selectedHabit, changeView: $viewModel.changeView)
                 case .newPassivHabitView:
-                    PassivEditView(changeView: $viewModel.changeView)
+                    PassivHabitAddView(changeView: $viewModel.changeView)
                 case .editPassivHabitView:
                     PassivDetailAndEditView(selectedHabit: $viewModel.selectedHabit, editing: $viewModel.detailEditing)
                 }

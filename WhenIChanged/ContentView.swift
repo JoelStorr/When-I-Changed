@@ -8,33 +8,38 @@
 import SwiftUI
 
 
-enum Views{
-    case home, calander, settings
+enum Views {
+    case passivHabit, activeHabit, calander, settings
 }
 
 
 struct ContentView: View {
     
-    @State private var showScreen : Views = Views.home
+    @State private var showScreen : Views = Views.activeHabit
     
     var body: some View {
-        TabView{
+        TabView(selection: $showScreen){
             PassivHabitView()
                 .tabItem {
                     Label("Auto Habit", systemImage: "clock.arrow.2.circlepath")
                 }
-            PassivHabitView()
+                .tag(Views.passivHabit)
+            
+            ActiveHabitView()
                 .tabItem {
                     Label("Habit", systemImage: "checklist.checked")
                 }
+                .tag(Views.activeHabit)
             CalendarView()
                 .tabItem {
                     Label("Calander", systemImage: "calendar")
                 }
+                .tag(Views.calander)
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
+                .tag(Views.settings)
         }
     }
 }

@@ -23,10 +23,11 @@
 		40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD532AFE4D6300F32C66 /* DateHelper.swift */; };
 		40A79AF92AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AF82AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift */; };
 		40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */; };
-		40A79AFD2AFBC241006A56F5 /* PassivEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* PassivEditView.swift */; };
-		40A79AFF2AFBEC65006A56F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFE2AFBEC65006A56F5 /* HomeViewModel.swift */; };
+		40A79AFD2AFBC241006A56F5 /* PassivHabitAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* PassivHabitAddView.swift */; };
+		40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */; };
 		40A95A152AFD6AF600D16A45 /* HomeViewToolbarButtonLeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A95A142AFD6AF600D16A45 /* HomeViewToolbarButtonLeading.swift */; };
 		40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */; };
+		40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */; };
 		40FA54E22AFCDFC6000B0E83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54E02AFCDFC6000B0E83 /* Model.xcdatamodeld */; };
 		40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54E32AFCDFF7000B0E83 /* StorageProvider.swift */; };
 		40FA54F22AFD0288000B0E83 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54F12AFD0288000B0E83 /* ColorHelper.swift */; };
@@ -69,10 +70,11 @@
 		40A3DD532AFE4D6300F32C66 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		40A79AF82AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewToolbarButtonTrailing.swift; sourceTree = "<group>"; };
 		40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePassivHabitView.swift; sourceTree = "<group>"; };
-		40A79AFC2AFBC241006A56F5 /* PassivEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivEditView.swift; sourceTree = "<group>"; };
-		40A79AFE2AFBEC65006A56F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		40A79AFC2AFBC241006A56F5 /* PassivHabitAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivHabitAddView.swift; sourceTree = "<group>"; };
+		40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivViewModel.swift; sourceTree = "<group>"; };
 		40A95A142AFD6AF600D16A45 /* HomeViewToolbarButtonLeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewToolbarButtonLeading.swift; sourceTree = "<group>"; };
 		40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassivHabit-CoreDataHelper.swift"; sourceTree = "<group>"; };
+		40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitView.swift; sourceTree = "<group>"; };
 		40FA54E12AFCDFC6000B0E83 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		40FA54E32AFCDFF7000B0E83 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		40FA54F12AFD0288000B0E83 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
@@ -166,10 +168,10 @@
 		400DC0982A839655000349E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				40A79AF72AFBB83F006A56F5 /* HomeView */,
+				40D211DD2B0127570054A8B8 /* ActiveHabit */,
+				40A79AF72AFBB83F006A56F5 /* PassivHabit */,
 				400DC09B2A839707000349E3 /* CalendarView.swift */,
 				400DC09D2A8398E6000349E3 /* SettingsView.swift */,
-				4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,16 +193,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		40A79AF72AFBB83F006A56F5 /* HomeView */ = {
+		40A79AF72AFBB83F006A56F5 /* PassivHabit */ = {
 			isa = PBXGroup;
 			children = (
 				40A95A132AFD6AD600D16A45 /* Toolbar */,
 				400DC0992A839666000349E3 /* PassivHabitView.swift */,
+				4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */,
 				40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */,
-				40A79AFC2AFBC241006A56F5 /* PassivEditView.swift */,
-				40A79AFE2AFBEC65006A56F5 /* HomeViewModel.swift */,
+				40A79AFC2AFBC241006A56F5 /* PassivHabitAddView.swift */,
+				40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */,
 			);
-			path = HomeView;
+			path = PassivHabit;
 			sourceTree = "<group>";
 		};
 		40A95A132AFD6AD600D16A45 /* Toolbar */ = {
@@ -210,6 +213,14 @@
 				40A95A142AFD6AF600D16A45 /* HomeViewToolbarButtonLeading.swift */,
 			);
 			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		40D211DD2B0127570054A8B8 /* ActiveHabit */ = {
+			isa = PBXGroup;
+			children = (
+				40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */,
+			);
+			path = ActiveHabit;
 			sourceTree = "<group>";
 		};
 		40FA54F02AFD0276000B0E83 /* Helpers */ = {
@@ -353,7 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40A79AFD2AFBC241006A56F5 /* PassivEditView.swift in Sources */,
+				40A79AFD2AFBC241006A56F5 /* PassivHabitAddView.swift in Sources */,
 				40FA54F22AFD0288000B0E83 /* ColorHelper.swift in Sources */,
 				40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */,
 				40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */,
@@ -364,7 +375,8 @@
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */,
 				400DC09A2A839666000349E3 /* PassivHabitView.swift in Sources */,
-				40A79AFF2AFBEC65006A56F5 /* HomeViewModel.swift in Sources */,
+				40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */,
+				40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */,
 				40A79AF92AFBB86A006A56F5 /* HomeViewToolbarButtonTrailing.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,

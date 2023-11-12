@@ -1,5 +1,5 @@
 //
-//  PassivEditView.swift
+//  PassivHabitAddView.swift
 //  WhenIChanged
 //
 //  Created by Joel Storr on 08.11.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PassivEditView: View {
+struct PassivHabitAddView: View {
     
     @State var nameField: String = ""
     @Binding var changeView: PassivViewType
