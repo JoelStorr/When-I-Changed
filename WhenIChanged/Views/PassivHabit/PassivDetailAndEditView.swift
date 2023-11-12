@@ -132,23 +132,39 @@ struct PassivDetailAndEditView: View {
         .navigationTitle(editing ? "Edit" : "Detail")
         .onAppear(perform: timeManager)
         .sheet(isPresented: $showSheet) {
-            List {
-                ForEach( selectedHabit.habitResetDates, id: \.self ) { reset in
-                    Text("\(reset.wrappedResetDate)")
+            VStack{
+                HStack{
+                    Spacer()
+                    Button("Cancle") {
+                        showSheet.toggle()
+                    }.padding()
+                }
+                List {
+                    ForEach( selectedHabit.habitResetDates, id: \.self ) { reset in
+                        Text("\(reset.wrappedResetDate)")
+                    }
                 }
             }
         }
         .sheet(isPresented: $showColorSheet) {
-            List {
-                ForEach(CardColor.allCases, id: \.rawValue) {color in
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(cardColorConverter(color: color.rawValue))
-                        .onTapGesture {
-                            showColorSheet.toggle()
-                            selectedColor = color.rawValue
-                        }
-                    
-                    
+            VStack{
+                HStack{
+                    Spacer()
+                    Button("Cancle") {
+                        showColorSheet.toggle()
+                    }.padding()
+                }
+                List {
+                    ForEach(CardColor.allCases, id: \.rawValue) {color in
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(cardColorConverter(color: color.rawValue))
+                            .onTapGesture {
+                                showColorSheet.toggle()
+                                selectedColor = color.rawValue
+                            }
+                        
+                        
+                    }
                 }
             }
         }

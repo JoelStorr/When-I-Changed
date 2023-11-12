@@ -15,7 +15,7 @@ struct PassivHabitAddView: View {
     var body: some View {
         
      
-            VStack{
+            Form{
                 TextField("New Habit name", text: $nameField)
                 Button("Save") {
                     //Run save function

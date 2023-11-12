@@ -61,7 +61,7 @@ extension PassivHabit {
         let minutes2 = "\(difference.minute ?? 0)m"
 
         let hours = "\(difference.hour ?? 0)h" + " " + minutes2
-        //let hours2 = "\(difference.hour ?? 0)h"
+        // let hours2 = "\(difference.hour ?? 0)h"
 
         let days = "\(difference.day ?? 0)d" + " " + hours
         let days2 = "\(difference.day ?? 0)d"
