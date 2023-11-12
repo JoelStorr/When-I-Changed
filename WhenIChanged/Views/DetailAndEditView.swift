@@ -13,6 +13,7 @@ struct DetailAndEditView: View {
     @State var timeString: String = ""
     @State var firstCall = true
     @Binding var editing: Bool
+    @State var showSheet = false
     
     var body: some View {
         VStack{
@@ -62,11 +63,15 @@ struct DetailAndEditView: View {
                             .padding()
                     }
                 }
-                List {
-                    ForEach( selectedHabit.habitResetDates, id: \.self ) { reset in
-                        Text("\(reset.wrappedResetDate)")
-                    }
+                
+                Button("Show all resets") {
+                    showSheet.toggle()
                 }
+                
+                
+                Spacer()
+                
+                
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(cardColorConverter(color: selectedHabit.habitColor).opacity(0.5))
@@ -107,6 +112,14 @@ struct DetailAndEditView: View {
         }
         .navigationTitle(editing ? "Edit" : "Detail")
         .onAppear(perform: timeManager)
+        .sheet(isPresented: $showSheet) {
+            List {
+                ForEach( selectedHabit.habitResetDates, id: \.self ) { reset in
+                    Text("\(reset.wrappedResetDate)")
+                }
+            }
+        }
+            
     }
     
     func timeManager() {
