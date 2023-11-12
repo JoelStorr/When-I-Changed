@@ -9,14 +9,14 @@ import SwiftUI
 
 struct HomeViewToolbarButtonTrailing: View {
     
-    @Binding var changeView: HomeViewType
+    @Binding var changeView: PassivViewType
     @Binding var detailEditing: Bool
     
     var body: some View {
         if changeView == .habitView {
             Menu {
                 Button("Add Passiv Habit"){changeView = .newPassivHabitView}
-                Button("Add Active Habit"){changeView = .newActiveHabitView}
+                //Button("Add Active Habit"){changeView = .newActiveHabitView}
             } label: {
                 Label("Add", systemImage: "plus.circle")
             }
@@ -33,9 +33,6 @@ struct HomeViewToolbarButtonTrailing: View {
                     Label("Edit", systemImage: "ellipsis.circle")
                 }
             }
-            
-            
-            
         } else {
             Button("Cancle"){
                 changeView = .habitView

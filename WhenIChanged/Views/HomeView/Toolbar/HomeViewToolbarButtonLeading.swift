@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeViewToolbarButtonLeading: View {
     
-    @Binding var changeView: HomeViewType
+    @Binding var changeView: PassivViewType
     
     
     var body: some View {

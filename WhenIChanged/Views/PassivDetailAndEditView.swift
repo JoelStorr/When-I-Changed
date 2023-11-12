@@ -1,5 +1,5 @@
 //
-//  DetailAndEditView.swift
+//  PassivDetailAndEditView.swift
 //  WhenIChanged
 //
 //  Created by Joel Storr on 10.08.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailAndEditView: View {
+struct PassivDetailAndEditView: View {
     @Binding var selectedHabit: PassivHabit
     @State private var name = ""
     @State var timeString: String = ""
@@ -57,7 +57,7 @@ struct DetailAndEditView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(.red.opacity(0.9))
-                            .frame(width: .infinity, height: 50)
+                            .frame( height: 50)
                         Label("Reset", systemImage: "exclamationmark.triangle.fill")
                             .foregroundStyle(.white)
                             .padding()
@@ -107,7 +107,7 @@ struct DetailAndEditView: View {
                     }.padding()
                 }
                 
-                Spacer()
+                
             }
         }
         .navigationTitle(editing ? "Edit" : "Detail")

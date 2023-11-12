@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  PassivHabitView.swift
 //  WhenIChanged
 //
 //  Created by Joel Storr on 09.08.23.
@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-enum HomeViewType {
+enum PassivViewType {
     case habitView,
          newPassivHabitView,
-         editPassivHabitView,
-         newActiveHabitView,
-         editActiveHabitView
+         editPassivHabitView
 }
 
-struct HomeView: View {
+struct PassivHabitView: View {
 
     @StateObject var viewModel: ViewModel
 
@@ -30,15 +28,11 @@ struct HomeView: View {
             VStack{
                 switch viewModel.changeView {
                 case .habitView:
-                    HomeHabitView(cards: $viewModel.cards, selectedHabit: $viewModel.selectedHabit, changeView: $viewModel.changeView)
+                    HomePassivHabitView(cards: $viewModel.cards, selectedHabit: $viewModel.selectedHabit, changeView: $viewModel.changeView)
                 case .newPassivHabitView:
-                    HomeEditView(changeView: $viewModel.changeView)
+                    PassivEditView(changeView: $viewModel.changeView)
                 case .editPassivHabitView:
-                    DetailAndEditView(selectedHabit: $viewModel.selectedHabit, editing: $viewModel.detailEditing)
-                case .newActiveHabitView:
-                    EmptyView()
-                case .editActiveHabitView:
-                    EmptyView()
+                    PassivDetailAndEditView(selectedHabit: $viewModel.selectedHabit, editing: $viewModel.detailEditing)
                 }
             }
                 .padding()

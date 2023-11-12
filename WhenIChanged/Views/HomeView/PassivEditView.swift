@@ -1,5 +1,5 @@
 //
-//  HomeEditView.swift
+//  PassivEditView.swift
 //  WhenIChanged
 //
 //  Created by Joel Storr on 08.11.23.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct HomeEditView: View {
+struct PassivEditView: View {
     
     @State var nameField: String = ""
-    @Binding var changeView: HomeViewType
+    @Binding var changeView: PassivViewType
     
     var body: some View {
         

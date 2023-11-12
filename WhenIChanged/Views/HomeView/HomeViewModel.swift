@@ -9,11 +9,11 @@ import Foundation
 
 
 
-extension HomeView {
+extension PassivHabitView {
     final class ViewModel: ObservableObject {
         @Published var cards: [PassivHabit] = []
 
-        @Published var changeView: HomeViewType = .habitView
+        @Published var changeView: PassivViewType = .habitView
         @Published var addingHabit: Bool = false
         @Published var addingAutoHabit: Bool = true
         @Published var detailEditing: Bool = false

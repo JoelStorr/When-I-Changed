@@ -1,5 +1,5 @@
 //
-//  HomeHabitView.swift
+//  HomePassivHabitView.swift
 //  WhenIChanged
 //
 //  Created by Joel Storr on 08.11.23.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct HomeHabitView: View {
+struct HomePassivHabitView: View {
     
     
     @Binding var cards: [PassivHabit]
     @Binding var selectedHabit: PassivHabit
-    @Binding var changeView: HomeViewType
+    @Binding var changeView: PassivViewType
    
     
     let columns = [

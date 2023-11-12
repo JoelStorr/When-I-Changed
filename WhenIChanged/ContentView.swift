@@ -19,10 +19,13 @@ struct ContentView: View {
     
     var body: some View {
         TabView{
-            HomeView()
-               
+            PassivHabitView()
                 .tabItem {
-                    Label("Home", systemImage: "house.fill")
+                    Label("Auto Habit", systemImage: "clock.arrow.2.circlepath")
+                }
+            PassivHabitView()
+                .tabItem {
+                    Label("Habit", systemImage: "checklist.checked")
                 }
             CalendarView()
                 .tabItem {
