@@ -13,8 +13,6 @@ struct PassivHabitAddView: View {
     @Binding var changeView: PassivViewType
     
     var body: some View {
-        
-     
             Form{
                 TextField("New Habit name", text: $nameField)
                 Button("Save") {
@@ -25,10 +23,5 @@ struct PassivHabitAddView: View {
                 }
             }
             .navigationTitle("Edit")
-            
-        
-        
     }
 }
-
-

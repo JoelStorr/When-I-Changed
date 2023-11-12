@@ -43,6 +43,3 @@ struct ContentView: View {
         }
     }
 }
-
-
-
