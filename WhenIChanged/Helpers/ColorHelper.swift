@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum CardColor:String, CaseIterable {
+enum CardColor: String, CaseIterable {
     case red, green, blue
 }
 
