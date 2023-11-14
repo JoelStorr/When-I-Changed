@@ -9,41 +9,39 @@ import SwiftUI
 
 struct PassivDetailAndEditView: View {
     
-    //@Binding var changeView: PassivViewType
-     var selectedHabit: PassivHabit
-    @State private var name = ""
-    @State var timeString: String = ""
-    @State var firstCall = true
-    @State var editing: Bool = false
-    @State var showSheet = false
-    @State var showColorSheet = false
-    @State var selectedColor: String? = nil
+    @ObservedObject var viewModel: ViewModel
+    
+    
+    init(selectedHabit: PassivHabit) {
+        self.viewModel = ViewModel(selectedHabit: selectedHabit)
+    }
+    
     
     var body: some View {
         VStack{
-            if editing {
+            if viewModel.editing {
                 Form{
-                    TextField(selectedHabit.habitName, text: $name)
+                    TextField(viewModel.selectedHabit.habitName, text: $viewModel.name)
                     
                     HStack {
                         Button("Select Color") {
-                            showColorSheet.toggle()
+                            viewModel.showColorSheet.toggle()
                         }
                         Spacer()
                             .frame(minWidth: 20)
                         RoundedRectangle(cornerRadius: 5.0)
-                            .fill(selectedColor == nil ?  cardColorConverter(color: selectedHabit.habitColor) : cardColorConverter(color: selectedColor!))
+                            .fill(viewModel.selectedColor == nil ?  cardColorConverter(color: viewModel.selectedHabit.habitColor) : cardColorConverter(color: viewModel.selectedColor!))
                     }
                     Button("Done"){
-                        if !name.isEmpty {
-                            selectedHabit.habitName = name
+                        if !viewModel.name.isEmpty {
+                            viewModel.selectedHabit.habitName = viewModel.name
                         }
                         
-                        if selectedColor != nil {
-                            selectedHabit.habitColor = selectedColor!
+                        if viewModel.selectedColor != nil {
+                            viewModel.selectedHabit.habitColor = viewModel.selectedColor!
                         }
                         StorageProvider.shared.save()
-                        editing.toggle()
+                        viewModel.editing.toggle()
                         //changeView = .editPassivHabitView
                     }
                 }
@@ -52,26 +50,26 @@ struct PassivDetailAndEditView: View {
                     .frame(height: 20)
                 ZStack(alignment: .top){
                     RoundedRectangle(cornerRadius: 5)
-                        .fill(cardColorConverter(color: selectedHabit.habitColor))
+                        .fill(cardColorConverter(color: viewModel.selectedHabit.habitColor))
                         .frame(maxHeight: 150)
                     VStack(spacing: 20){
                         HStack{
-                            Text(selectedHabit.habitName)
+                            Text(viewModel.selectedHabit.habitName)
                                 .font(.system(size: 25, weight: .black))
                             Spacer()
                         }
-                        Text(timeString)
+                        Text(viewModel.timeString)
                             .font(.system(size: 30, weight: .black))
                             .fontWeight(.bold)
                         HStack{
                             Spacer()
-                            Text("Started at \(selectedHabit.startDateString)")
+                            Text("Started at \(viewModel.selectedHabit.startDateString)")
                         }
                     }
                     .padding()
                 }
                 Button{
-                    StorageProvider.shared.resetCurrentHabitStreak(selectedHabit)
+                    StorageProvider.shared.resetCurrentHabitStreak(viewModel.selectedHabit)
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 5)
@@ -84,7 +82,7 @@ struct PassivDetailAndEditView: View {
                 }
                 
                 Button("Show all resets") {
-                    showSheet.toggle()
+                    viewModel.showSheet.toggle()
                 }
                 
                 
@@ -93,7 +91,7 @@ struct PassivDetailAndEditView: View {
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
-                        .fill(cardColorConverter(color: selectedHabit.habitColor).opacity(0.5))
+                        .fill(cardColorConverter(color: viewModel.selectedHabit.habitColor).opacity(0.5))
                         .frame(maxHeight: 150)
 
                     VStack {
@@ -103,23 +101,23 @@ struct PassivDetailAndEditView: View {
                         }
                         HStack {
                             VStack {
-                                Text("\(selectedHabit.habitResetDates.count > 0 ? selectedHabit.habitResetDates.count - 1 : 0)")
+                                Text("\(viewModel.selectedHabit.habitResetDates.count > 0 ? viewModel.selectedHabit.habitResetDates.count - 1 : 0)")
                                 Text("Resets")
                             }
                             Spacer()
                             VStack {
-                                Text("\(selectedHabit.calculateLongestStreak()) days")
+                                Text("\(viewModel.selectedHabit.calculateLongestStreak()) days")
                                 Text("Longest Streak")
                             }
                         }
                         HStack {
                             VStack{
-                                Text("\(selectedHabit.timeSinceStart())")
+                                Text("\(viewModel.selectedHabit.timeSinceStart())")
                                 Text("Since Started")
                             }
                             Spacer()
                             VStack {
-                                Text("\(selectedHabit.calculateAvaregStreakLength()) days")
+                                Text("\(viewModel.selectedHabit.calculateAvaregStreakLength()) days")
                                 Text("Avarage Streak")
                             }
                         }
@@ -129,29 +127,29 @@ struct PassivDetailAndEditView: View {
                 
             }
         }
-        .navigationTitle(editing ? "Edit" : "Detail")
-        .onAppear(perform: timeManager)
-        .sheet(isPresented: $showSheet) {
+        .navigationTitle(viewModel.editing ? "Edit" : "Detail")
+        .onAppear(perform: viewModel.timeManager)
+        .sheet(isPresented: $viewModel.showSheet) {
             VStack{
                 HStack{
                     Spacer()
                     Button("Cancle") {
-                        showSheet.toggle()
+                        viewModel.showSheet.toggle()
                     }.padding()
                 }
                 List {
-                    ForEach( selectedHabit.habitResetDates, id: \.self ) { reset in
+                    ForEach( viewModel.selectedHabit.habitResetDates, id: \.self ) { reset in
                         Text("\(reset.wrappedResetDate)")
                     }
                 }
             }
         }
-        .sheet(isPresented: $showColorSheet) {
+        .sheet(isPresented: $viewModel.showColorSheet) {
             VStack{
                 HStack{
                     Spacer()
                     Button("Cancle") {
-                        showColorSheet.toggle()
+                        viewModel.showColorSheet.toggle()
                     }.padding()
                 }
                 List {
@@ -159,54 +157,27 @@ struct PassivDetailAndEditView: View {
                         RoundedRectangle(cornerRadius: 5)
                             .fill(cardColorConverter(color: color.rawValue))
                             .onTapGesture {
-                                showColorSheet.toggle()
-                                selectedColor = color.rawValue
+                                viewModel.showColorSheet.toggle()
+                                viewModel.selectedColor = color.rawValue
                             }
-                        
-                        
                     }
                 }
             }
         }
         .toolbar {
-            if editing {
+            if viewModel.editing {
                 Button("Cancle"){
-                    editing.toggle()
+                    viewModel.editing.toggle()
                 }
             } else {
                 Button{
-                    editing.toggle()
+                    viewModel.editing.toggle()
                 } label: {
                     Label("Edit", systemImage: "ellipsis.circle")
                 }
             }
         }
-            
     }
     
-    func timeManager() {
-        let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
-        let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: selectedHabit.habitLatestDate, to: Date.now)
-
-        if firstCall {
-            firstCall = false
-            DispatchQueue.main.asyncAfter(deadline: .now()){
-                timeString = selectedHabit.timeFromLastReset()
-                timeManager()
-                return
-            }
-        }
-        guard let hour = difference.hour else { return }
-        if hour > 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 60){
-                timeString = selectedHabit.timeFromLastReset()
-                timeManager()
-            }
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                timeString = selectedHabit.timeFromLastReset()
-                timeManager()
-            }
-        }
-    }
+    
 }
