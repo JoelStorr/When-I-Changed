@@ -43,6 +43,46 @@ extension StorageProvider {
         }
     }
     
+    func saveActiveHabit(
+        name: String,
+        color: ActiveHabitColor?,
+        positiveHabit: Bool = true,
+        reminder: Date?,
+        repeatInterval: String?,
+        time: Date?,
+        unit: String?
+    ){
+        let habit = ActiveHabit(context: persistentConteiner.viewContext)
+        habit.id = UUID()
+        habit.name = name
+        habit.color = color != nil ? color!.rawValue : positiveHabit ? ActiveHabitColor.green.rawValue : ActiveHabitColor.red.rawValue
+        habit.positiveHabit = positiveHabit
+        
+        if reminder != nil {
+            habit.reminder = reminder
+        }
+        
+        if repeatInterval != nil {
+            habit.repeatInterval = repeatInterval
+        }
+        
+        habit.startDate = .now
+        
+        if time != nil {
+            habit.time = time
+        }
+        
+        if unit != nil {
+            habit.unit = unit
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
     func save () {
         if persistentConteiner.viewContext.hasChanges {
             try? persistentConteiner.viewContext.save()

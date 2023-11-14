@@ -27,6 +27,7 @@
 		40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */; };
 		40EBD0B62B036889000F4C12 /* AddActiveHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBD0B52B036889000F4C12 /* AddActiveHabit.swift */; };
 		40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBD0BA2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift */; };
+		40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBD0BC2B039192000F4C12 /* PastResetsView.swift */; };
 		40FA54E22AFCDFC6000B0E83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54E02AFCDFC6000B0E83 /* Model.xcdatamodeld */; };
 		40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54E32AFCDFF7000B0E83 /* StorageProvider.swift */; };
 		40FA54F22AFD0288000B0E83 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54F12AFD0288000B0E83 /* ColorHelper.swift */; };
@@ -73,6 +74,7 @@
 		40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitView.swift; sourceTree = "<group>"; };
 		40EBD0B52B036889000F4C12 /* AddActiveHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActiveHabit.swift; sourceTree = "<group>"; };
 		40EBD0BA2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivDetailAndEditViewModel.swift; sourceTree = "<group>"; };
+		40EBD0BC2B039192000F4C12 /* PastResetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastResetsView.swift; sourceTree = "<group>"; };
 		40FA54E12AFCDFC6000B0E83 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		40FA54E32AFCDFF7000B0E83 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		40FA54F12AFD0288000B0E83 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */,
 				40EBD0BA2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift */,
+				40EBD0BC2B039192000F4C12 /* PastResetsView.swift */,
 			);
 			path = PassivHabitEditAndDetail;
 			sourceTree = "<group>";
@@ -257,6 +260,8 @@
 				400DC0672A839422000349E3 /* Sources */,
 				400DC0682A839422000349E3 /* Frameworks */,
 				400DC0692A839422000349E3 /* Resources */,
+				40EBD0BE2B0397DB000F4C12 /* ShellScript */,
+				40EBD0BF2B03997D000F4C12 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -372,6 +377,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		40EBD0BE2B0397DB000F4C12 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
+		40EBD0BF2B03997D000F4C12 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		400DC0672A839422000349E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -393,6 +437,7 @@
 				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,
 				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,
 				40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */,
+				40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */,
 				40FA54E22AFCDFC6000B0E83 /* Model.xcdatamodeld in Sources */,
 				400DC06F2A839422000349E3 /* WhenIChangedApp.swift in Sources */,
 			);

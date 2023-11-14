@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="22G313" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="ActiveHabit" representedClassName="ActiveHabit" syncable="YES" codeGenerationType="class">
-        <attribute name="color" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="positiveHabit" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="color" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="positiveHabit" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="reminder" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="repeatInterval" optional="YES" attributeType="String"/>
-        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="unit" optional="YES" attributeType="String"/>
+        <attribute name="unit" attributeType="String"/>
         <relationship name="checkedDay" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CheckedDay" inverseName="activeHabit" inverseEntity="CheckedDay"/>
     </entity>
     <entity name="CheckedDay" representedClassName="CheckedDay" syncable="YES" codeGenerationType="class">
