@@ -5,7 +5,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="positiveHabit" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="reminder" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="repeat" optional="YES" attributeType="String"/>
+        <attribute name="repeatInterval" optional="YES" attributeType="String"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="unit" optional="YES" attributeType="String"/>

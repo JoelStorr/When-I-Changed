@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PassivHabitAddView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @State var nameField: String = ""
-    @Binding var changeView: PassivViewType
     
     var body: some View {
             Form{
@@ -18,7 +19,7 @@ struct PassivHabitAddView: View {
                 Button("Save") {
                     //Run save function
                     StorageProvider.shared.savePassiveHabit(name: nameField)
-                    changeView = .habitView
+                   dismiss()
                     
                 }
             }

@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ActiveHabitView: View {
     var body: some View {
-        Text("ActiveHabitView")
+        
+        NavigationStack {
+            NavigationLink {AddActiveHabit()} label: {
+                Text("Press me to add new Element")
+            }
+        }
     }
 }
 

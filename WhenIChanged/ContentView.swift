@@ -15,11 +15,11 @@ enum Views {
 
 struct ContentView: View {
     
-    @State private var showScreen : Views = Views.passivHabit
+    @State private var showScreen : Views = Views.activeHabit
     
     var body: some View {
         TabView(selection: $showScreen){
-            PassivHabitView()
+            HomePassivHabitView()
                 .tabItem {
                     Label("Auto Habit", systemImage: "clock.arrow.2.circlepath")
                 }

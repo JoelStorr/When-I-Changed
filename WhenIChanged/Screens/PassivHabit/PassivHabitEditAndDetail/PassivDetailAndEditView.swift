@@ -9,12 +9,12 @@ import SwiftUI
 
 struct PassivDetailAndEditView: View {
     
-    @Binding var changeView: PassivViewType
-    @Binding var selectedHabit: PassivHabit
+    //@Binding var changeView: PassivViewType
+     var selectedHabit: PassivHabit
     @State private var name = ""
     @State var timeString: String = ""
     @State var firstCall = true
-    @Binding var editing: Bool
+    @State var editing: Bool = false
     @State var showSheet = false
     @State var showColorSheet = false
     @State var selectedColor: String? = nil
@@ -44,7 +44,7 @@ struct PassivDetailAndEditView: View {
                         }
                         StorageProvider.shared.save()
                         editing.toggle()
-                        changeView = .editPassivHabitView
+                        //changeView = .editPassivHabitView
                     }
                 }
             } else {
@@ -165,6 +165,19 @@ struct PassivDetailAndEditView: View {
                         
                         
                     }
+                }
+            }
+        }
+        .toolbar {
+            if editing {
+                Button("Cancle"){
+                    editing.toggle()
+                }
+            } else {
+                Button{
+                    editing.toggle()
+                } label: {
+                    Label("Edit", systemImage: "ellipsis.circle")
                 }
             }
         }
