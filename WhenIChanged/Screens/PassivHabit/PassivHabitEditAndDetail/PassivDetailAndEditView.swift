@@ -68,6 +68,7 @@ struct PassivDetailAndEditView: View {
                     }
                     .padding()
                 }
+                .padding([.leading, .trailing])
                 Button{
                     StorageProvider.shared.resetCurrentHabitStreak(viewModel.selectedHabit)
                 } label: {
@@ -80,14 +81,15 @@ struct PassivDetailAndEditView: View {
                             .padding()
                     }
                 }
+                .padding([.leading, .trailing])
                 
-                Button("Show all resets") {
-                    viewModel.showSheet.toggle()
+                List {
+                    NavigationLink {PastResetsView(habitResetDatest: viewModel.selectedHabit.habitResetDates)} label: { Text("Show All Resets") }
+                    // TODO: Add Rewards View & Logic
+                    NavigationLink {} label: { Text("Show Rewards") }
                 }
                 
-                
                 Spacer()
-                
                 
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
@@ -129,21 +131,6 @@ struct PassivDetailAndEditView: View {
         }
         .navigationTitle(viewModel.editing ? "Edit" : "Detail")
         .onAppear(perform: viewModel.timeManager)
-        .sheet(isPresented: $viewModel.showSheet) {
-            VStack{
-                HStack{
-                    Spacer()
-                    Button("Cancle") {
-                        viewModel.showSheet.toggle()
-                    }.padding()
-                }
-                List {
-                    ForEach( viewModel.selectedHabit.habitResetDates, id: \.self ) { reset in
-                        Text("\(reset.wrappedResetDate)")
-                    }
-                }
-            }
-        }
         .sheet(isPresented: $viewModel.showColorSheet) {
             VStack{
                 HStack{

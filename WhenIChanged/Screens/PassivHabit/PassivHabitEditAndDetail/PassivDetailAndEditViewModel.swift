@@ -17,7 +17,6 @@ extension PassivDetailAndEditView {
         @Published var timeString: String = ""
         @Published var firstCall = true
         @Published var editing: Bool = false
-        @Published var showSheet = false
         @Published var showColorSheet = false
         @Published var selectedColor: String? = nil
         
