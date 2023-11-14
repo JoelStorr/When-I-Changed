@@ -24,7 +24,7 @@ struct HomePassivHabitView: View {
                     ForEach(viewModel.cards, id: \.id) { item in
                         
                         NavigationLink {
-                            PassivDetailAndEditView( selectedHabit: item)
+                            PassivDetailAndEditView(selectedHabit: item)
                         } label: {
                             Card(habit: item)
                         }
@@ -37,12 +37,7 @@ struct HomePassivHabitView: View {
                 viewModel.loadPassivHabits()
             }
             .toolbar {
-                Menu {
-                    NavigationLink{PassivHabitAddView()} label: {Text("Add Passiv Habit")}
-                    //Button("Add Active Habit"){changeView = .newActiveHabitView}
-                } label: {
-                    Label("Add", systemImage: "plus.circle")
-                }
+               ToolbarAddHabitButton()
             }
         }
     }

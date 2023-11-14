@@ -11,8 +11,11 @@ struct ActiveHabitView: View {
     var body: some View {
         
         NavigationStack {
-            NavigationLink {AddActiveHabit()} label: {
+            NavigationLink {ActiveHabitAddView()} label: {
                 Text("Press me to add new Element")
+            }
+            .toolbar {
+                ToolbarAddHabitButton()
             }
         }
     }
