@@ -50,13 +50,15 @@ extension StorageProvider {
         reminder: Date?,
         repeatInterval: String?,
         time: Date?,
-        unit: String?
+        unit: String?,
+        repeatAmount: Int
     ){
         let habit = ActiveHabit(context: persistentConteiner.viewContext)
         habit.id = UUID()
         habit.name = name
         habit.color = color != nil ? color!.rawValue : positiveHabit ? ActiveHabitColor.green.rawValue : ActiveHabitColor.red.rawValue
         habit.positiveHabit = positiveHabit
+        habit.repeatAmount = Int16(repeatAmount)
         
         if reminder != nil {
             habit.reminder = reminder

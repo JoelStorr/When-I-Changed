@@ -12,9 +12,13 @@ enum UnitTypes: String {
 }
 
 enum RepeatType: String, CaseIterable {
-    case Daily, Weekly, Monthly, Custom
+    case Day, Week, Month
 }
 
+
+enum Field: Int, CaseIterable {
+    case name, repeatAmount
+}
 
 
 struct ActiveHabitAddView: View {
@@ -25,11 +29,16 @@ struct ActiveHabitAddView: View {
     @State var repeatInterval: String? = nil
     @State var time: Date? = nil
     @State var unit: UnitTypes? = nil
+    @State var repeatAmount: String = ""
     
     @State var showColorSheet: Bool = false
     @State var useReminder: Bool = false
 
     @State var selectedType: Int = 0
+    
+    @FocusState private var focusField: Field?
+    
+    
     
     
     init(){
@@ -37,8 +46,10 @@ struct ActiveHabitAddView: View {
     }
     
     var body: some View {
-        Form{
+        Form {
             TextField("Name", text: $name)
+                .focused($focusField, equals: .name)
+                .onSubmit{ self.focusNextField($focusField) }
             Button {showColorSheet.toggle()} label: {
                 HStack {
                     Text("Color")
@@ -50,11 +61,16 @@ struct ActiveHabitAddView: View {
             }
             
             Section("Repeat") {
-                Picker(selection: $selectedType, label: Text("How often do you want to be reminded")){
-                    ForEach(0..<RepeatType.allCases.count, id: \.self) { (index) in
-                        Text("\(RepeatType.allCases[index].rawValue)").tag(index)
-                    }
-                }.pickerStyle(SegmentedPickerStyle())
+                HStack {
+                    TextField("1", text:$repeatAmount).keyboardType(.numberPad)
+                        .focused($focusField, equals: .repeatAmount)
+                        .onSubmit{ self.focusNextField($focusField) }
+                    Picker(selection: $selectedType, label: Text("How often do you want to be reminded")){
+                        ForEach(0..<RepeatType.allCases.count, id: \.self) { (index) in
+                            Text("\(RepeatType.allCases[index].rawValue)").tag(index)
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
             }
             
             Section("Reminder") {
@@ -68,7 +84,26 @@ struct ActiveHabitAddView: View {
             
             
             Button("Save") {
-                StorageProvider.shared.saveActiveHabit(name: name, color: selectedColor, reminder: reminder, repeatInterval: repeatInterval, time: time, unit: unit?.rawValue)
+                StorageProvider.shared.saveActiveHabit(name: name, color: selectedColor, reminder: reminder, repeatInterval: repeatInterval, time: time, unit: unit?.rawValue, repeatAmount: Int(repeatAmount) ?? 1)
+            }
+        }
+        .onTapGesture {
+            self.hideKeyboard()
+        }
+        .toolbar {
+            
+            ToolbarItemGroup(placement: .keyboard) {
+                Button{self.focusPreviousField($focusField)} label: {
+                    Image(systemName: "chevron.up")
+                }.disabled(self.isFirstField($focusField))
+                Button{self.focusNextField($focusField)} label: {
+                    Image(systemName: "chevron.down")
+                }
+                .disabled(self.isLastField($focusField, enumLength: Field.allCases.count))
+                Spacer()
+               Button("Done"){
+                  focusField = nil
+               }
             }
         }
         .sheet(isPresented: $showColorSheet) {

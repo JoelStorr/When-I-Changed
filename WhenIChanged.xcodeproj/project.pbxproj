@@ -18,6 +18,7 @@
 		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
 		4038B9982A84DA0D008E17C7 /* PassivDetailAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */; };
+		40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40932D8A2B04B9EA00F44929 /* View+Ext.swift */; };
 		40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */; };
 		40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD532AFE4D6300F32C66 /* DateHelper.swift */; };
 		40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */; };
@@ -66,6 +67,7 @@
 		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivDetailAndEditView.swift; sourceTree = "<group>"; };
+		40932D8A2B04B9EA00F44929 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PastRestes-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40A3DD532AFE4D6300F32C66 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePassivHabitView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		400DC06D2A839422000349E3 /* WhenIChanged */ = {
 			isa = PBXGroup;
 			children = (
+				40932D892B04B95E00F44929 /* Extension */,
 				40FA54F02AFD0276000B0E83 /* Helpers */,
 				401D1D132A84210700F6CA1F /* Model */,
 				400DC09F2A8399B3000349E3 /* Components */,
@@ -194,6 +197,14 @@
 				40FA54E02AFCDFC6000B0E83 /* Model.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		40932D892B04B95E00F44929 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				40932D8A2B04B9EA00F44929 /* View+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		40A79AF72AFBB83F006A56F5 /* PassivHabit */ = {
@@ -438,6 +449,7 @@
 				40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				400DC09C2A839707000349E3 /* CalendarView.swift in Sources */,
+				40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */,
 				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,
 				40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */,
 				40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */,
