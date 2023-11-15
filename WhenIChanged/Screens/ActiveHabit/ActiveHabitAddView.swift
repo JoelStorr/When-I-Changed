@@ -20,24 +20,42 @@ enum Field: Int, CaseIterable {
     case name, repeatAmount
 }
 
+enum Days: String, CaseIterable {
+    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+}
+
+
+class ReminderData: ObservableObject {
+    var id = UUID()
+    @Published var day: Days =  Days.Monday
+    @Published var time: Date = .now
+
+}
+
+
+
 
 struct ActiveHabitAddView: View {
     
-    @State var name: String = ""
-    @State var selectedColor: ActiveHabitColor = ActiveHabitColor.green
-    @State var reminder: Date = .now
-    @State var repeatInterval: String? = nil
-    @State var time: Date? = nil
-    @State var unit: UnitTypes? = nil
-    @State var repeatAmount: String = ""
+    @State var name: String = "" // done
+    @State var selectedColor: ActiveHabitColor = ActiveHabitColor.green // done
+    @State var reminder: Date = .now // todo
+    @State var repeatInterval: String? = nil // Add coresponding Date besed on selected interval
+    @State var repeatAmount: String = "" // done
+    @State var time: Date = .now        // todo
+    @State var unit: UnitTypes? = nil   // todo
+    @State var positiveHabit: Int = 0 // done
     
     @State var showColorSheet: Bool = false
     @State var useReminder: Bool = false
 
     @State var selectedType: Int = 0
+    @State var selectedDay: Int = 0
+    
+    
+    @State var addedReminders = [ReminderData]()
     
     @FocusState private var focusField: Field?
-    
     
     
     
@@ -60,11 +78,21 @@ struct ActiveHabitAddView: View {
                 }
             }
             
+            Section("Positive or Negative Habit?") {
+                Picker(selection: $positiveHabit, label: Text("Do you want to do more of this or less") ) {
+                    Text("Positive Habit").tag(0)
+                    Text("Negative Habit").tag(1)
+                }.pickerStyle(.segmented)
+            }
+            
             Section("Repeat") {
                 HStack {
                     TextField("1", text:$repeatAmount).keyboardType(.numberPad)
                         .focused($focusField, equals: .repeatAmount)
                         .onSubmit{ self.focusNextField($focusField) }
+                        .frame(width: 50)
+                    Text("/ per")
+                    Spacer()
                     Picker(selection: $selectedType, label: Text("How often do you want to be reminded")){
                         ForEach(0..<RepeatType.allCases.count, id: \.self) { (index) in
                             Text("\(RepeatType.allCases[index].rawValue)").tag(index)
@@ -78,18 +106,60 @@ struct ActiveHabitAddView: View {
                     Text("Want to get reminded?")
                 })
                 if useReminder {
-                    DatePicker("Select Reminder", selection: $reminder)
+                    
+                    if selectedType == 0 {
+                        DatePicker("Select Reminder", selection: $time, displayedComponents: .hourAndMinute)
+                    } else if selectedType == 1 {
+                        
+                       
+                            Button("Add") {
+                                self.addReminderToArray()
+                            }
+                        
+                        
+                        ForEach(0..<addedReminders.count, id: \.id) { index in
+                            HStack {
+                                Picker(selection: $addedReminders[index].day, label: Text("Select the day")) {
+                                    ForEach(0..<Days.allCases.count, id: \.self) { index in
+                                        Text("\(Days.allCases[index].rawValue)").tag(index)
+                                    }
+                                }
+                                Spacer()
+                                    .frame(width: 20)
+                                DatePicker("", selection: $time, displayedComponents: .hourAndMinute)
+                                    .frame(width: 50)
+                            }
+                                
+                            
+                        }
+                        
+                        
+                    } else {
+                        Text("Test")
+                    }
+                
                 }
             }
             
             
             Button("Save") {
-                StorageProvider.shared.saveActiveHabit(name: name, color: selectedColor, reminder: reminder, repeatInterval: repeatInterval, time: time, unit: unit?.rawValue, repeatAmount: Int(repeatAmount) ?? 1)
+                print("Save")
+                StorageProvider.shared.saveActiveHabit(
+                    name: name,
+                    color: selectedColor,
+                    positiveHabit: positiveHabit == 0 ? true : false,
+                    reminder: reminder,
+                    repeatInterval: repeatInterval,
+                    time: time,
+                    unit: unit?.rawValue,
+                    repeatAmount: Int(repeatAmount) ?? 1
+                )
             }
         }
-        .onTapGesture {
-            self.hideKeyboard()
-        }
+//        .onTapGesture {
+//            self.hideKeyboard()
+//        }
+        .navigationTitle("Add Active Habit")
         .toolbar {
             
             ToolbarItemGroup(placement: .keyboard) {
@@ -127,5 +197,13 @@ struct ActiveHabitAddView: View {
             }
         }
     }
+    
+    
+    func addReminderToArray(){
+        print("Added Reminder Data")
+        addedReminders.append(ReminderData(day: Days.Monday, time: .now))
+    }
+    
+    
+    
 }
-
