@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ActiveHabitView: View {
+    
+    
+    @State var activeHabits: [ActiveHabit] = []
+    
     var body: some View {
         
         NavigationStack {
             NavigationLink {ActiveHabitAddView()} label: {
-                Text("Press me to add new Element")
+                List {
+                    ForEach(activeHabits, id: \.self) { habit in
+                        Text("\(habit.name ?? "No Name")")
+                    }
+                }
             }
             .toolbar {
                 ToolbarAddHabitButton()
+            }
+            .onAppear {
+                activeHabits = StorageProvider.shared.loadAllActiveHabits()
             }
         }
     }
