@@ -27,7 +27,7 @@ enum Days: String, CaseIterable {
 
 class ReminderData: ObservableObject {
     var id = UUID()
-    @Published var day: Days =  Days.Monday
+    @Published var day: Int =  0
     @Published var time: Date = .now
 
 }
@@ -54,6 +54,7 @@ struct ActiveHabitAddView: View {
     
     
     @State var addedReminders = [ReminderData]()
+   
     
     @FocusState private var focusField: Field?
     
@@ -116,23 +117,11 @@ struct ActiveHabitAddView: View {
                                 self.addReminderToArray()
                             }
                         
-                        
-                        ForEach(0..<addedReminders.count, id: \.id) { index in
-                            HStack {
-                                Picker(selection: $addedReminders[index].day, label: Text("Select the day")) {
-                                    ForEach(0..<Days.allCases.count, id: \.self) { index in
-                                        Text("\(Days.allCases[index].rawValue)").tag(index)
-                                    }
-                                }
-                                Spacer()
-                                    .frame(width: 20)
-                                DatePicker("", selection: $time, displayedComponents: .hourAndMinute)
-                                    .frame(width: 50)
+
+                            ForEach(addedReminders, id: \.id) { reminders in
+                                AddReminderView(reminder: reminders)
                             }
-                                
-                            
-                        }
-                        
+
                         
                     } else {
                         Text("Test")
@@ -201,7 +190,7 @@ struct ActiveHabitAddView: View {
     
     func addReminderToArray(){
         print("Added Reminder Data")
-        addedReminders.append(ReminderData(day: Days.Monday, time: .now))
+        addedReminders.append(ReminderData())
     }
     
     

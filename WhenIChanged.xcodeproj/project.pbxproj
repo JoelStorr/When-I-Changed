@@ -24,6 +24,7 @@
 		40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */; };
 		40A79AFD2AFBC241006A56F5 /* PassivHabitAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* PassivHabitAddView.swift */; };
 		40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */; };
+		40B819442B060D610014A8DF /* AddReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B819432B060D610014A8DF /* AddReminderView.swift */; };
 		40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */; };
 		40CD3FF62B04032E00DA3780 /* ToolbarAddHabitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */; };
 		40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */; };
@@ -73,6 +74,7 @@
 		40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePassivHabitView.swift; sourceTree = "<group>"; };
 		40A79AFC2AFBC241006A56F5 /* PassivHabitAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivHabitAddView.swift; sourceTree = "<group>"; };
 		40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivViewModel.swift; sourceTree = "<group>"; };
+		40B819432B060D610014A8DF /* AddReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderView.swift; sourceTree = "<group>"; };
 		40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassivHabit-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarAddHabitButton.swift; sourceTree = "<group>"; };
 		40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */,
 				40EBD0B52B036889000F4C12 /* ActiveHabitAddView.swift */,
+				40B819432B060D610014A8DF /* AddReminderView.swift */,
 			);
 			path = ActiveHabit;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,
 				40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */,
 				40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */,
+				40B819442B060D610014A8DF /* AddReminderView.swift in Sources */,
 				40FA54E22AFCDFC6000B0E83 /* Model.xcdatamodeld in Sources */,
 				40CD3FF62B04032E00DA3780 /* ToolbarAddHabitButton.swift in Sources */,
 				400DC06F2A839422000349E3 /* WhenIChangedApp.swift in Sources */,
