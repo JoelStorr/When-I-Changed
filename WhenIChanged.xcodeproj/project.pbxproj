@@ -19,6 +19,7 @@
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
 		4038B9982A84DA0D008E17C7 /* PassivDetailAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */; };
 		406E08502B06362600BCB4EE /* AddDayReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E084F2B06362600BCB4EE /* AddDayReminderView.swift */; };
+		406E08522B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E08512B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift */; };
 		40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40932D8A2B04B9EA00F44929 /* View+Ext.swift */; };
 		40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */; };
 		40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD532AFE4D6300F32C66 /* DateHelper.swift */; };
@@ -70,6 +71,7 @@
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivDetailAndEditView.swift; sourceTree = "<group>"; };
 		406E084F2B06362600BCB4EE /* AddDayReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayReminderView.swift; sourceTree = "<group>"; };
+		406E08512B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveHabit-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40932D8A2B04B9EA00F44929 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PastRestes-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40A3DD532AFE4D6300F32C66 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				40FA54F12AFD0288000B0E83 /* ColorHelper.swift */,
 				40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */,
 				40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */,
+				406E08512B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift */,
 				40A3DD532AFE4D6300F32C66 /* DateHelper.swift */,
 			);
 			path = Helpers;
@@ -447,6 +450,7 @@
 				40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */,
 				40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */,
 				4038B9982A84DA0D008E17C7 /* PassivDetailAndEditView.swift in Sources */,
+				406E08522B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift in Sources */,
 				40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */,
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,

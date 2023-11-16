@@ -149,7 +149,7 @@ struct ActiveHabitAddView: View {
 
                         
                     } else if selectedReminderType == 2 {
-                        Text("Test")
+                        Text("Comming Soon")
                     }
                 
                 }
