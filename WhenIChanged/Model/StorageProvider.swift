@@ -47,11 +47,15 @@ extension StorageProvider {
         name: String,
         color: ActiveHabitColor?,
         positiveHabit: Bool = true,
-        reminder: Date?,
         repeatInterval: String?,
         time: Date?,
         unit: String?,
-        repeatAmount: Int
+        repeatAmount: Int,
+        reminders: Bool,
+        reminderType: Int,
+        addedWeekReminders: [WeekReminderData],
+        addedDayReminders: [DayReminderData]
+        
     ){
         let habit = ActiveHabit(context: persistentConteiner.viewContext)
         habit.id = UUID()
@@ -59,11 +63,8 @@ extension StorageProvider {
         habit.color = color != nil ? color!.rawValue : positiveHabit ? ActiveHabitColor.green.rawValue : ActiveHabitColor.red.rawValue
         habit.positiveHabit = positiveHabit
         habit.repeatAmount = Int16(repeatAmount)
-        
-        if reminder != nil {
-            habit.reminder = reminder
-        }
-        
+        habit.unit = unit
+
         if repeatInterval != nil {
             habit.repeatInterval = repeatInterval
         }
@@ -74,9 +75,30 @@ extension StorageProvider {
             habit.time = time
         }
         
-        if unit != nil {
-            habit.unit = unit
+        if reminderType == 0 && reminders {
+            for unsavedReminder in addedDayReminders {
+                let reminder = DayReminder(context: persistentConteiner.viewContext)
+                reminder.time = unsavedReminder.time
+                habit.addToDayReminders(reminder)
+            }
+        } else if reminderType == 1 && reminders {
+            for unsavedReminder in addedWeekReminders {
+                let reminder = WeekReminder(context: persistentConteiner.viewContext)
+                reminder.day = Int16(unsavedReminder.day)
+                reminder.time = unsavedReminder.time
+                habit.addToWeekReminders(reminder)
+            }
         }
+        
+        
+        do {
+            try persistentConteiner.viewContext.save()
+            print("Saved new Active habit")
+        } catch {
+            persistentConteiner.viewContext.rollback()
+            print("Failed to save Active habit: \(error)")
+        }
+        
     }
     
     
@@ -103,6 +125,18 @@ extension StorageProvider {
         }
     }
     
+    
+    func loadAllActiveHabits() -> [ActiveHabit] {
+        let fetchRequest: NSFetchRequest<ActiveHabit> = ActiveHabit.fetchRequest()
+        
+        do {
+            return try persistentConteiner.viewContext.fetch(fetchRequest)
+        } catch {
+            print("Failed to load ActiveHabits: \(error)")
+            return[]
+        }
+        
+    }
 }
 
 // NOTE: Delete Elements

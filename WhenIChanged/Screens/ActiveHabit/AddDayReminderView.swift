@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct AddDayReminderView: View {
+    
+    @ObservedObject var reminder: DayReminderData
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        DatePicker("Select Reminder", selection: $reminder.time, displayedComponents: .hourAndMinute)
     }
 }
 
-#Preview {
-    AddDayReminderView()
-}

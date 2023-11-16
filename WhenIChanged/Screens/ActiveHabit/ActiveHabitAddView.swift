@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-enum UnitTypes: String {
-    case numberOfTimes, duration, weight
+enum UnitTypes: String, CaseIterable {
+    case numberOfTimes = "Number of Times"
+    case duration = "Duration"
+    case weight = "Weight"
 }
 
 enum RepeatType: String, CaseIterable {
@@ -25,14 +27,18 @@ enum Days: String, CaseIterable {
 }
 
 
-class ReminderData: ObservableObject {
+
+class WeekReminderData: ObservableObject {
     var id = UUID()
     @Published var day: Int =  0
     @Published var time: Date = .now
 
 }
 
-
+class DayReminderData: ObservableObject {
+    var id = UUID()
+    @Published var time: Date = .now
+}
 
 
 struct ActiveHabitAddView: View {
@@ -49,11 +55,13 @@ struct ActiveHabitAddView: View {
     @State var showColorSheet: Bool = false
     @State var useReminder: Bool = false
 
-    @State var selectedType: Int = 0
+    @State var selectedReminderType: Int = 0
     @State var selectedDay: Int = 0
+    @State var selectedUnitType: Int = 0
     
     
-    @State var addedReminders = [ReminderData]()
+    @State var addedWeekReminders = [WeekReminderData]()
+    @State var addedDayReminders = [DayReminderData]()
    
     
     @FocusState private var focusField: Field?
@@ -86,6 +94,17 @@ struct ActiveHabitAddView: View {
                 }.pickerStyle(.segmented)
             }
             
+            
+            Section("Unit") {
+                Picker(selection: $selectedUnitType, label: Text("What do you want to track")) {
+                    ForEach(0..<UnitTypes.allCases.count, id: \.self) { index in
+                        Text("\(UnitTypes.allCases[index].rawValue)").tag(index)
+                    }
+                }.pickerStyle(.segmented)
+            }
+            
+            
+            
             Section("Repeat") {
                 HStack {
                     TextField("1", text:$repeatAmount).keyboardType(.numberPad)
@@ -94,7 +113,7 @@ struct ActiveHabitAddView: View {
                         .frame(width: 50)
                     Text("/ per")
                     Spacer()
-                    Picker(selection: $selectedType, label: Text("How often do you want to be reminded")){
+                    Picker(selection: $selectedReminderType, label: Text("How often do you want to be reminded")){
                         ForEach(0..<RepeatType.allCases.count, id: \.self) { (index) in
                             Text("\(RepeatType.allCases[index].rawValue)").tag(index)
                         }
@@ -102,28 +121,34 @@ struct ActiveHabitAddView: View {
                 }
             }
             
+            
             Section("Reminder") {
                 Toggle(isOn: $useReminder, label: {
                     Text("Want to get reminded?")
                 })
                 if useReminder {
                     
-                    if selectedType == 0 {
-                        DatePicker("Select Reminder", selection: $time, displayedComponents: .hourAndMinute)
-                    } else if selectedType == 1 {
+                    if selectedReminderType == 0 {
+                        Button("Add") {
+                          addDayReminderToArray()
+                        }
+                        ForEach(addedDayReminders, id: \.id) { reminder in
+                            AddDayReminderView(reminder: reminder)
+                        }
+                    } else if selectedReminderType == 1 {
                         
                        
                             Button("Add") {
-                                self.addReminderToArray()
+                                self.addWeekReminderToArray()
                             }
                         
 
-                            ForEach(addedReminders, id: \.id) { reminders in
-                                AddReminderView(reminder: reminders)
+                            ForEach(addedWeekReminders, id: \.id) { reminder in
+                                AddWeekReminderView(reminder: reminder)
                             }
 
                         
-                    } else {
+                    } else if selectedReminderType == 2 {
                         Text("Test")
                     }
                 
@@ -137,11 +162,14 @@ struct ActiveHabitAddView: View {
                     name: name,
                     color: selectedColor,
                     positiveHabit: positiveHabit == 0 ? true : false,
-                    reminder: reminder,
                     repeatInterval: repeatInterval,
                     time: time,
-                    unit: unit?.rawValue,
-                    repeatAmount: Int(repeatAmount) ?? 1
+                    unit: UnitTypes.allCases[selectedUnitType].rawValue,
+                    repeatAmount: Int(repeatAmount) ?? 1,
+                    reminders: useReminder,
+                    reminderType: selectedReminderType,
+                    addedWeekReminders: addedWeekReminders,
+                    addedDayReminders: addedDayReminders
                 )
             }
         }
@@ -188,9 +216,12 @@ struct ActiveHabitAddView: View {
     }
     
     
-    func addReminderToArray(){
-        print("Added Reminder Data")
-        addedReminders.append(ReminderData())
+    func addDayReminderToArray() {
+        addedDayReminders.append(DayReminderData())
+    }
+    
+    func addWeekReminderToArray() {
+        addedWeekReminders.append(WeekReminderData())
     }
     
     
