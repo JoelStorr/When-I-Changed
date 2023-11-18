@@ -90,7 +90,6 @@ extension StorageProvider {
             }
         }
         
-        
         do {
             try persistentConteiner.viewContext.save()
             print("Saved new Active habit")
@@ -100,9 +99,6 @@ extension StorageProvider {
         }
         
     }
-    
-    
-    
     
     func save () {
         if persistentConteiner.viewContext.hasChanges {
@@ -125,7 +121,6 @@ extension StorageProvider {
         }
     }
     
-    
     func loadAllActiveHabits() -> [ActiveHabit] {
         let fetchRequest: NSFetchRequest<ActiveHabit> = ActiveHabit.fetchRequest()
         
@@ -135,7 +130,6 @@ extension StorageProvider {
             print("Failed to load ActiveHabits: \(error)")
             return[]
         }
-        
     }
 }
 
