@@ -17,7 +17,6 @@ enum RepeatType: String, CaseIterable {
     case Day, Week, Month
 }
 
-
 enum Field: Int, CaseIterable {
     case name, repeatAmount
 }
@@ -26,20 +25,17 @@ enum Days: String, CaseIterable {
     case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 }
 
-
-
 class WeekReminderData: ObservableObject {
     var id = UUID()
     @Published var day: Int =  0
     @Published var time: Date = .now
-
+    
 }
 
 class DayReminderData: ObservableObject {
     var id = UUID()
     @Published var time: Date = .now
 }
-
 
 struct ActiveHabitAddView: View {
     
@@ -54,19 +50,15 @@ struct ActiveHabitAddView: View {
     
     @State var showColorSheet: Bool = false
     @State var useReminder: Bool = false
-
+    
     @State var selectedReminderType: Int = 0
     @State var selectedDay: Int = 0
     @State var selectedUnitType: Int = 0
     
-    
     @State var addedWeekReminders = [WeekReminderData]()
     @State var addedDayReminders = [DayReminderData]()
-   
     
     @FocusState private var focusField: Field?
-    
-    
     
     init(){
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.secondarySystemFill
@@ -94,7 +86,6 @@ struct ActiveHabitAddView: View {
                 }.pickerStyle(.segmented)
             }
             
-            
             Section("Unit") {
                 Picker(selection: $selectedUnitType, label: Text("What do you want to track")) {
                     ForEach(0..<UnitTypes.allCases.count, id: \.self) { index in
@@ -102,8 +93,6 @@ struct ActiveHabitAddView: View {
                     }
                 }.pickerStyle(.segmented)
             }
-            
-            
             
             Section("Repeat") {
                 HStack {
@@ -120,8 +109,6 @@ struct ActiveHabitAddView: View {
                     }.pickerStyle(SegmentedPickerStyle())
                 }
             }
-            
-            
             Section("Reminder") {
                 Toggle(isOn: $useReminder, label: {
                     Text("Want to get reminded?")
@@ -130,32 +117,24 @@ struct ActiveHabitAddView: View {
                     
                     if selectedReminderType == 0 {
                         Button("Add") {
-                          addDayReminderToArray()
+                            addDayReminderToArray()
                         }
                         ForEach(addedDayReminders, id: \.id) { reminder in
                             AddDayReminderView(reminder: reminder)
                         }
                     } else if selectedReminderType == 1 {
-                        
-                       
-                            Button("Add") {
-                                self.addWeekReminderToArray()
-                            }
-                        
-
-                            ForEach(addedWeekReminders, id: \.id) { reminder in
-                                AddWeekReminderView(reminder: reminder)
-                            }
-
+                        Button("Add") {
+                            self.addWeekReminderToArray()
+                        }
+                        ForEach(addedWeekReminders, id: \.id) { reminder in
+                            AddWeekReminderView(reminder: reminder)
+                        }
                         
                     } else if selectedReminderType == 2 {
                         Text("Comming Soon")
                     }
-                
                 }
             }
-            
-            
             Button("Save") {
                 print("Save")
                 StorageProvider.shared.saveActiveHabit(
@@ -173,9 +152,9 @@ struct ActiveHabitAddView: View {
                 )
             }
         }
-//        .onTapGesture {
-//            self.hideKeyboard()
-//        }
+        //        .onTapGesture {
+        //            self.hideKeyboard()
+        //        }
         .navigationTitle("Add Active Habit")
         .toolbar {
             
@@ -188,9 +167,9 @@ struct ActiveHabitAddView: View {
                 }
                 .disabled(self.isLastField($focusField, enumLength: Field.allCases.count))
                 Spacer()
-               Button("Done"){
-                  focusField = nil
-               }
+                Button("Done"){
+                    focusField = nil
+                }
             }
         }
         .sheet(isPresented: $showColorSheet) {
@@ -215,15 +194,10 @@ struct ActiveHabitAddView: View {
         }
     }
     
-    
     func addDayReminderToArray() {
         addedDayReminders.append(DayReminderData())
     }
-    
     func addWeekReminderToArray() {
         addedWeekReminders.append(WeekReminderData())
     }
-    
-    
-    
 }
