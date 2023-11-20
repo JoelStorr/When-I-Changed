@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ActiveHabitView: View {
     
-    
     @State var activeHabits: [ActiveHabit] = []
     
     var body: some View {
@@ -31,4 +30,3 @@ struct ActiveHabitView: View {
         }
     }
 }
-
