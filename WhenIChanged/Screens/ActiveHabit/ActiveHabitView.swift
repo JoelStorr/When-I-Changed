@@ -18,28 +18,54 @@ struct ActiveHabitView: View {
             
                 List {
                     ForEach($viewModel.activeHabits, id: \.id) { $habit in
-                        
-                        HStack {
-                            Text("\(habit.habitName ?? "No Name")")
-                                .swipeActions {
-                                    Button {
-                                        print("Check")
-                                        
-                                      
+                        NavigationLink(destination: ActiveHabitDetailView()) {
+                            HStack {
+                                Text("\(habit.habitName ?? "No Name")")
+                                    .swipeActions {
+                                        Button {
+                                            print("Check")
+                                            
+                                            
                                             habit.habitCheckAmount += 1
                                             StorageProvider.shared.save()
-                                        // NOTE: Revisit, not effichent
+                                            // NOTE: Revisit, not effichent
                                             viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
-
-                                        
-                                        
-                                    } label: {
-                                        Label("Check", systemImage: "checkmark.circle")
+                                            
+                                            
+                                            
+                                        } label: {
+                                            Label("Finis", systemImage: "checkmark.circle")
+                                        }
+                                        .tint(.green)
+                                        Button {
+                                            print("Check")
+                                            
+                                            
+                                            habit.habitCheckAmount += habit.habitRepeatAmount - habit.habitCheckAmount
+                                            StorageProvider.shared.save()
+                                            // NOTE: Revisit, not effichent
+                                            viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
+                                            
+                                            
+                                            
+                                        } label: {
+                                            Label("Check", systemImage: "checkmark.circle")
+                                        }
+                                        .tint(.orange)
                                     }
-                                    .tint(.green)
-                                }
+                                    .swipeActions(edge: .leading) {
+                                        Button {
+                                            StorageProvider.shared.deleteActiveHabit(habit)
+                                            // NOTE: Revisit, not effichent
+                                            viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
+                                        } label: {
+                                            Label("Delete", systemImage: "xmark.circle")
+                                        }
+                                        .tint(.red)
+                                    }
                                 Spacer()
-                            Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
+                                Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
+                            }
                         }
                     }
                 

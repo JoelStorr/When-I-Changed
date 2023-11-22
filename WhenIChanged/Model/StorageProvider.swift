@@ -144,6 +144,15 @@ extension StorageProvider {
             print("Habit: \(habit.habitName) could not be deleted. \(error)")
         }
     }
+    func deleteActiveHabit(_ habit: ActiveHabit) {
+        persistentConteiner.viewContext.delete(habit)
+        do {
+            try persistentConteiner.viewContext.save()
+        } catch {
+            persistentConteiner.viewContext.rollback()
+            print("Habit: \(habit.habitName) could not be deleted. \(error)")
+        }
+    }
 }
 
 // NOTE: Reset Current Streak time
