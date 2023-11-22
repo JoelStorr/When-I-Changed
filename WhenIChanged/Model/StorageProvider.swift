@@ -148,7 +148,7 @@ extension StorageProvider {
 
 // NOTE: Reset Current Streak time
 extension StorageProvider {
-    func resetCurrentHabitStreak(_ habit: PassivHabit){
+    func resetCurrentHabitStreak(_ habit: PassivHabit) {
         
         let resetDate = PastResets(context: persistentConteiner.viewContext)
         resetDate.resetDate = habit.latestDate
@@ -156,5 +156,13 @@ extension StorageProvider {
         habit.latestDate = .now
         
         save()
+    }
+}
+
+
+// NOTE: Add to active Habit
+extension StorageProvider {
+    func addToActiveHabit() {
+        
     }
 }

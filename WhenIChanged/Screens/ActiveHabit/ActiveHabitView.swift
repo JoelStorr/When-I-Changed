@@ -9,23 +9,46 @@ import SwiftUI
 
 struct ActiveHabitView: View {
     
-    @State var activeHabits: [ActiveHabit] = []
+    
+    @StateObject var viewModel: ViewModel = ViewModel()
     
     var body: some View {
         
         NavigationStack {
-            NavigationLink {ActiveHabitAddView()} label: {
+            
                 List {
-                    ForEach(activeHabits, id: \.self) { habit in
-                        Text("\(habit.name ?? "No Name")")
+                    ForEach($viewModel.activeHabits, id: \.id) { $habit in
+                        
+                        HStack {
+                            Text("\(habit.habitName ?? "No Name")")
+                                .swipeActions {
+                                    Button {
+                                        print("Check")
+                                        
+                                      
+                                            habit.habitCheckAmount += 1
+                                            StorageProvider.shared.save()
+                                        // NOTE: Revisit, not effichent
+                                            viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
+
+                                        
+                                        
+                                    } label: {
+                                        Label("Check", systemImage: "checkmark.circle")
+                                    }
+                                    .tint(.green)
+                                }
+                                Spacer()
+                            Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
+                        }
                     }
-                }
+                
             }
             .toolbar {
                 ToolbarAddHabitButton()
             }
             .onAppear {
-                activeHabits = StorageProvider.shared.loadAllActiveHabits()
+                viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
             }
         }
     }
