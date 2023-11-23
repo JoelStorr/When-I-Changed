@@ -26,6 +26,8 @@ struct ActiveHabitView: View {
                             
                             HStack {
                                 Text("\(habit.habitName ?? "No Name")")
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(cardColorConverter(color: habit.habitColor))
                                     .swipeActions {
                                         Button {
                                             print("Check")
@@ -53,21 +55,16 @@ struct ActiveHabitView: View {
                                         .tint(.green)
                                         
                                         
-//                                        Button {
-//                                            print("Check")
-//                                            
-//                                            
-//                                            habit.habitCheckAmount += habit.habitRepeatAmount - habit.habitCheckAmount
-//                                            StorageProvider.shared.save()
-//                                            // NOTE: Revisit, not effichent
-//                                            viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
-//                                            
-//                                            
-//                                            
-//                                        } label: {
-//                                            Label("Check", systemImage: "checkmark.circle")
-//                                        }
-//                                        .tint(.orange)
+                                        Button {
+                                            print("Check")
+                                            habit.habitCheckAmount += habit.habitRepeatAmount - habit.habitCheckAmount
+                                            StorageProvider.shared.save()
+                                            // NOTE: Revisit, not effichent
+                                            viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
+                                        } label: {
+                                            Label("Check", systemImage: "checkmark.circle")
+                                        }
+                                        .tint(.orange)
                                     }
                                     
                                     
@@ -84,13 +81,15 @@ struct ActiveHabitView: View {
                                     }
                                 Spacer()
                                 Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
+                                    .foregroundStyle(cardColorConverter(color: habit.habitColor))
+                                    .fontWeight(.bold)
                             }
                         }
                         
                         .padding()
 //                        .background(Color.green.opacity(0.4))
-                        .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                        .listRowSeparator(.hidden)
+//                        .clipShape(RoundedRectangle(cornerRadius: 5.0))
+//                        .listRowSeparator(.hidden)
                         
                     }
                     
