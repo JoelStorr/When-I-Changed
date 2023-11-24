@@ -24,6 +24,44 @@ final class StorageProvider {
     }
 }
 
+
+
+
+// NOTE: Setup
+extension StorageProvider {
+    
+   
+    func loadSettings () {
+        
+        let setUp: Setup? = loadSetUp()
+        
+        if setUp == nil {
+            // Run first SetUp
+        }
+    }
+    
+    
+    func loadSetUp() -> Setup? {
+        let fetchRequest : NSFetchRequest<Setup> = Setup.fetchRequest()
+        
+        do {
+            let result = try persistentConteiner.viewContext.fetch(fetchRequest)
+            if result.count > 1 {
+                fatalError("Something went wrong there should onlybe one Setup Entity")
+            }
+            
+            return result[0]
+            
+        } catch {
+            print("Error to load the requested Setup Instance. If this happens outside the first Start then something went wrong: \(error.localizedDescription)")
+            return nil
+        }
+        
+    }
+    
+    
+}
+
 // NOTE: Save Data
 extension StorageProvider {
 
