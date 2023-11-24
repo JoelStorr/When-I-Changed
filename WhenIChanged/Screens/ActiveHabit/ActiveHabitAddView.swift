@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 enum UnitTypes: String, CaseIterable {
     case numberOfTimes = "Number of Times"
     case duration = "Duration"
@@ -38,6 +39,9 @@ class DayReminderData: ObservableObject {
 }
 
 struct ActiveHabitAddView: View {
+    
+    
+    @Environment(\.dismiss) var dismiss
     
     @State var name: String = "" // done
     @State var selectedColor: ActiveHabitColor = ActiveHabitColor.green // done
@@ -150,6 +154,8 @@ struct ActiveHabitAddView: View {
                     addedWeekReminders: addedWeekReminders,
                     addedDayReminders: addedDayReminders
                 )
+                
+                dismiss()
             }
         }
         //        .onTapGesture {
