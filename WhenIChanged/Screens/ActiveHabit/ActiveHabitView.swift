@@ -33,8 +33,7 @@ struct ActiveHabitView: View {
                                             print("Check")
                                             
                                             
-                                            habit.habitCheckAmount += 1
-                                            StorageProvider.shared.save()
+                                            StorageProvider.shared.addCheckToActiveHabit(habit)
                                             // NOTE: Revisit, not effichent
                                             viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
                                             
@@ -57,8 +56,7 @@ struct ActiveHabitView: View {
                                         
                                         Button {
                                             print("Check")
-                                            habit.habitCheckAmount += habit.habitRepeatAmount - habit.habitCheckAmount
-                                            StorageProvider.shared.save()
+                                            StorageProvider.shared.completeCheckToActiveHabit(habit)
                                             // NOTE: Revisit, not effichent
                                             viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
                                         } label: {

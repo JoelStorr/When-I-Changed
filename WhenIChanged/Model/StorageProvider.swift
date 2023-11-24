@@ -100,6 +100,40 @@ extension StorageProvider {
         
     }
     
+    // NOTE: Save added Check for Active Habit
+    func addCheckToActiveHabit(_ habit: ActiveHabit){
+        habit.habitCheckAmount += 1
+        
+        
+        if habit.habitPositiveHabit {
+            if habit.habitCheckAmount >= habit.habitRepeatAmount {
+                let checkedDay = CheckedDay(context: persistentConteiner.viewContext)
+                checkedDay.checkedDay = .now
+                habit.addToCheckedDay(checkedDay)
+            }
+        }
+        
+        save()
+    }
+    
+    
+    func completeCheckToActiveHabit(_ habit: ActiveHabit) {
+        habit.habitCheckAmount += habit.habitRepeatAmount - habit.habitCheckAmount
+        
+        if habit.habitPositiveHabit {
+            if habit.habitCheckAmount >= habit.habitRepeatAmount {
+                let checkedDay = CheckedDay(context: persistentConteiner.viewContext)
+                checkedDay.checkedDay = .now
+                habit.addToCheckedDay(checkedDay)
+            }
+        }
+        
+        save()
+        
+    }
+    
+    
+    
     func save () {
         if persistentConteiner.viewContext.hasChanges {
             try? persistentConteiner.viewContext.save()
