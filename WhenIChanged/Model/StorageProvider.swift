@@ -37,7 +37,47 @@ extension StorageProvider {
         
         if setUp == nil {
             // Run first SetUp
+            
+            let setUpClass = Setup(context: persistentConteiner.viewContext)
+            setUpClass.lastDayReset = .now
+            setUpClass.lastWeekReset = nil
+            
+            save()
+            
+            print("Saved initial Setting")
+            return
         }
+        
+        
+        guard let setUp = setUp else {
+            fatalError("There should habe been a propper setup")
+        }
+        
+        let calender = Calendar.current
+        
+        // Check if we are a day away
+        
+        print(setUp.lastDayReset)
+        
+        
+        if calender.isDate(setUp.lastDayReset!, inSameDayAs: .now){
+            print("Same Day")
+        } else {
+            print("New Day")
+        }
+        
+        let days = calender.numberOfDaysBetween(from: setUp.lastDayReset!)
+        print(days)
+        if days >= 1 {
+            setUp.lastDayReset = .now
+            save()
+        }
+        
+        // Check if we are more then a week away
+    
+        // TODO: Handle Custom Time Frames
+        
+        
     }
     
     
@@ -46,6 +86,9 @@ extension StorageProvider {
         
         do {
             let result = try persistentConteiner.viewContext.fetch(fetchRequest)
+            if result.count == 0 { return nil}
+            
+            
             if result.count > 1 {
                 fatalError("Something went wrong there should onlybe one Setup Entity")
             }

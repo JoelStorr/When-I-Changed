@@ -8,7 +8,7 @@
 import Foundation
 
 extension Calendar {
-    func numberOfDaysBetween(from: Date, to: Date) -> Int {
+    func numberOfDaysBetween(from: Date, to: Date = .now) -> Int {
         let fromDate = startOfDay(for: from) // <1>
         let toDate = startOfDay(for: to) // <2>
         let numberOfDays = dateComponents([.day], from: fromDate, to: toDate) // <3>

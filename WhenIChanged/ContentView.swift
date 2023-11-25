@@ -41,5 +41,8 @@ struct ContentView: View {
                 }
                 .tag(Views.settings)
         }
+        .onAppear {
+            StorageProvider.shared.loadSettings()
+        }
     }
 }
