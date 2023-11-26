@@ -71,9 +71,19 @@ extension StorageProvider {
         if days >= 1 {
             setUp.lastDayReset = .now
             save()
+            
+            // TODO: Run day cleenup function
         }
         
         // Check if we are more then a week away
+        let week = calender.numberOfDaysBetween(from: setUp.lastWeekReset!)
+        if week >= 8 {
+            setUp.lastWeekReset = .now
+            save()
+            
+            // TODO: Run Week cleenup function
+            
+        }
     
         // TODO: Handle Custom Time Frames
         
