@@ -40,15 +40,7 @@ struct ActiveHabitView: View {
                                             
                                             
                                         } label: {
-                                            Label{
-                                                Text("Finish")
-                                            } icon: {
-                                                
-//                                                UIImageView(image: UIImage(systemName: "checkmark.circle"))
-                                                
-                                                Image(systemName: "checkmark.circle")
-                                                    
-                                            }
+                                            Text("+1")
                                                 
                                         }
                                         .tint(.green)
@@ -60,7 +52,7 @@ struct ActiveHabitView: View {
                                             // NOTE: Revisit, not effichent
                                             viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
                                         } label: {
-                                            Label("Check", systemImage: "checkmark.circle")
+                                            Text("Finish")
                                         }
                                         .tint(.orange)
                                     }
