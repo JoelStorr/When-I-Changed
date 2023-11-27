@@ -54,6 +54,7 @@ extension StorageProvider {
         }
         
         let calender = Calendar.current
+        let date = Date()
         
         // Check if we are a day away
         
@@ -78,7 +79,8 @@ extension StorageProvider {
         
         // Check if we are more then a week away
         let week = calender.numberOfDaysBetween(from: .now)
-        if week >= 8 {
+        if week > 0 && date.getWeekDay() == Date.WeekDay.monday  {
+            
             setUp.lastWeekReset = .now
             save()
             
