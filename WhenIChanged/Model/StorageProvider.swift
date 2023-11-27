@@ -40,7 +40,7 @@ extension StorageProvider {
             
             let setUpClass = Setup(context: persistentConteiner.viewContext)
             setUpClass.lastDayReset = .now
-            setUpClass.lastWeekReset = nil
+            setUpClass.lastWeekReset = .now
             
             save()
             
@@ -71,17 +71,19 @@ extension StorageProvider {
         if days >= 1 {
             setUp.lastDayReset = .now
             save()
-            
+            print("In days")
+            resetDayCheckAmount()
             // TODO: Run day cleenup function
         }
         
         // Check if we are more then a week away
-        let week = calender.numberOfDaysBetween(from: setUp.lastWeekReset!)
+        let week = calender.numberOfDaysBetween(from: .now)
         if week >= 8 {
             setUp.lastWeekReset = .now
             save()
             
             // TODO: Run Week cleenup function
+            resetWeekCheckAmount()
             
         }
     
@@ -89,6 +91,53 @@ extension StorageProvider {
         
         
     }
+    
+    
+    func resetDayCheckAmount () {
+        let request : NSFetchRequest<ActiveHabit> = ActiveHabit.fetchRequest()
+        let activeHabitType = NSPredicate(format: "%K == %@", #keyPath(ActiveHabit.repeatInterval), RepeatType.Day.rawValue )
+        request.predicate = activeHabitType
+        
+        do {
+            let result = try persistentConteiner.viewContext.fetch(request)
+            print(result)
+            for habit in result {
+                habit.habitCheckAmount = 0
+                print("Reset Day")
+            }
+            
+            save()
+            
+            
+        } catch {
+            print("Error")
+        }
+        
+    }
+    
+    func resetWeekCheckAmount () {
+        let request : NSFetchRequest<ActiveHabit> = ActiveHabit.fetchRequest()
+        let activeHabitType = NSPredicate(format: "%K == %@", #keyPath(ActiveHabit.repeatInterval), RepeatType.Week.rawValue )
+        request.predicate = activeHabitType
+        
+        do {
+            let result = try persistentConteiner.viewContext.fetch(request)
+            print(result)
+            for habit in result {
+                habit.habitCheckAmount = 0
+                print("Reset Day")
+            }
+            
+            save()
+            
+            
+        } catch {
+            print("Error")
+        }
+        
+    }
+    
+    
     
     
     func loadSetUp() -> Setup? {
@@ -156,9 +205,9 @@ extension StorageProvider {
         habit.repeatAmount = Int16(repeatAmount)
         habit.unit = unit
 
-        if repeatInterval != nil {
-            habit.repeatInterval = repeatInterval
-        }
+        
+        habit.repeatInterval = repeatInterval ?? RepeatType.Day.rawValue
+        
         
         habit.startDate = .now
         
@@ -250,7 +299,8 @@ extension StorageProvider {
         let fetchRequest: NSFetchRequest<ActiveHabit> = ActiveHabit.fetchRequest()
         
         do {
-            return try persistentConteiner.viewContext.fetch(fetchRequest)
+            let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
+            return result
         } catch {
             print("Failed to load ActiveHabits: \(error)")
             return[]
