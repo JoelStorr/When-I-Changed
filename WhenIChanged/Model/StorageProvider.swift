@@ -235,6 +235,7 @@ extension StorageProvider {
         do {
             try persistentConteiner.viewContext.save()
             print("Saved new Active habit")
+            print(habit)
         } catch {
             persistentConteiner.viewContext.rollback()
             print("Failed to save Active habit: \(error)")

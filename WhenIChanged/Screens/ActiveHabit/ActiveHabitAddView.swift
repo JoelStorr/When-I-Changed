@@ -145,7 +145,7 @@ struct ActiveHabitAddView: View {
                     name: name,
                     color: selectedColor,
                     positiveHabit: positiveHabit == 0 ? true : false,
-                    repeatInterval: repeatInterval,
+                    repeatInterval: RepeatType.allCases[selectedReminderType].rawValue,
                     time: time,
                     unit: UnitTypes.allCases[selectedUnitType].rawValue,
                     repeatAmount: Int(repeatAmount) ?? 1,
