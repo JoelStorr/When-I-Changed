@@ -8,6 +8,7 @@
 import Foundation
 
 extension Calendar {
+    // swiftlint:disable:next identifier_name
     func numberOfDaysBetween(from: Date, to: Date = .now) -> Int {
         let fromDate = startOfDay(for: from) // <1>
         let toDate = startOfDay(for: to) // <2>
@@ -17,7 +18,6 @@ extension Calendar {
 }
 
 extension Date {
-
     enum WeekDay: Int {
         case sunday = 1
         case monday
@@ -34,5 +34,3 @@ extension Date {
         return WeekDay(rawValue: weekDay)!
     }
 }
-
-

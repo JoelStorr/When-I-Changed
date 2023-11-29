@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct HomePassivHabitView: View {
-    
+
     @StateObject var viewModel: ViewModel = ViewModel()
 
-    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
        ]
-    
+
     var body: some View {
         NavigationStack {
-            VStack{
+            VStack {
                 LazyVGrid(columns: columns, spacing: 15) {
                     ForEach(viewModel.cards, id: \.id) { item in
-                        
+
                         NavigationLink {
                             PassivDetailAndEditView(selectedHabit: item)
                         } label: {
@@ -33,7 +32,7 @@ struct HomePassivHabitView: View {
                 Spacer()
             }
             .navigationTitle("Home")
-            .onAppear{
+            .onAppear {
                 viewModel.loadPassivHabits()
             }
             .toolbar {
@@ -42,5 +41,3 @@ struct HomePassivHabitView: View {
         }
     }
 }
- 
-

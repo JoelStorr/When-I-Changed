@@ -16,8 +16,6 @@ extension View {
 #endif
 
 extension View {
-    
-    
     func focusNextField<F: RawRepresentable>(_ field: FocusState<F?>.Binding) where F.RawValue == Int {
         guard let currentValue = field.wrappedValue else { return }
         let nextValue = currentValue.rawValue + 1
@@ -25,7 +23,7 @@ extension View {
             field.wrappedValue = newValue
         }
     }
-    
+
     func focusPreviousField<F: RawRepresentable>(_ field: FocusState<F?>.Binding) where F.RawValue == Int {
         guard let currentValue = field.wrappedValue else { return }
         let nextValue = currentValue.rawValue - 1
@@ -33,23 +31,23 @@ extension View {
             field.wrappedValue = newValue
         }
     }
-    
-    
+
     func isFirstField<F: RawRepresentable> (_ field: FocusState<F?>.Binding) -> Bool where F.RawValue == Int {
         guard let currentValue = field.wrappedValue else { return false }
-        
+
         if currentValue.rawValue - 1  < 0 {
             return true
         } else {
             return false
         }
     }
-    
-    func isLastField<F: RawRepresentable> (_ field: FocusState<F?>.Binding, enumLength: Int) -> Bool where F.RawValue == Int {
+
+    func isLastField<F: RawRepresentable> (
+        _ field: FocusState<F?>.Binding,
+        enumLength: Int
+    ) -> Bool where F.RawValue == Int {
         guard let currentValue = field.wrappedValue else { return false }
-        
         if currentValue.rawValue + 1  >= enumLength {
-            
             return true
         } else {
             return false

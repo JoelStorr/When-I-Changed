@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct PastResetsView: View {
-    
-    
     var habitResetDatest: [PastResets]
-    
-    
+
     var body: some View {
         List {
             ForEach( habitResetDatest, id: \.self ) { reset in
@@ -22,5 +19,3 @@ struct PastResetsView: View {
         .navigationTitle("Past Resets")
     }
 }
-
-

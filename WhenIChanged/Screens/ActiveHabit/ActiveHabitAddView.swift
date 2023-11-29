@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 enum UnitTypes: String, CaseIterable {
     case numberOfTimes = "Number of Times"
     case duration = "Duration"
@@ -15,7 +14,7 @@ enum UnitTypes: String, CaseIterable {
 }
 
 enum RepeatType: String, CaseIterable {
-    case Day, Week, Month
+    case day, week, month
 }
 
 enum Field: Int, CaseIterable {
@@ -23,14 +22,13 @@ enum Field: Int, CaseIterable {
 }
 
 enum Days: String, CaseIterable {
-    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday
 }
 
 class WeekReminderData: ObservableObject {
     var id = UUID()
     @Published var day: Int =  0
     @Published var time: Date = .now
-    
 }
 
 class DayReminderData: ObservableObject {
@@ -39,40 +37,39 @@ class DayReminderData: ObservableObject {
 }
 
 struct ActiveHabitAddView: View {
-    
-    
+
     @Environment(\.dismiss) var dismiss
-    
+
     @State var name: String = "" // done
     @State var selectedColor: ActiveHabitColor = ActiveHabitColor.green // done
     @State var reminder: Date = .now // todo
-    @State var repeatInterval: String? = nil // Add coresponding Date besed on selected interval
+    @State var repeatInterval: String? // Add coresponding Date besed on selected interval
     @State var repeatAmount: String = "" // done
     @State var time: Date = .now        // todo
-    @State var unit: UnitTypes? = nil   // todo
+    @State var unit: UnitTypes?   // todo
     @State var positiveHabit: Int = 0 // done
-    
+
     @State var showColorSheet: Bool = false
     @State var useReminder: Bool = false
-    
+
     @State var selectedReminderType: Int = 0
     @State var selectedDay: Int = 0
     @State var selectedUnitType: Int = 0
-    
+
     @State var addedWeekReminders = [WeekReminderData]()
     @State var addedDayReminders = [DayReminderData]()
-    
+
     @FocusState private var focusField: Field?
-    
-    init(){
+
+    init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.secondarySystemFill
     }
-    
+
     var body: some View {
         Form {
             TextField("Name", text: $name)
                 .focused($focusField, equals: .name)
-                .onSubmit{ self.focusNextField($focusField) }
+                .onSubmit { self.focusNextField($focusField) }
             Button {showColorSheet.toggle()} label: {
                 HStack {
                     Text("Color")
@@ -82,33 +79,35 @@ struct ActiveHabitAddView: View {
                         .fill(cardColorConverter(color: selectedColor.rawValue))
                 }
             }
-            
+
             Section("Positive or Negative Habit?") {
                 Picker(selection: $positiveHabit, label: Text("Do you want to do more of this or less") ) {
                     Text("Positive Habit").tag(0)
                     Text("Negative Habit").tag(1)
                 }.pickerStyle(.segmented)
             }
-            
+
             Section("Unit") {
                 Picker(selection: $selectedUnitType, label: Text("What do you want to track")) {
                     ForEach(0..<UnitTypes.allCases.count, id: \.self) { index in
                         Text("\(UnitTypes.allCases[index].rawValue)").tag(index)
                     }
-                }.pickerStyle(.segmented)
+                }
+                .pickerStyle(.segmented)
             }
-            
+
             Section("Repeat") {
                 HStack {
-                    TextField("1", text:$repeatAmount).keyboardType(.numberPad)
+                    TextField("1", text: $repeatAmount)
+                        .keyboardType(.numberPad)
                         .focused($focusField, equals: .repeatAmount)
-                        .onSubmit{ self.focusNextField($focusField) }
+                        .onSubmit { self.focusNextField($focusField) }
                         .frame(width: 50)
                     Text("/ per")
                     Spacer()
-                    Picker(selection: $selectedReminderType, label: Text("How often do you want to be reminded")){
+                    Picker(selection: $selectedReminderType, label: Text("How often do you want to be reminded")) {
                         ForEach(0..<RepeatType.allCases.count, id: \.self) { (index) in
-                            Text("\(RepeatType.allCases[index].rawValue)").tag(index)
+                            Text("\(RepeatType.allCases[index].rawValue.capitalized)").tag(index)
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                 }
@@ -118,7 +117,6 @@ struct ActiveHabitAddView: View {
                     Text("Want to get reminded?")
                 })
                 if useReminder {
-                    
                     if selectedReminderType == 0 {
                         Button("Add") {
                             addDayReminderToArray()
@@ -133,7 +131,6 @@ struct ActiveHabitAddView: View {
                         ForEach(addedWeekReminders, id: \.id) { reminder in
                             AddWeekReminderView(reminder: reminder)
                         }
-                        
                     } else if selectedReminderType == 2 {
                         Text("Comming Soon")
                     }
@@ -154,7 +151,6 @@ struct ActiveHabitAddView: View {
                     addedWeekReminders: addedWeekReminders,
                     addedDayReminders: addedDayReminders
                 )
-                
                 dismiss()
             }
         }
@@ -163,31 +159,30 @@ struct ActiveHabitAddView: View {
         //        }
         .navigationTitle("Add Active Habit")
         .toolbar {
-            
             ToolbarItemGroup(placement: .keyboard) {
-                Button{self.focusPreviousField($focusField)} label: {
+                Button { self.focusPreviousField($focusField) } label: {
                     Image(systemName: "chevron.up")
                 }.disabled(self.isFirstField($focusField))
-                Button{self.focusNextField($focusField)} label: {
+                Button { self.focusNextField($focusField) } label: {
                     Image(systemName: "chevron.down")
                 }
                 .disabled(self.isLastField($focusField, enumLength: Field.allCases.count))
                 Spacer()
-                Button("Done"){
+                Button("Done") {
                     focusField = nil
                 }
             }
         }
         .sheet(isPresented: $showColorSheet) {
-            VStack{
-                HStack{
+            VStack {
+                HStack {
                     Spacer()
                     Button("Cancle") {
                         showColorSheet.toggle()
                     }.padding()
                 }
                 List {
-                    ForEach(ActiveHabitColor.allCases, id: \.rawValue) {color in
+                    ForEach(ActiveHabitColor.allCases, id: \.rawValue) { color in
                         RoundedRectangle(cornerRadius: 5)
                             .fill(cardColorConverter(color: color.rawValue))
                             .onTapGesture {
@@ -199,7 +194,6 @@ struct ActiveHabitAddView: View {
             }
         }
     }
-    
     func addDayReminderToArray() {
         addedDayReminders.append(DayReminderData())
     }

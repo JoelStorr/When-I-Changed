@@ -10,12 +10,11 @@ import SwiftUI
 struct ToolbarAddHabitButton: View {
     var body: some View {
         Menu {
-            NavigationLink{PassivHabitAddView()} label: {Text("Add Passiv Habit")}
-            NavigationLink{ActiveHabitAddView()} label: {Text("Add Active Habit")}
+            NavigationLink { PassivHabitAddView() } label: { Text("Add Passiv Habit") }
+            NavigationLink { ActiveHabitAddView() } label: { Text("Add Active Habit") }
 
         } label: {
             Label("Add", systemImage: "plus.circle")
         }
     }
 }
-

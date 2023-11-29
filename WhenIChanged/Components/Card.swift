@@ -23,13 +23,13 @@ struct Card: View {
       to: Date())
 
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             Text(habit.habitName)
                 .font(.title2)
                 .fontWeight(.bold)
             Text(timeString)
                 .fontWeight(.bold)
-            
+
             Text("Started: \(habit.startDateString)")
                 .font(.caption)
         }
@@ -40,13 +40,16 @@ struct Card: View {
         .onAppear(perform: timeManager)
     }
 
-     func timeManager(){
+     func timeManager() {
          let dayHourMinuteSecond: Set<Calendar.Component> = [.day, .hour, .minute, .second]
-         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: habit.habitLatestDate, to: Date.now)
-
+         let difference = NSCalendar.current.dateComponents(
+            dayHourMinuteSecond,
+            from: habit.habitLatestDate,
+            to: Date.now
+         )
          if firstCall {
              firstCall = false
-             DispatchQueue.main.asyncAfter(deadline: .now()){
+             DispatchQueue.main.asyncAfter(deadline: .now()) {
                  timeString = habit.timeFromLastReset()
                  timeManager()
                  return
@@ -56,12 +59,12 @@ struct Card: View {
          guard let hour = difference.hour else { return }
 
          if hour > 0 {
-             DispatchQueue.main.asyncAfter(deadline: .now() + 60){
+             DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
                  timeString = habit.timeFromLastReset()
                  timeManager()
              }
          } else {
-             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                  timeString = habit.timeFromLastReset()
                  timeManager()
              }

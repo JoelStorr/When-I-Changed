@@ -50,7 +50,8 @@ extension PassivHabit {
         return timeSpan(from: habitStartDate)
     }
 
-    private func timeSpan(from: Date, to: Date = Date.now)-> String{
+    // swiftlint:disable:next identifier_name
+    private func timeSpan(from: Date, to: Date = Date.now) -> String {
 
         let dayHourMinuteSecond: Set<Calendar.Component> = [.year, .day, .hour, .minute, .second]
         let difference = NSCalendar.current.dateComponents(dayHourMinuteSecond, from: from, to: to)
@@ -80,8 +81,8 @@ extension PassivHabit {
          let relativeDate = formatter.localizedString(for: latestDate, relativeTo: Date())
          return relativeDate
          */
-        
-        //return latestDate.distance(to: Date.now)
+
+        // return latestDate.distance(to: Date.now)
     }
 
     func calculateLongestStreak () -> Int {
@@ -114,8 +115,10 @@ extension PassivHabit {
             if index >= count-1 {
                 break
             }
-
-            let days = calendar.numberOfDaysBetween(from: habitResetDates[index + 1].wrappedResetDate, to: element.wrappedResetDate)
+            let days = calendar.numberOfDaysBetween(
+                from: habitResetDates[index + 1].wrappedResetDate,
+                to: element.wrappedResetDate
+            )
             streakArray.append(days)
         }
         return streakArray

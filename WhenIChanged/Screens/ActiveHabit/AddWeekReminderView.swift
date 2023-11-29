@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct AddWeekReminderView: View {
-    
+
     @ObservedObject var reminder: WeekReminderData
-    
-    
+
     var body: some View {
         HStack {
             Picker(selection: $reminder.day, label: Text("Select the day")) {
                 ForEach(0..<Days.allCases.count, id: \.self) { index in
-                    Text("\(Days.allCases[index].rawValue)").tag(index)
+                    Text("\(Days.allCases[index].rawValue.capitalized)").tag(index)
                 }
             }
             Spacer()

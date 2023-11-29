@@ -15,7 +15,7 @@ enum ActiveHabitColor: String, CaseIterable {
     case red, green, blue, yellow, purple
 }
 
-func cardColorConverter(color: String) -> Color{
+func cardColorConverter(color: String) -> Color {
     switch color {
     case "red":
         return Color.red

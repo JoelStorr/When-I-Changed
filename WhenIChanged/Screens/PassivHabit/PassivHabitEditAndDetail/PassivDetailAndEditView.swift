@@ -8,21 +8,18 @@
 import SwiftUI
 
 struct PassivDetailAndEditView: View {
-    
+
     @ObservedObject var viewModel: ViewModel
-    
-    
+
     init(selectedHabit: PassivHabit) {
         self.viewModel = ViewModel(selectedHabit: selectedHabit)
     }
-    
-    
+
     var body: some View {
-        VStack{
+        VStack {
             if viewModel.editing {
-                Form{
+                Form {
                     TextField(viewModel.selectedHabit.habitName, text: $viewModel.name)
-                    
                     HStack {
                         Button("Select Color") {
                             viewModel.showColorSheet.toggle()
@@ -30,30 +27,34 @@ struct PassivDetailAndEditView: View {
                         Spacer()
                             .frame(minWidth: 20)
                         RoundedRectangle(cornerRadius: 5.0)
-                            .fill(viewModel.selectedColor == nil ?  cardColorConverter(color: viewModel.selectedHabit.habitColor) : cardColorConverter(color: viewModel.selectedColor!))
+                            .fill(
+                                viewModel.selectedColor == nil
+                                ?  cardColorConverter(color: viewModel.selectedHabit.habitColor)
+                                : cardColorConverter(color: viewModel.selectedColor!)
+                            )
                     }
-                    Button("Done"){
+                    Button("Done") {
                         if !viewModel.name.isEmpty {
                             viewModel.selectedHabit.habitName = viewModel.name
                         }
-                        
+
                         if viewModel.selectedColor != nil {
                             viewModel.selectedHabit.habitColor = viewModel.selectedColor!
                         }
                         StorageProvider.shared.save()
                         viewModel.editing.toggle()
-                        //changeView = .editPassivHabitView
+                        // changeView = .editPassivHabitView
                     }
                 }
             } else {
                 Spacer()
                     .frame(height: 20)
-                ZStack(alignment: .top){
+                ZStack(alignment: .top) {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(cardColorConverter(color: viewModel.selectedHabit.habitColor))
                         .frame(maxHeight: 150)
-                    VStack(spacing: 20){
-                        HStack{
+                    VStack(spacing: 20) {
+                        HStack {
                             Text(viewModel.selectedHabit.habitName)
                                 .font(.system(size: 25, weight: .black))
                             Spacer()
@@ -61,7 +62,7 @@ struct PassivDetailAndEditView: View {
                         Text(viewModel.timeString)
                             .font(.system(size: 30, weight: .black))
                             .fontWeight(.bold)
-                        HStack{
+                        HStack {
                             Spacer()
                             Text("Started at \(viewModel.selectedHabit.startDateString)")
                         }
@@ -69,7 +70,7 @@ struct PassivDetailAndEditView: View {
                     .padding()
                 }
                 .padding([.leading, .trailing])
-                Button{
+                Button {
                     StorageProvider.shared.resetCurrentHabitStreak(viewModel.selectedHabit)
                 } label: {
                     ZStack {
@@ -82,20 +83,19 @@ struct PassivDetailAndEditView: View {
                     }
                 }
                 .padding([.leading, .trailing])
-                
                 List {
-                    NavigationLink {PastResetsView(habitResetDatest: viewModel.selectedHabit.habitResetDates)} label: { Text("Show All Resets") }
+                    NavigationLink {
+                        PastResetsView(habitResetDatest: viewModel.selectedHabit.habitResetDates)
+                    } label: { Text("Show All Resets") }
+                    // swiftlint:disable:next todo
                     // TODO: Add Rewards View & Logic
                     NavigationLink {} label: { Text("Show Rewards") }
                 }
-                
                 Spacer()
-                
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(cardColorConverter(color: viewModel.selectedHabit.habitColor).opacity(0.5))
                         .frame(maxHeight: 150)
-
                     VStack {
                         HStack {
                             Text("States")
@@ -103,7 +103,13 @@ struct PassivDetailAndEditView: View {
                         }
                         HStack {
                             VStack {
-                                Text("\(viewModel.selectedHabit.habitResetDates.count > 0 ? viewModel.selectedHabit.habitResetDates.count - 1 : 0)")
+                                Text("""
+                                    \(
+                                        viewModel.selectedHabit.habitResetDates.count > 0
+                                        ? viewModel.selectedHabit.habitResetDates.count - 1
+                                        : 0
+                                    )
+                                """)
                                 Text("Resets")
                             }
                             Spacer()
@@ -113,7 +119,7 @@ struct PassivDetailAndEditView: View {
                             }
                         }
                         HStack {
-                            VStack{
+                            VStack {
                                 Text("\(viewModel.selectedHabit.timeSinceStart())")
                                 Text("Since Started")
                             }
@@ -125,15 +131,13 @@ struct PassivDetailAndEditView: View {
                         }
                     }.padding()
                 }
-                
-                
             }
         }
         .navigationTitle(viewModel.editing ? "Edit" : "Detail")
         .onAppear(perform: viewModel.timeManager)
         .sheet(isPresented: $viewModel.showColorSheet) {
-            VStack{
-                HStack{
+            VStack {
+                HStack {
                     Spacer()
                     Button("Cancle") {
                         viewModel.showColorSheet.toggle()
@@ -153,11 +157,11 @@ struct PassivDetailAndEditView: View {
         }
         .toolbar {
             if viewModel.editing {
-                Button("Cancle"){
+                Button("Cancle") {
                     viewModel.editing.toggle()
                 }
             } else {
-                Button{
+                Button {
                     viewModel.editing.toggle()
                 } label: {
                     Label("Edit", systemImage: "ellipsis.circle")
@@ -165,6 +169,4 @@ struct PassivDetailAndEditView: View {
             }
         }
     }
-    
-    
 }
