@@ -13,6 +13,7 @@ import CoreData
 final class StorageProvider {
     static let shared = StorageProvider()
     let persistentConteiner: NSPersistentContainer
+    let calender = Calendar.current
     private init() {
         persistentConteiner = NSPersistentContainer(name: "Model")
         persistentConteiner.loadPersistentStores(completionHandler: {_, error in
@@ -41,7 +42,6 @@ extension StorageProvider {
             fatalError("There should habe been a propper setup")
         }
 
-        let calender = Calendar.current
         let date = Date()
 
         // Check if we are a day away
@@ -215,10 +215,34 @@ extension StorageProvider {
     func addCheckToActiveHabit(_ habit: ActiveHabit) {
         habit.habitCheckAmount += 1
         if habit.habitPositiveHabit {
-            if habit.habitCheckAmount >= habit.habitRepeatAmount {
+            if habit.habitCheckAmount == habit.habitRepeatAmount {
                 let checkedDay = CheckedDay(context: persistentConteiner.viewContext)
                 checkedDay.checkedDay = .now
                 habit.addToCheckedDay(checkedDay)
+            }
+        }
+        save()
+    }
+    
+    func removeCheckFromActiveHabit(_ habit: ActiveHabit) {
+        habit.habitCheckAmount -= 1
+        if habit.positiveHabit {
+            if habit.habitCheckAmount < habit.habitRepeatAmount {
+                
+                
+                
+                // TODO: Remove the check entry where the date is == to today
+                let dayComplete = habit.habitCheckedDay.filter { calender.numberOfDaysBetween(from: $0.checkedDay!) == 0 }
+                
+                if !dayComplete.isEmpty {
+                    for checkdDay in dayComplete {
+                        persistentConteiner.viewContext.delete(checkdDay)
+                        save()
+                        print("Deleted Element")
+                    }
+                }
+                
+                
             }
         }
         save()
@@ -238,7 +262,12 @@ extension StorageProvider {
 
     func save () {
         if persistentConteiner.viewContext.hasChanges {
-            try? persistentConteiner.viewContext.save()
+            do {
+                try persistentConteiner.viewContext.save()
+            }catch {
+                persistentConteiner.viewContext.rollback()
+                print("Falied to save changes: \(error)")
+            }
         }
     }
 }

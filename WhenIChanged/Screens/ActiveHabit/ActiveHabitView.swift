@@ -17,7 +17,7 @@ struct ActiveHabitView: View {
                 List {
                     ForEach($viewModel.activeHabits, id: \.id) { $habit in
                         ZStack {
-                            NavigationLink(destination: ActiveHabitDetailView()) { }.opacity(0.0)
+                            NavigationLink(destination: ActiveHabitDetailView(habit: habit)) { }.opacity(0.0)
                             HStack {
                                 Text("\(habit.habitName ?? "No Name")")
                                     .fontWeight(.bold)
