@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct ActiveHabitDetailView: View {
-    
+
     @ObservedObject var habit: ActiveHabit
-    
+
     var body: some View {
         VStack {
-            
             Spacer()
             HStack {
-                Button{
+                Button {
                     StorageProvider.shared.removeCheckFromActiveHabit(habit)
                 } label: {
                     Text("-")
                         .font(.title)
                 }
-                
                 Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
-                
-                
                 Button {
                     StorageProvider.shared.addCheckToActiveHabit(habit)
                 } label: {
@@ -34,8 +30,6 @@ struct ActiveHabitDetailView: View {
                 }
             }
             Spacer()
-            
         }.navigationTitle(habit.habitName)
     }
 }
-
