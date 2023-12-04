@@ -14,21 +14,30 @@ struct ActiveHabitDetailView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack {
-                Button {
-                    StorageProvider.shared.removeCheckFromActiveHabit(habit)
-                } label: {
-                    Text("-")
-                        .font(.title)
-                }
-                Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
-                Button {
-                    StorageProvider.shared.addCheckToActiveHabit(habit)
-                } label: {
-                    Text("+")
-                        .font(.title)
-                }
+            
+            
+            ZStack{
+                
+                RoundProgressBar(progress: (1.0 / Double(habit.habitRepeatAmount)) * Double(habit.habitCheckAmount))
+                    .frame(width: 300, height: 300)
+                
+                HStack {
+                    Button {
+                        StorageProvider.shared.removeCheckFromActiveHabit(habit)
+                    } label: {
+                        Text("-")
+                            .font(.title)
+                    }
+                    Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
+                    Button {
+                        StorageProvider.shared.addCheckToActiveHabit(habit)
+                    } label: {
+                        Text("+")
+                            .font(.title)
+                    }
+                }                
             }
+            
             Spacer()
         }.navigationTitle(habit.habitName)
     }
