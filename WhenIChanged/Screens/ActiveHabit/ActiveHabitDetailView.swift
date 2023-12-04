@@ -15,24 +15,27 @@ struct ActiveHabitDetailView: View {
         VStack {
             Spacer()
             ZStack{
-                RoundProgressBar(progress: (1.0 / Double(habit.habitRepeatAmount)) * Double(habit.habitCheckAmount), color: cardColorConverter(color: habit.habitColor))
+                RoundProgressBar(
+                    progress: (1.0 / Double(habit.habitRepeatAmount)) * Double(habit.habitCheckAmount),
+                    color: cardColorConverter(color: habit.habitColor)
+                )
                     .frame(width: 300, height: 300)
-                
                 HStack {
                     Button {
                         StorageProvider.shared.removeCheckFromActiveHabit(habit)
                     } label: {
                         Text("-")
                             .font(.system(size: 40))
-                            .foregroundStyle(habit.habitCheckAmount == 0 ?  cardColorConverter(color: habit.habitColor).opacity(0.5) : cardColorConverter(color: habit.habitColor) )
+                            .foregroundStyle(
+                                habit.habitCheckAmount == 0
+                                ? cardColorConverter(color: habit.habitColor).opacity(0.5)
+                                : cardColorConverter(color: habit.habitColor)
+                            )
                     }
-                    
                     .disabled(habit.habitCheckAmount == 0)
-                    
                     Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
                         .font(.title)
-    
-                    
+                        .foregroundStyle(habit.habitCheckAmount == habit.habitRepeatAmount ? cardColorConverter(color: habit.habitColor) : Color.primary)
                     Button {
                         StorageProvider.shared.addCheckToActiveHabit(habit)
                     } label: {
@@ -42,7 +45,6 @@ struct ActiveHabitDetailView: View {
                     }
                 }                
             }
-            
             Spacer()
         }.navigationTitle(habit.habitName)
     }
