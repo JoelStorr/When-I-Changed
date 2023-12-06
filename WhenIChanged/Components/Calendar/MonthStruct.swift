@@ -10,6 +10,7 @@ import Foundation
 struct MonthStruct {
     var monthType: MonthType
     var dayInt: Int
+    var currentDay: Bool
     
     func day() -> String {
         return String(dayInt)

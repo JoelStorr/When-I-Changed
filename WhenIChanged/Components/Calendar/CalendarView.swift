@@ -47,12 +47,13 @@ struct CalendarView: View {
             let startingSpaces = CalendarHelper().weekDay(firstDayOfMonth)
             let previousMonth = CalendarHelper().minusMonth(dateHolder.date)
             let daysInPreviousMonth = CalendarHelper().daysInMonth(previousMonth)
+            let dayInMonth = CalendarHelper().dateInMonth(dateHolder.date)
             
             ForEach(0..<6) { row in
                 HStack(spacing: 1) {
                     ForEach(1..<8) { column in
                             let count = column + (row * 7)
-                        CalendarCell(count: count, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPreviousMonth, habitColor: habitColor)
+                        CalendarCell(count: count, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPreviousMonth, habitColor: habitColor, dayInMonth: dayInMonth) // TODO: Change Today
                             .environmentObject(dateHolder)
                     }
                 }

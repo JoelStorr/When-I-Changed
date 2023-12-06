@@ -50,5 +50,12 @@ class CalendarHelper {
         return components.weekday! - 1
     }
     
+    func dateInMonth(_ date: Date) -> Bool {
+        return calendar.isDate(date, equalTo: .now, toGranularity: .month)
+    }
+    
+    func currentDay(_ dateNum: Int) -> Bool {
+        return dateNum == Calendar.current.component(.day, from: .now)
+    }
 }
 
