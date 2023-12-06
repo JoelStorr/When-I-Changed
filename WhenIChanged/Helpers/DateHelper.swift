@@ -34,3 +34,11 @@ extension Date {
         return WeekDay(rawValue: weekDay)!
     }
 }
+
+
+
+
+class dateHolder: ObservableObject {
+    @Published var date : Date = .now
+}
+
