@@ -12,6 +12,8 @@ import SwiftUI
 struct DateScrollView: View {
     @EnvironmentObject var dateHolder: DateHolder
     
+    let habitColor: Color
+    
     var body: some View {
         HStack {
             Spacer()
@@ -19,6 +21,7 @@ struct DateScrollView: View {
                 Image(systemName: "arrow.left")
                     .imageScale(.large)
                     .font(.title.bold())
+                    .foregroundStyle(habitColor)
                 
             }
             Text(CalendarHelper().monthYearString(dateHolder.date))
@@ -30,6 +33,7 @@ struct DateScrollView: View {
                 Image(systemName: "arrow.right")
                     .imageScale(.large)
                     .font(.title.bold())
+                    .foregroundStyle(habitColor)
                 
             }
             Spacer()
@@ -46,5 +50,5 @@ struct DateScrollView: View {
 }
 
 #Preview {
-    DateScrollView()
+    DateScrollView(habitColor: Color.green)
 }

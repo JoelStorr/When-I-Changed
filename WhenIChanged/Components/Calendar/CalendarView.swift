@@ -12,10 +12,12 @@ struct CalendarView: View {
     
     @ObservedObject var dateHolder = DateHolder()
     
+    let habitColor: Color
+    
     var body: some View {
         
         VStack(spacing: 1) {
-            DateScrollView()
+            DateScrollView(habitColor: habitColor)
                 .environmentObject(dateHolder)
                 .padding()
             dayOfWeekStack
@@ -50,7 +52,7 @@ struct CalendarView: View {
                 HStack(spacing: 1) {
                     ForEach(1..<8) { column in
                             let count = column + (row * 7)
-                            CalendarCell(count: count, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPreviousMonth)
+                        CalendarCell(count: count, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPreviousMonth, habitColor: habitColor)
                             .environmentObject(dateHolder)
                     }
                 }
@@ -62,7 +64,7 @@ struct CalendarView: View {
 }
 
 #Preview {
-    CalendarView()
+    CalendarView(habitColor: Color.green)
 }
 
 

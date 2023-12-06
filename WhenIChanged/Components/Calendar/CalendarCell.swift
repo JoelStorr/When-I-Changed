@@ -15,11 +15,15 @@ struct CalendarCell: View {
     let startingSpaces: Int
     let daysInMonth: Int
     let daysInPrevMonth: Int
+    let habitColor: Color
     
     var body: some View {
         ZStack {
             Circle()
-                .fill(.blue)
+                .stroke(bgColor(type: monthStruct().monthType), lineWidth: 1)
+                
+//                .fill(bgColor(type: monthStruct().monthType))
+                
                 .frame(maxWidth: 30)
             Text(monthStruct().day())
                 .foregroundStyle(textColor(type: monthStruct().monthType))
@@ -30,6 +34,10 @@ struct CalendarCell: View {
     
     func textColor(type: MonthType) -> Color {
         return type == MonthType.Current ? Color.primary : Color.gray
+    }
+    
+    func bgColor(type: MonthType) -> Color {
+        return type == MonthType.Current ? habitColor : habitColor.opacity(0.5)
     }
     
     
@@ -50,5 +58,5 @@ struct CalendarCell: View {
 }
 
 #Preview {
-    CalendarCell(count: 1, startingSpaces: 1, daysInMonth: 1, daysInPrevMonth: 1)
+    CalendarCell(count: 1, startingSpaces: 1, daysInMonth: 1, daysInPrevMonth: 1, habitColor: Color.green)
 }
