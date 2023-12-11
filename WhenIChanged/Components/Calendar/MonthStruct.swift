@@ -15,8 +15,6 @@ struct MonthStruct {
     func day() -> String {
         return String(dayInt)
     }
-    
-    
 }
 
 enum MonthType {
@@ -24,4 +22,3 @@ enum MonthType {
     case Current
     case Next
 }
-

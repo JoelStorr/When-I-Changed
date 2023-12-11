@@ -14,9 +14,6 @@ enum Views {
 struct ContentView: View {
     @State private var showScreen: Views = Views.activeHabit
     
-  
-    
-
     var body: some View {
         TabView(selection: $showScreen) {
             HomePassivHabitView()

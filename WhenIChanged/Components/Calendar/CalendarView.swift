@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CalendarView: View {
     
-    
     @ObservedObject var dateHolder = DateHolder()
     
     let habitColor: Color
@@ -23,9 +22,7 @@ struct CalendarView: View {
             dayOfWeekStack
             calanderGrid
         }
-        
     }
-    
     
     var dayOfWeekStack: some View {
         HStack(spacing: 1) {
@@ -38,7 +35,6 @@ struct CalendarView: View {
             Text("Sat").dayOfWeek()
         }
     }
-    
     
     var calanderGrid: some View {
         VStack(spacing: 1) {
@@ -61,14 +57,11 @@ struct CalendarView: View {
             .frame(maxHeight: .infinity)
         }
     }
-    
 }
 
 #Preview {
     CalendarView(habitColor: Color.green)
 }
-
-
 
 extension Text {
     func dayOfWeek() -> some View {

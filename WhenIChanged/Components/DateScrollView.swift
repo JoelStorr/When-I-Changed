@@ -34,7 +34,6 @@ struct DateScrollView: View {
                     .imageScale(.large)
                     .font(.title.bold())
                     .foregroundStyle(habitColor)
-                
             }
             Spacer()
         }
@@ -46,7 +45,6 @@ struct DateScrollView: View {
     func nextMonth() {
         dateHolder.date = CalendarHelper().plusMonth(dateHolder.date)
     }
-    
 }
 
 #Preview {
