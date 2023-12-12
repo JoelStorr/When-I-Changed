@@ -22,16 +22,30 @@ struct CalendarCell: View {
     var body: some View {
         ZStack {
             if monthStruct().currentDay {
-                Circle()
-//                    .stroke(bgColor(type: monthStruct().monthType), lineWidth: 1)
+                
+                if monthStruct().completed {
                     
-                    .fill(bgColor(type: monthStruct().monthType))
-                    .frame(maxWidth: 30)
+                    ZStack{
+                        Circle()
+                            .fill(bgColor(type: monthStruct().monthType))
+                            .frame(maxWidth: 25)
+                        Circle()
+                            .stroke(bgColor(type: monthStruct().monthType), lineWidth: 1.5)
+                            .frame(maxWidth: 30)
+                    }
+                    
+                } else {
+                    Circle()
+                        .fill(bgColor(type: monthStruct().monthType).opacity(0.8))
+                        .frame(maxWidth: 30)
+                }
             } else {
-                Circle()
-                    .stroke(bgColor(type: monthStruct().monthType), lineWidth: 1)
-                    .frame(maxWidth: 30)
-    //               .fill(bgColor(type: monthStruct().monthType))
+                
+                if monthStruct().completed {
+                    Circle()
+                        .stroke(bgColor(type: monthStruct().monthType), lineWidth: 1.5)
+                        .frame(maxWidth: 30)
+                }
             }
             Text(monthStruct().day())
                 .foregroundStyle(textColor(type: monthStruct().monthType))
@@ -70,7 +84,6 @@ struct CalendarCell: View {
             
             return monthStruct
             
-           
         }
         
         let day = count - start
@@ -81,7 +94,7 @@ struct CalendarCell: View {
                 monthStruct.monthType = MonthType.Current
                 monthStruct.dayInt = day
                 monthStruct.currentDay = true
-                monthStruct.completed = false
+                monthStruct.completed = isCompletedDay(day: day)
                 
                 return monthStruct
             }
@@ -89,7 +102,7 @@ struct CalendarCell: View {
             monthStruct.monthType = MonthType.Current
             monthStruct.dayInt = day
             monthStruct.currentDay = false
-            monthStruct.completed = false
+            monthStruct.completed = isCompletedDay(day: day)
             
             return monthStruct
         }
@@ -97,16 +110,29 @@ struct CalendarCell: View {
         monthStruct.monthType = MonthType.Current
         monthStruct.dayInt = day
         monthStruct.currentDay = false
-        monthStruct.completed = false
+        monthStruct.completed = isCompletedDay(day: day)
         
         return monthStruct
     
     }
     
     
-//    func isCompletedDay()-> Bool{
-//        
-//    }
+    func isCompletedDay(day: Int)-> Bool{
+        
+        for checkedDay in checkedDays {
+            
+            if checkedDay.checkedDay == nil {
+                continue
+            }
+            
+            if CalendarHelper().dateInMonth(checkedDay.habitCheckedDay, monthValue: dateHolder.date)
+                && CalendarHelper().matchingDay(day, completedDate: checkedDay.habitCheckedDay) {
+                return true
+            }
+            
+        }
+        return false
+    }
     
 }
 
