@@ -47,6 +47,25 @@ class DevHelper {
                 
                 
                 // Create String
+                let string = "\(num)/11/2023"
+                
+                // Create Date Formatter
+                let dateFormatter = DateFormatter()
+                
+                // Set Date Format
+                dateFormatter.dateFormat = "dd/MM/yy"
+                
+                // Convert String to Date
+                let date =  dateFormatter.date(from: string)
+                
+                dateArray.append(date!)
+            }
+        }
+        
+        for num in 1..<CalendarHelper().dateInt(.now) {
+            if num % 2 != 0 {
+                
+                // Create String
                 let string = "\(num)/12/2023"
                 
                 // Create Date Formatter
