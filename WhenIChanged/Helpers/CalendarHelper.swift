@@ -29,7 +29,6 @@ class CalendarHelper {
         return calendar.date(byAdding: .month, value: -1 ,to: date)!
     }
     
-    
     func daysInMonth(_ date: Date) -> Int {
         let range = calendar.range(of: .day, in: .month, for: date)!
         return range.count
@@ -57,5 +56,10 @@ class CalendarHelper {
     func currentDay(_ dateNum: Int) -> Bool {
         return dateNum == Calendar.current.component(.day, from: .now)
     }
+    
+    func matchingDay(_ dateNum: Int, completedDate: Date) -> Bool {
+        return dateNum == Calendar.current.component(.day, from: completedDate)
+    }
+
 }
 

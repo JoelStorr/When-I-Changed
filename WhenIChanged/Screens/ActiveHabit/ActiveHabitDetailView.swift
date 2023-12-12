@@ -65,7 +65,7 @@ struct ActiveHabitDetailView: View {
             }
             Spacer()
                 .frame(height: 50)
-            CalendarView(habitColor: cardColorConverter(color: habit.habitColor))
+            CalendarView(habitColor: cardColorConverter(color: habit.habitColor), checkedDays: habit.habitCheckedDay)
             
         }
     }

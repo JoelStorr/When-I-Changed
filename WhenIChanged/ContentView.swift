@@ -27,7 +27,7 @@ struct ContentView: View {
                     Label("Habit", systemImage: "checklist.checked")
                 }
                 .tag(Views.activeHabit)
-            CalendarView( habitColor: Color.green)
+            CalendarView( habitColor: Color.green, checkedDays: [])
                 .tabItem {
                     Label("Calander", systemImage: "calendar")
                 }

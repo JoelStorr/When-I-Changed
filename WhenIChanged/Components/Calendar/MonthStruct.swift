@@ -11,6 +11,7 @@ struct MonthStruct {
     var monthType: MonthType
     var dayInt: Int
     var currentDay: Bool
+    var completed: Bool
     
     func day() -> String {
         return String(dayInt)

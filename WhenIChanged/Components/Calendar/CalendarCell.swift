@@ -17,6 +17,7 @@ struct CalendarCell: View {
     let daysInPrevMonth: Int
     let habitColor: Color
     let dayInMonth: Bool
+    let checkedDays: [CheckedDay]
     
     var body: some View {
         ZStack {
@@ -48,27 +49,67 @@ struct CalendarCell: View {
     
     func monthStruct() -> MonthStruct {
         let start = startingSpaces == 0 ? startingSpaces + 7 : startingSpaces
+        var monthStruct = MonthStruct(monthType: MonthType.Previous, dayInt: 0, currentDay: false, completed: false)
+        
         if(count <= start) {
             // Returns Numbers for prev Month
             let day = daysInPrevMonth + count - start
-            return MonthStruct(monthType: MonthType.Previous, dayInt: day, currentDay: false)
+            
+            monthStruct.monthType = MonthType.Previous
+            monthStruct.dayInt = day
+           
+            
+            return monthStruct
+            
         } else if (count - start > daysInMonth) {
             // Retuns Numbers for next Month
             let day = count - start - daysInMonth
-            return MonthStruct(monthType: MonthType.Next, dayInt: day, currentDay: false)
+            
+            monthStruct.monthType = MonthType.Next
+            monthStruct.dayInt = day
+            
+            return monthStruct
+            
+           
         }
         
         let day = count - start
         if dayInMonth {
             if CalendarHelper().currentDay(day) {
-                return MonthStruct(monthType: MonthType.Current, dayInt: day, currentDay: true)
+                
+                
+                monthStruct.monthType = MonthType.Current
+                monthStruct.dayInt = day
+                monthStruct.currentDay = true
+                monthStruct.completed = false
+                
+                return monthStruct
             }
-            return MonthStruct(monthType: MonthType.Current, dayInt: day, currentDay: false)
+            
+            monthStruct.monthType = MonthType.Current
+            monthStruct.dayInt = day
+            monthStruct.currentDay = false
+            monthStruct.completed = false
+            
+            return monthStruct
         }
-        return MonthStruct(monthType: MonthType.Current, dayInt: day, currentDay: false)
+        
+        monthStruct.monthType = MonthType.Current
+        monthStruct.dayInt = day
+        monthStruct.currentDay = false
+        monthStruct.completed = false
+        
+        return monthStruct
+    
     }
+    
+    
+//    func isCompletedDay()-> Bool{
+//        
+//    }
+    
 }
 
 #Preview {
-    CalendarCell(count: 1, startingSpaces: 1, daysInMonth: 1, daysInPrevMonth: 1, habitColor: Color.green, dayInMonth: true)
+    CalendarCell(count: 1, startingSpaces: 1, daysInMonth: 1, daysInPrevMonth: 1, habitColor: Color.green, dayInMonth: true, checkedDays: [])
 }
