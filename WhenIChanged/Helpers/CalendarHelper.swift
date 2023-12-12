@@ -49,16 +49,19 @@ class CalendarHelper {
         return components.weekday! - 1
     }
     
-    func dateInMonth(_ date: Date) -> Bool {
-        return calendar.isDate(date, equalTo: .now, toGranularity: .month)
+    func dateInMonth(_ date: Date, monthValue: Date = .now) -> Bool {
+        return calendar.isDate(date, equalTo: monthValue, toGranularity: .month)
     }
     
     func currentDay(_ dateNum: Int) -> Bool {
-        return dateNum == Calendar.current.component(.day, from: .now)
+        return dateNum == calendar.component(.day, from: .now)
     }
     
     func matchingDay(_ dateNum: Int, completedDate: Date) -> Bool {
-        return dateNum == Calendar.current.component(.day, from: completedDate)
+        return dateNum == calendar.component(.day, from: completedDate)
+    }
+    func dateInt(_ date: Date) -> Int {
+        return calendar.component(.day, from: date)
     }
 
 }
