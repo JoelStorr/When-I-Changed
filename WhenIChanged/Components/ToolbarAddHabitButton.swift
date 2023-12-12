@@ -12,6 +12,9 @@ struct ToolbarAddHabitButton: View {
         Menu {
             NavigationLink { PassivHabitAddView() } label: { Text("Add Passiv Habit") }
             NavigationLink { ActiveHabitAddView() } label: { Text("Add Active Habit") }
+            Button {DevHelper().createActiveHabit()} label: {
+                Text("Add Dev")
+            }
 
         } label: {
             Label("Add", systemImage: "plus.circle")

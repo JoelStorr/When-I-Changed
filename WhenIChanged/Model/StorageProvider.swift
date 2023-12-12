@@ -170,7 +170,7 @@ extension StorageProvider {
         reminderType: Int,
         addedWeekReminders: [WeekReminderData],
         addedDayReminders: [DayReminderData]
-    ) {
+    ) -> ActiveHabit? {
         let habit = ActiveHabit(context: persistentConteiner.viewContext)
         habit.id = UUID()
         habit.name = name
@@ -205,19 +205,21 @@ extension StorageProvider {
             try persistentConteiner.viewContext.save()
             print("Saved new Active habit")
             print(habit)
+            return habit
         } catch {
             persistentConteiner.viewContext.rollback()
             print("Failed to save Active habit: \(error)")
+            return nil
         }
     }
 
     // NOTE: Save added Check for Active Habit
-    func addCheckToActiveHabit(_ habit: ActiveHabit) {
+    func addCheckToActiveHabit(_ habit: ActiveHabit, date: Date = .now) {
         habit.habitCheckAmount += 1
         if habit.habitPositiveHabit {
             if habit.habitCheckAmount == habit.habitRepeatAmount {
                 let checkedDay = CheckedDay(context: persistentConteiner.viewContext)
-                checkedDay.checkedDay = .now
+                checkedDay.checkedDay = date
                 habit.addToCheckedDay(checkedDay)
             }
         }
