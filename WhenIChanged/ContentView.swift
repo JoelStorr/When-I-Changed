@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NotificationCenter
 
 enum Views {
     case passivHabit, activeHabit, calander, settings
@@ -13,6 +14,8 @@ enum Views {
 
 struct ContentView: View {
     @State private var showScreen: Views = Views.activeHabit
+    
+    let userNotificationCenter = UNUserNotificationCenter.current()
     
     var body: some View {
         TabView(selection: $showScreen) {
@@ -40,6 +43,11 @@ struct ContentView: View {
         }
         .onAppear {
             StorageProvider.shared.loadSettings()
+//            userNotificationCenter.setBadgeCount(0)
+//            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
         
     }

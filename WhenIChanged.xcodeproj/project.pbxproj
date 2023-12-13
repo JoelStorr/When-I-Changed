@@ -64,6 +64,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		40EB661C2B2A003D00B0D840 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		400DC06B2A839422000349E3 /* WhenIChanged.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhenIChanged.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		400DC06E2A839422000349E3 /* WhenIChangedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedApp.swift; sourceTree = "<group>"; };
@@ -100,6 +113,7 @@
 		40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitView.swift; sourceTree = "<group>"; };
 		40DD88DE2B1F1EC1001A515A /* DateScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateScrollView.swift; sourceTree = "<group>"; };
 		40EB66082B29E42600B0D840 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
+		40EB661D2B2A006100B0D840 /* WhenIChanged.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhenIChanged.entitlements; sourceTree = "<group>"; };
 		40EBD0B52B036889000F4C12 /* ActiveHabitAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitAddView.swift; sourceTree = "<group>"; };
 		40EBD0BA2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivDetailAndEditViewModel.swift; sourceTree = "<group>"; };
 		40EBD0BC2B039192000F4C12 /* PastResetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastResetsView.swift; sourceTree = "<group>"; };
@@ -156,6 +170,7 @@
 		400DC06D2A839422000349E3 /* WhenIChanged */ = {
 			isa = PBXGroup;
 			children = (
+				40EB661D2B2A006100B0D840 /* WhenIChanged.entitlements */,
 				40932D892B04B95E00F44929 /* Extension */,
 				40FA54F02AFD0276000B0E83 /* Helpers */,
 				401D1D132A84210700F6CA1F /* Model */,
@@ -328,6 +343,7 @@
 				400DC0692A839422000349E3 /* Resources */,
 				40EBD0BE2B0397DB000F4C12 /* ShellScript */,
 				40EBD0BF2B03997D000F4C12 /* ShellScript */,
+				40EB661C2B2A003D00B0D840 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -381,7 +397,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					400DC06A2A839422000349E3 = {
@@ -677,6 +693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WhenIChanged/WhenIChanged.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhenIChanged/Preview Content\"";
@@ -706,6 +723,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WhenIChanged/WhenIChanged.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhenIChanged/Preview Content\"";
