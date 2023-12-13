@@ -70,6 +70,7 @@ struct ActiveHabitView: View {
             }
             .onAppear {
                 viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
+                checkForPermission()
             }
         }
     }

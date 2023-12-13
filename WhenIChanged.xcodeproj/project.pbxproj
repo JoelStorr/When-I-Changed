@@ -38,6 +38,7 @@
 		40CD3FF62B04032E00DA3780 /* ToolbarAddHabitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */; };
 		40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */; };
 		40DD88DF2B1F1EC1001A515A /* DateScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DD88DE2B1F1EC1001A515A /* DateScrollView.swift */; };
+		40EB66092B29E42600B0D840 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EB66082B29E42600B0D840 /* PushNotifications.swift */; };
 		40EBD0B62B036889000F4C12 /* ActiveHabitAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBD0B52B036889000F4C12 /* ActiveHabitAddView.swift */; };
 		40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBD0BA2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift */; };
 		40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBD0BC2B039192000F4C12 /* PastResetsView.swift */; };
@@ -98,6 +99,7 @@
 		40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarAddHabitButton.swift; sourceTree = "<group>"; };
 		40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitView.swift; sourceTree = "<group>"; };
 		40DD88DE2B1F1EC1001A515A /* DateScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateScrollView.swift; sourceTree = "<group>"; };
+		40EB66082B29E42600B0D840 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		40EBD0B52B036889000F4C12 /* ActiveHabitAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitAddView.swift; sourceTree = "<group>"; };
 		40EBD0BA2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivDetailAndEditViewModel.swift; sourceTree = "<group>"; };
 		40EBD0BC2B039192000F4C12 /* PastResetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastResetsView.swift; sourceTree = "<group>"; };
@@ -264,6 +266,14 @@
 			path = ActiveHabit;
 			sourceTree = "<group>";
 		};
+		40EB660A2B29F5CF00B0D840 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				40EB66082B29E42600B0D840 /* PushNotifications.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		40EBD0B72B037157000F4C12 /* HomePassivHabit */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +304,7 @@
 		40FA54F02AFD0276000B0E83 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				40EB660A2B29F5CF00B0D840 /* Notifications */,
 				40FA54F12AFD0288000B0E83 /* ColorHelper.swift */,
 				40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */,
 				40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */,
@@ -499,6 +510,7 @@
 				40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */,
 				40DD88DF2B1F1EC1001A515A /* DateScrollView.swift in Sources */,
 				408CAA0B2B207A86007A0957 /* CalendarHelper.swift in Sources */,
+				40EB66092B29E42600B0D840 /* PushNotifications.swift in Sources */,
 				406E08502B06362600BCB4EE /* AddDayReminderView.swift in Sources */,
 				40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */,
 				408CAA092B207A35007A0957 /* MonthStruct.swift in Sources */,
