@@ -124,19 +124,7 @@ struct ActiveHabitEditView: View {
                 }
             }
             Button("Save") {
-              let _ =   StorageProvider.shared.saveActiveHabit(
-                    name: name,
-                    color: selectedColor,
-                    positiveHabit: positiveHabit == 0 ? true : false,
-                    repeatInterval: RepeatType.allCases[selectedReminderType].rawValue,
-                    time: time,
-                    unit: UnitTypes.allCases[selectedUnitType].rawValue,
-                    repeatAmount: Int(repeatAmount) ?? 1,
-                    reminders: useReminder,
-                    reminderType: selectedReminderType,
-                    addedWeekReminders: addedWeekReminders,
-                    addedDayReminders: addedDayReminders
-                )
+              // TODO: Update existing habit
                 dismiss()
             }
         }
