@@ -20,18 +20,31 @@ extension Calendar {
 extension Date {
     enum WeekDay: Int {
         case sunday = 1
-        case monday
-        case tuesday
-        case wednesday
-        case thursday
-        case friday
-        case saturday
+        case monday = 2
+        case tuesday = 3
+        case wednesday = 4
+        case thursday = 5
+        case friday = 6
+        case saturday = 7
     }
 
     func getWeekDay() -> WeekDay {
         let calendar = Calendar.current
         let weekDay = calendar.component(Calendar.Component.weekday, from: self)
         return WeekDay(rawValue: weekDay)!
+    }
+    
+    func calculateSunday(day: WeekDay) -> Date {
+        guard let date = Calendar.current.date(byAdding: .day, value: -(day.rawValue - 1), to: Date()) else {
+            return .now
+        }
+        return date
+    }
+    func calculateMonday(day: WeekDay) -> Date {
+        guard let date = Calendar.current.date(byAdding: .day, value: -(day.rawValue - 2), to: Date()) else {
+            return .now
+        }
+        return date
     }
 }
 

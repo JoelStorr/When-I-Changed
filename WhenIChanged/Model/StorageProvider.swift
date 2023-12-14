@@ -58,13 +58,25 @@ extension StorageProvider {
             save()
             print("In days")
             resetDayCheckAmount()
-            // TODO: Run day cleenup function
         }
 
+        print(date.getWeekDay().rawValue)
+        
         // Check if we are more then a week away
-        let week = calender.numberOfDaysBetween(from: .now)
-        if week > 0 && date.getWeekDay() == Date.WeekDay.monday {
+        let week = calender.numberOfDaysBetween(from: setUp.lastWeekReset!)
+        
+        print(date.calculateSunday(day: date.getWeekDay()))
+        
+        
+        if week > 7 && date.getWeekDay() == Date.WeekDay.sunday{
             setUp.lastWeekReset = .now
+            save()
+            
+            // TODO: Run Week cleenup function
+            resetWeekCheckAmount()
+            
+        } else if week > 7 && date.getWeekDay().rawValue > Date.WeekDay.sunday.rawValue {
+            setUp.lastWeekReset = date.calculateSunday(day: date.getWeekDay())
             save()
 
             // TODO: Run Week cleenup function

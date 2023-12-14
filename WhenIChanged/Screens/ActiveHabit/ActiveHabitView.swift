@@ -24,7 +24,6 @@ struct ActiveHabitView: View {
                                     .foregroundStyle(cardColorConverter(color: habit.habitColor))
                                     .swipeActions {
                                         Button {
-                                            print("Check")
                                             StorageProvider.shared.addCheckToActiveHabit(habit)
                                             // NOTE: Revisit, not effichent
                                             viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
@@ -33,7 +32,6 @@ struct ActiveHabitView: View {
                                         }
                                         .tint(.green)
                                         Button {
-                                            print("Check")
                                             StorageProvider.shared.completeCheckToActiveHabit(habit)
                                             // NOTE: Revisit, not effichent
                                             viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()

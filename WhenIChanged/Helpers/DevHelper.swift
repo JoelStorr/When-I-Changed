@@ -80,8 +80,6 @@ class DevHelper {
                 dateArray.append(date!)
             }
         }
-        
-        print(dateArray)
     }
     
     
@@ -97,13 +95,6 @@ class DevHelper {
             activeHabit.habitCheckAmount = 0
             StorageProvider.shared.save()
         }
-        
-        print(activeHabit.habitCheckedDay.count)
     }
-    
-    
-    
-    
-    
     
 }
