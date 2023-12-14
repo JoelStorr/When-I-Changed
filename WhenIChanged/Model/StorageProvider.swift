@@ -182,6 +182,7 @@ extension StorageProvider {
         habit.unit = unit
         habit.repeatInterval = repeatInterval ?? RepeatType.day.rawValue
         habit.startDate = .now
+        habit.hasReminders = reminders
 
         if time != nil {
             habit.time = time
@@ -338,9 +339,14 @@ extension StorageProvider {
     func deleteActiveHabit(_ habit: ActiveHabit) {
         
         if habit.habitHasReminders {
+            
+            var idArray = [String]()
+            
             for reminder in habit.habitDayReminders {
-                NotificationHandler.deleteNotification(id: reminder.dayReminderNotificationId)
+
+                idArray.append(reminder.dayReminderNotificationId)
             }
+            NotificationHandler.deleteNotification(id: idArray)
         }
         
         

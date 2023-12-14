@@ -28,14 +28,17 @@ class NotificationItem{
 
 class NotificationHandler{
     
+    static let notificationCenter = UNUserNotificationCenter.current()
+    
+    
     static func checkForPermission(_ notificationList: [NotificationItem]){
-        let notificationCenrter = UNUserNotificationCenter.current()
-        notificationCenrter.getNotificationSettings(){ settings in
+       
+        notificationCenter.getNotificationSettings(){ settings in
             // Tells what the current state of the App is regading permissions
             switch settings.authorizationStatus {
             case .notDetermined:
                 //If the user wasn't asked jet
-                notificationCenrter.requestAuthorization(options: [.alert, .sound, .badge]) { didAllow, error in
+                notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { didAllow, error in
                     if didAllow {
                         dispatchNotification(notificationList)
                     }
@@ -55,7 +58,7 @@ class NotificationHandler{
     }
     
     static func dispatchNotification(_ notificationList: [NotificationItem]){
-        let notificationCenter = UNUserNotificationCenter.current()
+        
         let calendar = Calendar.current
         
         
@@ -91,11 +94,11 @@ class NotificationHandler{
         StorageProvider.shared.save()
     }
     
-    static func deleteNotification(id: String) {
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
+    static func deleteNotification(id: [String]) {
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: id)
+        notificationCenter.removeDeliveredNotifications(withIdentifiers: id)
     }
-    
+
 }
 
 
