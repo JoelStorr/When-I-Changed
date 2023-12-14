@@ -63,6 +63,14 @@ class CalendarHelper {
     func dateInt(_ date: Date) -> Int {
         return calendar.component(.day, from: date)
     }
+    
+    func getHour(_ date: Date) -> Int {
+        return calendar.component(.hour, from: date)
+    }
+    
+    func getMinute(_ date: Date) -> Int {
+        return calendar.component(.minute, from: date)
+    }
 
 }
 

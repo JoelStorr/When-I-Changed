@@ -12,20 +12,14 @@ struct ActiveHabitDetailView: View {
     @ObservedObject var habit: ActiveHabit
 
     var body: some View {
-        
-        
         ViewThatFits{
             detailView
-            
             ScrollView() {
               detailView
             }
         }
-        
         .navigationTitle(habit.habitName)
-        
     }
-    
     
     
     var detailView: some View {
@@ -66,10 +60,7 @@ struct ActiveHabitDetailView: View {
             Spacer()
                 .frame(height: 50)
             CalendarView(habitColor: cardColorConverter(color: habit.habitColor), checkedDays: habit.habitCheckedDay)
-            
         }
     }
-    
-    
 }
 

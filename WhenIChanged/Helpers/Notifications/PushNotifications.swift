@@ -13,16 +13,14 @@ class NotificationItem{
     let id: String
     let title: String
     let body: String
-    let hour: Int
-    let minute: Int
+    let dateData: DayReminder
     let isDayli: Bool
     
-    init(id: String, title: String, body: String, hour: Int, min: Int, isDayli: Bool) {
+    init(id: String, title: String, body: String, dateData: DayReminder, isDayli: Bool) {
         self.id = id
         self.title = title
         self.body = body
-        self.hour = hour
-        self.minute = min
+        self.dateData = dateData
         self.isDayli = isDayli
     }
 }
@@ -60,7 +58,12 @@ class NotificationHandler{
         let notificationCenter = UNUserNotificationCenter.current()
         let calendar = Calendar.current
         
+        
+        
         for notification in notificationList {
+            
+            
+            
             // Notification Content
             let content = UNMutableNotificationContent()
             content.title = notification.title
@@ -71,17 +74,29 @@ class NotificationHandler{
             
             // Sets when the Notification should run
             var dateComeponent = DateComponents(calendar: calendar, timeZone: TimeZone.current)
-            dateComeponent.hour = notification.hour
-            dateComeponent.minute = notification.minute
+            dateComeponent.hour = CalendarHelper().getHour(notification.dateData.dayReminderTime)
+            dateComeponent.minute = CalendarHelper().getMinute(notification.dateData.dayReminderTime)
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComeponent, repeats: notification.isDayli)
-            let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
+            let id = UUID().uuidString
             
-            // Delete all old Notifications with the same id
-            notificationCenter.removePendingNotificationRequests(withIdentifiers: [notification.id])
+            let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+            
+            notification.dateData.dayReminderNotificationId = id
             
             // Add New Notification
             notificationCenter.add(request)
         }
+        
+        StorageProvider.shared.save()
     }
+    
+    static func deleteNotification(id: String) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
+    }
+    
 }
+
+
+

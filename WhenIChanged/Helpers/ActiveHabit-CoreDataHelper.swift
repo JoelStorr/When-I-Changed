@@ -9,6 +9,12 @@ import Foundation
 
 extension ActiveHabit {
 
+    
+    var habitId: String {
+        get { id?.uuidString ?? "0" }
+    }
+    
+    
     var habitCheckAmount: Int {
         get { Int(checkAmount) ?? 0 }
         set { checkAmount = Int16(newValue)}
@@ -65,11 +71,30 @@ extension ActiveHabit {
             $0.habitCheckedDay > $1.habitCheckedDay
         }
     }
+    
+    var habitDayReminders: [DayReminder] {
+        let set = dayReminders as? Set<DayReminder> ?? []
+        return set.map{item in return item}
+    }
+    
 }
 
 extension CheckedDay {
     var habitCheckedDay: Date {
         get { checkedDay ?? Date.now }
         set { checkedDay = newValue }
+    }
+}
+
+
+extension DayReminder {
+    var dayReminderTime: Date {
+        get { time ?? Date.now }
+        set { time = newValue }
+    }
+    
+    var dayReminderNotificationId: String {
+        get { notificationId ?? "" }
+        set { notificationId = newValue }
     }
 }

@@ -137,7 +137,6 @@ struct ActiveHabitAddView: View {
                 }
             }
             Button("Save") {
-                print("Save")
                 StorageProvider.shared.saveActiveHabit(
                     name: name,
                     color: selectedColor,

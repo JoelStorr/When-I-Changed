@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="22G313" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G436" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="ActiveHabit" representedClassName="ActiveHabit" syncable="YES" codeGenerationType="class">
         <attribute name="checkAmount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="color" attributeType="String"/>
@@ -21,6 +21,7 @@
         <relationship name="activeHabit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActiveHabit" inverseName="checkedDay" inverseEntity="ActiveHabit"/>
     </entity>
     <entity name="DayReminder" representedClassName="DayReminder" syncable="YES" codeGenerationType="class">
+        <attribute name="notificationId" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActiveHabit" inverseName="dayReminders" inverseEntity="ActiveHabit"/>
     </entity>

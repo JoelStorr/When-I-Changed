@@ -187,6 +187,8 @@ extension StorageProvider {
             habit.time = time
         }
 
+        // Repeattype: Day = 0, Week = 1, Month = 2
+        
         if reminderType == 0 && reminders {
             for unsavedReminder in addedDayReminders {
                 let reminder = DayReminder(context: persistentConteiner.viewContext)
@@ -205,7 +207,35 @@ extension StorageProvider {
             try persistentConteiner.viewContext.save()
             print("Saved new Active habit")
             print(habit)
+            
+            if reminders && reminderType == 0  {
+                
+                var notificationArray = [NotificationItem]()
+                
+                for addedDayReminder in habit.habitDayReminders {
+                    let item = NotificationItem(
+                        id: habit.habitId,
+                        title: habit.habitName,
+                        body: "You can do it",
+                        dateData: addedDayReminder,
+                        isDayli: true
+                    )
+                    
+                    notificationArray.append(item)
+                }
+                
+                NotificationHandler.checkForPermission(notificationArray)
+                
+                
+            }
+            
+            
+            
+            
             return habit
+            
+            
+            
         } catch {
             persistentConteiner.viewContext.rollback()
             print("Failed to save Active habit: \(error)")
@@ -230,9 +260,6 @@ extension StorageProvider {
         habit.habitCheckAmount -= 1
         if habit.positiveHabit {
             if habit.habitCheckAmount < habit.habitRepeatAmount {
-                
-                
-                
                 // TODO: Remove the check entry where the date is == to today
                 let dayComplete = habit.habitCheckedDay.filter { calender.numberOfDaysBetween(from: $0.checkedDay!) == 0 }
                 
@@ -243,8 +270,6 @@ extension StorageProvider {
                         print("Deleted Element")
                     }
                 }
-                
-                
             }
         }
         save()
@@ -311,6 +336,14 @@ extension StorageProvider {
     }
 
     func deleteActiveHabit(_ habit: ActiveHabit) {
+        
+        if habit.habitHasReminders {
+            for reminder in habit.habitDayReminders {
+                NotificationHandler.deleteNotification(id: reminder.dayReminderNotificationId)
+            }
+        }
+        
+        
         persistentConteiner.viewContext.delete(habit)
         do {
             try persistentConteiner.viewContext.save()
