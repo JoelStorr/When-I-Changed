@@ -44,46 +44,28 @@ extension StorageProvider {
 
         let date = Date()
 
-        // Check if we are a day away
-        if calender.isDate(setUp.lastDayReset!, inSameDayAs: .now) {
-            print("Same Day")
-        } else {
-            print("New Day")
-        }
-
         let days = calender.numberOfDaysBetween(from: setUp.lastDayReset!)
-        print(days)
         if days >= 1 {
             setUp.lastDayReset = .now
             save()
-            print("In days")
             resetDayCheckAmount()
         }
 
-        print(date.getWeekDay().rawValue)
-        
         // Check if we are more then a week away
         let week = calender.numberOfDaysBetween(from: setUp.lastWeekReset!)
-        
-        print(date.calculateSunday(day: date.getWeekDay()))
-        
-        
         if week > 7 && date.getWeekDay() == Date.WeekDay.sunday{
             setUp.lastWeekReset = .now
             save()
             
             // TODO: Run Week cleenup function
             resetWeekCheckAmount()
-            
         } else if week > 7 && date.getWeekDay().rawValue > Date.WeekDay.sunday.rawValue {
             setUp.lastWeekReset = date.calculateSunday(day: date.getWeekDay())
             save()
 
             // TODO: Run Week cleenup function
             resetWeekCheckAmount()
-
         }
-
         // TODO: Handle Custom Time Frames
     }
 
@@ -100,7 +82,6 @@ extension StorageProvider {
             print(result)
             for habit in result {
                 habit.habitCheckAmount = 0
-                print("Reset Day")
             }
             save()
         } catch {
@@ -121,7 +102,6 @@ extension StorageProvider {
             print(result)
             for habit in result {
                 habit.habitCheckAmount = 0
-                print("Reset Day")
             }
             save()
         } catch {
