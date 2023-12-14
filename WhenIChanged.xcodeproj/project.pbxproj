@@ -28,6 +28,8 @@
 		408CAA092B207A35007A0957 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CAA082B207A35007A0957 /* MonthStruct.swift */; };
 		408CAA0B2B207A86007A0957 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CAA0A2B207A86007A0957 /* CalendarHelper.swift */; };
 		40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40932D8A2B04B9EA00F44929 /* View+Ext.swift */; };
+		40A1091B2B2B7F8C00635A2D /* ActiveHabitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1091A2B2B7F8C00635A2D /* ActiveHabitEditView.swift */; };
+		40A1091D2B2B8CB700635A2D /* ActiveHabit-Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1091C2B2B8CB700635A2D /* ActiveHabit-Helper.swift */; };
 		40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */; };
 		40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD532AFE4D6300F32C66 /* DateHelper.swift */; };
 		40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */; };
@@ -102,6 +104,8 @@
 		408CAA082B207A35007A0957 /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
 		408CAA0A2B207A86007A0957 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		40932D8A2B04B9EA00F44929 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		40A1091A2B2B7F8C00635A2D /* ActiveHabitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitEditView.swift; sourceTree = "<group>"; };
+		40A1091C2B2B8CB700635A2D /* ActiveHabit-Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveHabit-Helper.swift"; sourceTree = "<group>"; };
 		40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PastRestes-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40A3DD532AFE4D6300F32C66 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePassivHabitView.swift; sourceTree = "<group>"; };
@@ -258,6 +262,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		40A109192B2B7F6200635A2D /* ActiveHabitDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */,
+				40A1091A2B2B7F8C00635A2D /* ActiveHabitEditView.swift */,
+			);
+			path = ActiveHabitDetailView;
+			sourceTree = "<group>";
+		};
 		40A79AF72AFBB83F006A56F5 /* PassivHabit */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,12 +284,12 @@
 		40D211DD2B0127570054A8B8 /* ActiveHabit */ = {
 			isa = PBXGroup;
 			children = (
+				40A109192B2B7F6200635A2D /* ActiveHabitDetailView */,
 				40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */,
 				402A1F332B0E24A700678C3A /* ActiveHabitViewModel.swift */,
 				40EBD0B52B036889000F4C12 /* ActiveHabitAddView.swift */,
 				40B819432B060D610014A8DF /* AddWeekReminderView.swift */,
 				406E084F2B06362600BCB4EE /* AddDayReminderView.swift */,
-				402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */,
 			);
 			path = ActiveHabit;
 			sourceTree = "<group>";
@@ -327,6 +340,7 @@
 				40A3DD532AFE4D6300F32C66 /* DateHelper.swift */,
 				408CAA0A2B207A86007A0957 /* CalendarHelper.swift */,
 				4023230B2B28C872009938E3 /* DevHelper.swift */,
+				40A1091C2B2B8CB700635A2D /* ActiveHabit-Helper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -517,9 +531,11 @@
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */,
+				40A1091D2B2B8CB700635A2D /* ActiveHabit-Helper.swift in Sources */,
 				40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */,
 				407198CC2B1DE66C00C095BD /* RoundProgressBar.swift in Sources */,
 				40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */,
+				40A1091B2B2B7F8C00635A2D /* ActiveHabitEditView.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */,
 				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,

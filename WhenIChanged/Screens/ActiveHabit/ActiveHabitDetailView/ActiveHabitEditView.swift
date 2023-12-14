@@ -1,4 +1,11 @@
 //
+//  ActiveHabitEditView.swift
+//  WhenIChanged
+//
+//  Created by Joel Storr on 14.12.23.
+//
+
+//
 //  AddActiveHabit.swift
 //  WhenIChanged
 //
@@ -7,24 +14,31 @@
 
 import SwiftUI
 
-struct ActiveHabitAddView: View {
+
+struct ActiveHabitEditView: View {
+    
+    let habit: ActiveHabit
 
     @Environment(\.dismiss) var dismiss
+    
+    
+    
+    
 
-    @State var name: String = "" // done
+    @State var name: String = ""
     @State var selectedColor: ActiveHabitColor = ActiveHabitColor.green // done
-    @State var reminder: Date = .now // todo
+//    @State var reminder: Date = .now // todo
     @State var repeatInterval: String? // Add coresponding Date besed on selected interval
     @State var repeatAmount: String = "" // done
     @State var time: Date = .now        // todo
-    @State var unit: UnitTypes?   // todo
+//    @State var unit: UnitTypes?   // todo
     @State var positiveHabit: Int = 0 // done
 
     @State var showColorSheet: Bool = false
     @State var useReminder: Bool = false
 
     @State var selectedReminderType: Int = 0
-    @State var selectedDay: Int = 0
+//    @State var selectedDay: Int = 0
     @State var selectedUnitType: Int = 0
 
     @State var addedWeekReminders = [WeekReminderData]()
@@ -32,11 +46,13 @@ struct ActiveHabitAddView: View {
 
     @FocusState private var focusField: Field?
 
-    init() {
+    init(habit: ActiveHabit) {
+        self.habit = habit
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.secondarySystemFill
     }
 
     var body: some View {
+        
         Form {
             TextField("Name", text: $name)
                 .focused($focusField, equals: .name)
@@ -108,7 +124,7 @@ struct ActiveHabitAddView: View {
                 }
             }
             Button("Save") {
-             let _ = StorageProvider.shared.saveActiveHabit(
+              let _ =   StorageProvider.shared.saveActiveHabit(
                     name: name,
                     color: selectedColor,
                     positiveHabit: positiveHabit == 0 ? true : false,
@@ -127,7 +143,54 @@ struct ActiveHabitAddView: View {
         //        .onTapGesture {
         //            self.hideKeyboard()
         //        }
-        .navigationTitle("Add Active Habit")
+        .navigationTitle(habit.habitName)
+        .onAppear{
+            name = habit.habitName
+            selectedColor = colorStringToEnum(colorString: habit.habitColor)
+            repeatInterval = habit.habitRepeatInterval
+            repeatAmount = String(habit.habitRepeatAmount)
+            time = habit.habitTime
+            
+            for index in 0..<UnitTypes.allCases.count {
+                if UnitTypes.allCases[index].rawValue == habit.habitUnit {
+                    selectedReminderType = index
+                    break
+                }
+            }
+            
+            positiveHabit = habit.habitPositiveHabit ? 0 : 1
+        
+            useReminder = habit.habitHasReminders
+           
+            selectedReminderType = habit.habitDayReminders.count != 0 ? 0 : habit.habitWeekReminders.count != 0 ? 1 : 2
+            
+            
+            if habit.habitDayReminders.count != 0 {
+                var dayArray = [DayReminderData]()
+                for reminder in habit.habitDayReminders {
+                    let day = DayReminderData()
+                    day.time = reminder.dayReminderTime
+                    dayArray.append(day)
+                }
+                addedDayReminders = dayArray
+                
+            } else if habit.habitWeekReminders.count != 0 {
+                var weekArray = [WeekReminderData]()
+                for reminder in habit.habitWeekReminders {
+                    let week = WeekReminderData()
+                    week.day = reminder.weekReminderDay
+                    week.time = reminder.weekReminderTime
+                    
+                    weekArray.append(week)
+                }
+                addedWeekReminders = weekArray
+ 
+            }
+            
+            
+            
+            
+        }
         .toolbar {
             ToolbarItemGroup(placement: .keyboard) {
                 Button { self.focusPreviousField($focusField) } label: {

@@ -61,6 +61,9 @@ struct ActiveHabitDetailView: View {
                 .frame(height: 50)
             CalendarView(habitColor: cardColorConverter(color: habit.habitColor), checkedDays: habit.habitCheckedDay)
         }
+        .toolbar {
+            NavigationLink{ActiveHabitEditView(habit: habit)} label: {Label("Edit", systemImage: "ellipsis.circle")}
+        }
     }
 }
 

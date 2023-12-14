@@ -77,6 +77,11 @@ extension ActiveHabit {
         return set.map{item in return item}
     }
     
+    var habitWeekReminders: [WeekReminder] {
+        let set = dayReminders as? Set<WeekReminder> ?? []
+        return set.map{item in return item}
+    }
+    
 }
 
 extension CheckedDay {
@@ -96,5 +101,22 @@ extension DayReminder {
     var dayReminderNotificationId: String {
         get { notificationId ?? "" }
         set { notificationId = newValue }
+    }
+}
+
+
+extension WeekReminder {
+    var weekReminderDay: Int {
+        get { Int(day) }
+        set { day = Int16(newValue) }
+    }
+    
+    var weekReminderTime: Date {
+        get {time ?? .now }
+        set {time = newValue }
+    }
+    
+    var weekReminderNotificationId: String {
+        get {notificationId ?? "" }
     }
 }

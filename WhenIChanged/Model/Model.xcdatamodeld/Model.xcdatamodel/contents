@@ -43,6 +43,7 @@
     </entity>
     <entity name="WeekReminder" representedClassName="WeekReminder" syncable="YES" codeGenerationType="class">
         <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="notificationId" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActiveHabit" inverseName="weekReminders" inverseEntity="ActiveHabit"/>
     </entity>

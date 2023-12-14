@@ -31,3 +31,24 @@ func cardColorConverter(color: String) -> Color {
         return Color.red
     }
 }
+
+
+func colorStringToEnum(colorString: String) -> ActiveHabitColor{
+    switch colorString {
+    case "red":
+        return ActiveHabitColor.red
+    case "green":
+        return ActiveHabitColor.green
+    case "blue":
+        return ActiveHabitColor.blue
+    case "yellow":
+        return ActiveHabitColor.yellow
+    case "purple":
+        return ActiveHabitColor.purple
+    default:
+        return ActiveHabitColor.red
+    }
+}
+
+
+
