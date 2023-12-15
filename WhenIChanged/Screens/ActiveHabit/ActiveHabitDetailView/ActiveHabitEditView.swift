@@ -18,39 +18,39 @@ import SwiftUI
 struct ActiveHabitEditView: View {
     
     let habit: ActiveHabit
-
+    
     @Environment(\.dismiss) var dismiss
     
     
     
     
-
+    
     @State var name: String = ""
     @State var selectedColor: ActiveHabitColor = ActiveHabitColor.green // done
-//    @State var reminder: Date = .now // todo
+    //    @State var reminder: Date = .now // todo
     @State var repeatInterval: String? // Add coresponding Date besed on selected interval
     @State var repeatAmount: String = "" // done
     @State var time: Date = .now        // todo
-//    @State var unit: UnitTypes?   // todo
+    //    @State var unit: UnitTypes?   // todo
     @State var positiveHabit: Int = 0 // done
-
+    
     @State var showColorSheet: Bool = false
     @State var useReminder: Bool = false
-
+    
     @State var selectedReminderType: Int = 0
-//    @State var selectedDay: Int = 0
+    //    @State var selectedDay: Int = 0
     @State var selectedUnitType: Int = 0
-
+    
     @State var addedWeekReminders = [WeekReminderData]()
     @State var addedDayReminders = [DayReminderData]()
-
+    
     @FocusState private var focusField: Field?
-
+    
     init(habit: ActiveHabit) {
         self.habit = habit
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.secondarySystemFill
     }
-
+    
     var body: some View {
         
         Form {
@@ -66,14 +66,14 @@ struct ActiveHabitEditView: View {
                         .fill(cardColorConverter(color: selectedColor.rawValue))
                 }
             }
-
+            
             Section("Positive or Negative Habit?") {
                 Picker(selection: $positiveHabit, label: Text("Do you want to do more of this or less") ) {
                     Text("Positive Habit").tag(0)
                     Text("Negative Habit").tag(1)
                 }.pickerStyle(.segmented)
             }
-
+            
             Section("Unit") {
                 Picker(selection: $selectedUnitType, label: Text("What do you want to track")) {
                     ForEach(0..<UnitTypes.allCases.count, id: \.self) { index in
@@ -82,7 +82,7 @@ struct ActiveHabitEditView: View {
                 }
                 .pickerStyle(.segmented)
             }
-
+            
             Section("Repeat") {
                 HStack {
                     TextField("1", text: $repeatAmount)
@@ -108,8 +108,19 @@ struct ActiveHabitEditView: View {
                         Button("Add") {
                             addDayReminderToArray()
                         }
+                        // TODO: Allow Deletion of Notofications
                         ForEach(addedDayReminders, id: \.id) { reminder in
                             AddDayReminderView(reminder: reminder)
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        // StorageProvider.shared.deleteActiveHabit(habit)
+                                        removeDayReminder(id: reminder.id)
+                                        // viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
+                                    } label: {
+                                        Label("Delete", systemImage: "xmark.circle")
+                                    }
+                                    .tint(.red)
+                                }
                         }
                     } else if selectedReminderType == 1 {
                         Button("Add") {
@@ -124,7 +135,20 @@ struct ActiveHabitEditView: View {
                 }
             }
             Button("Save") {
-              // TODO: Update existing habit
+                let _ = StorageProvider.shared.updateActiveHabit(
+                    habit: habit,
+                    name: name,
+                    color: selectedColor,
+                    positiveHabit: positiveHabit == 0 ? true : false,
+                    repeatInterval: RepeatType.allCases[selectedReminderType].rawValue,
+                    time: time,
+                    unit: UnitTypes.allCases[selectedUnitType].rawValue,
+                    repeatAmount: Int(repeatAmount) ?? 1,
+                    reminders: useReminder,
+                    reminderType: selectedReminderType,
+                    addedWeekReminders: addedWeekReminders,
+                    addedDayReminders: addedDayReminders
+                )
                 dismiss()
             }
         }
@@ -147,10 +171,15 @@ struct ActiveHabitEditView: View {
             }
             
             positiveHabit = habit.habitPositiveHabit ? 0 : 1
-        
+            
             useReminder = habit.habitHasReminders
-           
-            selectedReminderType = habit.habitDayReminders.count != 0 ? 0 : habit.habitWeekReminders.count != 0 ? 1 : 2
+            
+            
+            for index in 0..<RepeatType.allCases.count {
+                if RepeatType.allCases[index].rawValue == habit.habitRepeatInterval {
+                    selectedReminderType = index
+                }
+            }
             
             
             if habit.habitDayReminders.count != 0 {
@@ -172,7 +201,7 @@ struct ActiveHabitEditView: View {
                     weekArray.append(week)
                 }
                 addedWeekReminders = weekArray
- 
+                
             }
             
             
@@ -220,5 +249,10 @@ struct ActiveHabitEditView: View {
     }
     func addWeekReminderToArray() {
         addedWeekReminders.append(WeekReminderData())
+    }
+    
+    
+    func removeDayReminder(id: UUID) {
+        addedDayReminders.removeAll{$0.id == id}
     }
 }

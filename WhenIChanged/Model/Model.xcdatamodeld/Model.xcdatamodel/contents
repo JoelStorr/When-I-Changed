@@ -41,6 +41,7 @@
         <attribute name="lastDayReset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastWeekReset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="Statistic" representedClassName="Statistic" syncable="YES" codeGenerationType="class"/>
     <entity name="WeekReminder" representedClassName="WeekReminder" syncable="YES" codeGenerationType="class">
         <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="notificationId" optional="YES" attributeType="String"/>

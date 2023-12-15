@@ -200,11 +200,8 @@ extension StorageProvider {
             try persistentConteiner.viewContext.save()
             print("Saved new Active habit")
             print(habit)
-            
             if reminders && reminderType == 0  {
-                
                 var notificationArray = [NotificationItem]()
-                
                 for addedDayReminder in habit.habitDayReminders {
                     let item = NotificationItem(
                         id: habit.habitId,
@@ -213,28 +210,102 @@ extension StorageProvider {
                         dateData: addedDayReminder,
                         isDayli: true
                     )
-                    
                     notificationArray.append(item)
                 }
-                
                 NotificationHandler.checkForPermission(notificationArray)
-                
-                
             }
-            
-            
-            
-            
             return habit
-            
-            
-            
         } catch {
             persistentConteiner.viewContext.rollback()
             print("Failed to save Active habit: \(error)")
             return nil
         }
     }
+    
+    
+    
+    // NOTE: Update Extisting Active Habit
+    func updateActiveHabit(
+        habit: ActiveHabit,
+        name: String,
+        color: ActiveHabitColor?,
+        positiveHabit: Bool = true,
+        repeatInterval: String?,
+        time: Date?,
+        unit: String?,
+        repeatAmount: Int,
+        reminders: Bool,
+        reminderType: Int,
+        addedWeekReminders: [WeekReminderData],
+        addedDayReminders: [DayReminderData]
+    ){
+        
+        
+        habit.name = name
+        habit.color = color != nil ? color!.rawValue
+            : positiveHabit ? ActiveHabitColor.green.rawValue
+            : ActiveHabitColor.red.rawValue
+        habit.positiveHabit = positiveHabit
+        habit.repeatAmount = Int16(repeatAmount)
+        habit.unit = unit
+        habit.repeatInterval = repeatInterval ?? RepeatType.day.rawValue
+        habit.startDate = .now
+        habit.hasReminders = reminders
+
+        if time != nil {
+            habit.time = time
+        }
+        
+        // Repeattype: Day = 0, Week = 1, Month = 2
+        
+        if reminderType == 0 && reminders {
+            var notificationIds = [String]()
+            
+            for reminder in habit.habitDayReminders {
+                notificationIds.append(reminder.dayReminderNotificationId)
+                
+                
+                persistentConteiner.viewContext.delete(reminder)
+            }
+            
+            NotificationHandler.deleteNotification(id: notificationIds)
+            
+            for unsavedReminder in addedDayReminders {
+                let reminder = DayReminder(context: persistentConteiner.viewContext)
+                reminder.time = unsavedReminder.time
+                habit.addToDayReminders(reminder)
+            }
+        } else if reminderType == 1 && reminders {
+            
+            var notificationIds = [String]()
+            
+            for reminder in habit.habitWeekReminders {
+                
+                notificationIds.append(reminder.weekReminderNotificationId)
+                
+                persistentConteiner.viewContext.delete(reminder)
+            }
+            
+            NotificationHandler.deleteNotification(id: notificationIds)
+            
+            
+            for unsavedReminder in addedWeekReminders {
+                let reminder = WeekReminder(context: persistentConteiner.viewContext)
+                reminder.day = Int16(unsavedReminder.day)
+                reminder.time = unsavedReminder.time
+                habit.addToWeekReminders(reminder)
+            }
+        }
+        
+        
+      let saved =   save()
+        
+        // TODO: Generate new Notifications
+        
+        
+    }
+    
+    
 
     // NOTE: Save added Check for Active Habit
     func addCheckToActiveHabit(_ habit: ActiveHabit, date: Date = .now) {
@@ -246,7 +317,7 @@ extension StorageProvider {
                 habit.addToCheckedDay(checkedDay)
             }
         }
-        save()
+       let _ =  save()
     }
     
     func removeCheckFromActiveHabit(_ habit: ActiveHabit) {
@@ -280,15 +351,18 @@ extension StorageProvider {
         save()
     }
 
-    func save () {
+    func save () -> Bool{
         if persistentConteiner.viewContext.hasChanges {
             do {
                 try persistentConteiner.viewContext.save()
+                return true
             }catch {
                 persistentConteiner.viewContext.rollback()
                 print("Falied to save changes: \(error)")
+                return false
             }
         }
+        return false
     }
 }
 
