@@ -283,11 +283,25 @@ extension StorageProvider {
             }
         }
 
-      let saved =   save()
+      let saved = save()
         
         // TODO: Generate new Notifications
-        
-        
+        if saved {
+            if reminders && reminderType == 0  {
+                var notificationArray = [NotificationItem]()
+                for addedDayReminder in habit.habitDayReminders {
+                    let item = NotificationItem(
+                        id: habit.habitId,
+                        title: habit.habitName,
+                        body: "You can do it",
+                        dateData: addedDayReminder,
+                        isDayli: true
+                    )
+                    notificationArray.append(item)
+                }
+                NotificationHandler.checkForPermission(notificationArray)
+            }
+        }
     }
     
     
