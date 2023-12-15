@@ -257,38 +257,24 @@ extension StorageProvider {
         }
         
         // Repeattype: Day = 0, Week = 1, Month = 2
+        var notificationIds = [String]()
+        for reminder in habit.habitDayReminders {
+            notificationIds.append(reminder.dayReminderNotificationId)
+            persistentConteiner.viewContext.delete(reminder)
+        }
+        for reminder in habit.habitWeekReminders {
+            notificationIds.append(reminder.weekReminderNotificationId)
+            persistentConteiner.viewContext.delete(reminder)
+        }
+        NotificationHandler.deleteNotification(id: notificationIds)
         
         if reminderType == 0 && reminders {
-            var notificationIds = [String]()
-            
-            for reminder in habit.habitDayReminders {
-                notificationIds.append(reminder.dayReminderNotificationId)
-                
-                
-                persistentConteiner.viewContext.delete(reminder)
-            }
-            
-            NotificationHandler.deleteNotification(id: notificationIds)
-            
             for unsavedReminder in addedDayReminders {
                 let reminder = DayReminder(context: persistentConteiner.viewContext)
                 reminder.time = unsavedReminder.time
                 habit.addToDayReminders(reminder)
             }
         } else if reminderType == 1 && reminders {
-            
-            var notificationIds = [String]()
-            
-            for reminder in habit.habitWeekReminders {
-                
-                notificationIds.append(reminder.weekReminderNotificationId)
-                
-                persistentConteiner.viewContext.delete(reminder)
-            }
-            
-            NotificationHandler.deleteNotification(id: notificationIds)
-            
-            
             for unsavedReminder in addedWeekReminders {
                 let reminder = WeekReminder(context: persistentConteiner.viewContext)
                 reminder.day = Int16(unsavedReminder.day)
@@ -296,8 +282,7 @@ extension StorageProvider {
                 habit.addToWeekReminders(reminder)
             }
         }
-        
-        
+
       let saved =   save()
         
         // TODO: Generate new Notifications
