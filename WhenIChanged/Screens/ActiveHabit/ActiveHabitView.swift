@@ -19,7 +19,7 @@ struct ActiveHabitView: View {
                         ZStack {
                             NavigationLink(destination: ActiveHabitDetailView(habit: habit)) { }.opacity(0.0)
                             HStack {
-                                Text("\(habit.habitName ?? "No Name")")
+                                Text("\(habit.habitName.count != 0 ? habit.habitName : "No Name")")
                                     .fontWeight(.bold)
                                     .foregroundStyle(cardColorConverter(color: habit.habitColor))
                                     .swipeActions {
@@ -51,9 +51,14 @@ struct ActiveHabitView: View {
                                         .tint(.red)
                                     }
                                 Spacer()
-                                Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
-                                    .foregroundStyle(cardColorConverter(color: habit.habitColor))
-                                    .fontWeight(.bold)
+                                VStack {
+                                    Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
+                                        .foregroundStyle(cardColorConverter(color: habit.habitColor))
+                                        .fontWeight(.bold)
+                                   Text("per \(habit.habitRepeatInterval)")
+                                        .foregroundStyle(cardColorConverter(color: habit.habitColor))
+                                        .font(.caption)
+                                }
                             }
                         }
                         .padding()

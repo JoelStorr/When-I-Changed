@@ -285,7 +285,7 @@ extension StorageProvider {
 
       let saved = save()
         
-        // TODO: Generate new Notifications
+        // NOTE: Generate new Notifications
         if saved {
             if reminders && reminderType == 0  {
                 var notificationArray = [NotificationItem]()
