@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G436" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="ActiveHabit" representedClassName="ActiveHabit" syncable="YES" codeGenerationType="class">
-        <attribute name="checkAmount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="color" attributeType="String"/>
-        <attribute name="hasReminders" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" attributeType="String"/>
-        <attribute name="positiveHabit" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="repeatAmount" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G436" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ActiveHabit" representedClassName="ActiveHabit" syncable="YES">
+        <attribute name="checkAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="hasReminders" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="positiveHabit" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="repeatAmount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="repeatInterval" optional="YES" attributeType="String"/>
-        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="unit" attributeType="String"/>
+        <attribute name="unit" optional="YES" attributeType="String"/>
         <relationship name="checkedDay" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CheckedDay" inverseName="activeHabit" inverseEntity="CheckedDay"/>
         <relationship name="dayReminders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DayReminder" inverseName="habit" inverseEntity="DayReminder"/>
         <relationship name="weekReminders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WeekReminder" inverseName="habit" inverseEntity="WeekReminder"/>
     </entity>
-    <entity name="CheckedDay" representedClassName="CheckedDay" syncable="YES" codeGenerationType="class">
+    <entity name="CheckedDay" representedClassName="CheckedDay" syncable="YES">
         <attribute name="checkedDay" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="activeHabit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActiveHabit" inverseName="checkedDay" inverseEntity="ActiveHabit"/>
     </entity>
-    <entity name="DayReminder" representedClassName="DayReminder" syncable="YES" codeGenerationType="class">
+    <entity name="DayReminder" representedClassName="DayReminder" syncable="YES">
         <attribute name="notificationId" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ActiveHabit" inverseName="dayReminders" inverseEntity="ActiveHabit"/>
     </entity>
-    <entity name="PassivHabit" representedClassName="PassivHabit" syncable="YES" codeGenerationType="class">
-        <attribute name="cardColor" attributeType="String" customClassName="Color"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="latestDate" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="name" attributeType="String"/>
-        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+    <entity name="PassivHabit" representedClassName="PassivHabit" syncable="YES">
+        <attribute name="cardColor" optional="YES" attributeType="String" customClassName="Color"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="latestDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="resetDates" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PastResets" inverseName="habit" inverseEntity="PastResets"/>
     </entity>
-    <entity name="PastResets" representedClassName="PastResets" syncable="YES" codeGenerationType="class">
+    <entity name="PastResets" representedClassName="PastResets" syncable="YES">
         <attribute name="resetDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PassivHabit" inverseName="resetDates" inverseEntity="PassivHabit"/>
     </entity>
-    <entity name="Setup" representedClassName="Setup" syncable="YES" codeGenerationType="class">
+    <entity name="Setup" representedClassName="Setup" syncable="YES">
         <attribute name="lastDayReset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastWeekReset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Statistic" representedClassName="Statistic" syncable="YES" codeGenerationType="class"/>
-    <entity name="WeekReminder" representedClassName="WeekReminder" syncable="YES" codeGenerationType="class">
+    <entity name="Statistic" representedClassName="Statistic" syncable="YES"/>
+    <entity name="WeekReminder" representedClassName="WeekReminder" syncable="YES">
         <attribute name="day" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="notificationId" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

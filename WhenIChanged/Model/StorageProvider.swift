@@ -15,12 +15,14 @@ final class StorageProvider {
     let persistentConteiner: NSPersistentContainer
     let calender = Calendar.current
     private init() {
-        persistentConteiner = NSPersistentContainer(name: "Model")
+        persistentConteiner = NSPersistentCloudKitContainer(name: "Model")
         persistentConteiner.loadPersistentStores(completionHandler: {_, error in
             if let error = error {
                 fatalError("Core data store failed to load with error: \(error)")
             }
         })
+        persistentConteiner.viewContext.automaticallyMergesChangesFromParent = true
+        persistentConteiner.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
 }
 
