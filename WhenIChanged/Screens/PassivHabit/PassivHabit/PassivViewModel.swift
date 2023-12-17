@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension HomePassivHabitView {
+extension PassivHabitView {
     @MainActor class ViewModel: ObservableObject {
         @Published var cards: [PassivHabit] = []
 

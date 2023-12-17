@@ -19,7 +19,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $showScreen) {
-            HomePassivHabitView()
+            PassivHabitView()
                 .tabItem {
                     Label("Auto Habit", systemImage: "clock.arrow.2.circlepath")
                 }
@@ -27,12 +27,12 @@ struct ContentView: View {
 
             ActiveHabitView()
                 .tabItem {
-                    Label("Habit", systemImage: "checklist.checked")
+                    Label("Active Habit", systemImage: "checklist.checked")
                 }
                 .tag(Views.activeHabit)
-            CalendarView( habitColor: Color.green, checkedDays: [])
+            SpecialDayView()
                 .tabItem {
-                    Label("Calander", systemImage: "calendar")
+                    Label("Special Day", systemImage: "calendar")
                 }
                 .tag(Views.calander)
             SettingsView()

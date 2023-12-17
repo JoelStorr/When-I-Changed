@@ -59,8 +59,7 @@ struct ActiveHabitView: View {
                                         .foregroundStyle(cardColorConverter(color: habit.habitColor))
                                         .font(.caption)
                                 }
-                            }
-                        }
+                            }                         }
                         .padding()
 //                        .background(Color.green.opacity(0.4))
 //                        .clipShape(RoundedRectangle(cornerRadius: 5.0))

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomePassivHabitView: View {
+struct PassivHabitView: View {
 
     @StateObject var viewModel: ViewModel = ViewModel()
 

@@ -16,6 +16,8 @@
 		400DC08C2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC08B2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift */; };
 		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
+		4013B30D2B2F2760005ED53D /* SpecialDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4013B30C2B2F2760005ED53D /* SpecialDayViewModel.swift */; };
+		4013B30F2B2F277D005ED53D /* SpecialDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4013B30E2B2F277D005ED53D /* SpecialDayView.swift */; };
 		4023230C2B28C873009938E3 /* DevHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023230B2B28C872009938E3 /* DevHelper.swift */; };
 		402A1F342B0E24A700678C3A /* ActiveHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A1F332B0E24A700678C3A /* ActiveHabitViewModel.swift */; };
 		402A1F362B0E4EC600678C3A /* ActiveHabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */; };
@@ -32,7 +34,7 @@
 		40A1091D2B2B8CB700635A2D /* ActiveHabit-Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1091C2B2B8CB700635A2D /* ActiveHabit-Helper.swift */; };
 		40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */; };
 		40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD532AFE4D6300F32C66 /* DateHelper.swift */; };
-		40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */; };
+		40A79AFB2AFBBA67006A56F5 /* PassivHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFA2AFBBA67006A56F5 /* PassivHabitView.swift */; };
 		40A79AFD2AFBC241006A56F5 /* PassivHabitAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFC2AFBC241006A56F5 /* PassivHabitAddView.swift */; };
 		40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */; };
 		40B819442B060D610014A8DF /* AddWeekReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B819432B060D610014A8DF /* AddWeekReminderView.swift */; };
@@ -92,6 +94,8 @@
 		400DC08B2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		4013B30C2B2F2760005ED53D /* SpecialDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDayViewModel.swift; sourceTree = "<group>"; };
+		4013B30E2B2F277D005ED53D /* SpecialDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDayView.swift; sourceTree = "<group>"; };
 		4023230B2B28C872009938E3 /* DevHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevHelper.swift; sourceTree = "<group>"; };
 		402A1F332B0E24A700678C3A /* ActiveHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitViewModel.swift; sourceTree = "<group>"; };
 		402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitDetailView.swift; sourceTree = "<group>"; };
@@ -108,7 +112,7 @@
 		40A1091C2B2B8CB700635A2D /* ActiveHabit-Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveHabit-Helper.swift"; sourceTree = "<group>"; };
 		40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PastRestes-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40A3DD532AFE4D6300F32C66 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
-		40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePassivHabitView.swift; sourceTree = "<group>"; };
+		40A79AFA2AFBBA67006A56F5 /* PassivHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivHabitView.swift; sourceTree = "<group>"; };
 		40A79AFC2AFBC241006A56F5 /* PassivHabitAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivHabitAddView.swift; sourceTree = "<group>"; };
 		40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivViewModel.swift; sourceTree = "<group>"; };
 		40B819432B060D610014A8DF /* AddWeekReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeekReminderView.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		400DC0982A839655000349E3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4013B30B2B2F2703005ED53D /* SpecialDays */,
 				40D211DD2B0127570054A8B8 /* ActiveHabit */,
 				40A79AF72AFBB83F006A56F5 /* PassivHabit */,
 				400DC09D2A8398E6000349E3 /* SettingsView.swift */,
@@ -233,6 +238,15 @@
 				40DD88DE2B1F1EC1001A515A /* DateScrollView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		4013B30B2B2F2703005ED53D /* SpecialDays */ = {
+			isa = PBXGroup;
+			children = (
+				4013B30C2B2F2760005ED53D /* SpecialDayViewModel.swift */,
+				4013B30E2B2F277D005ED53D /* SpecialDayView.swift */,
+			);
+			path = SpecialDays;
 			sourceTree = "<group>";
 		};
 		401D1D132A84210700F6CA1F /* Model */ = {
@@ -276,7 +290,7 @@
 			children = (
 				40EBD0B92B037858000F4C12 /* AddPassivHabit */,
 				40EBD0B82B037828000F4C12 /* PassivHabitEditAndDetail */,
-				40EBD0B72B037157000F4C12 /* HomePassivHabit */,
+				40EBD0B72B037157000F4C12 /* PassivHabit */,
 			);
 			path = PassivHabit;
 			sourceTree = "<group>";
@@ -302,13 +316,13 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
-		40EBD0B72B037157000F4C12 /* HomePassivHabit */ = {
+		40EBD0B72B037157000F4C12 /* PassivHabit */ = {
 			isa = PBXGroup;
 			children = (
-				40A79AFA2AFBBA67006A56F5 /* HomePassivHabitView.swift */,
+				40A79AFA2AFBBA67006A56F5 /* PassivHabitView.swift */,
 				40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */,
 			);
-			path = HomePassivHabit;
+			path = PassivHabit;
 			sourceTree = "<group>";
 		};
 		40EBD0B82B037828000F4C12 /* PassivHabitEditAndDetail */ = {
@@ -412,7 +426,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					400DC06A2A839422000349E3 = {
 						CreatedOnToolsVersion = 14.2;
@@ -521,11 +535,12 @@
 				40A79AFD2AFBC241006A56F5 /* PassivHabitAddView.swift in Sources */,
 				40FA54F22AFD0288000B0E83 /* ColorHelper.swift in Sources */,
 				40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */,
-				40A79AFB2AFBBA67006A56F5 /* HomePassivHabitView.swift in Sources */,
+				40A79AFB2AFBBA67006A56F5 /* PassivHabitView.swift in Sources */,
 				4038B9982A84DA0D008E17C7 /* PassivDetailAndEditView.swift in Sources */,
 				408CAA072B207A0E007A0957 /* CalendarCell.swift in Sources */,
 				406E08522B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift in Sources */,
 				408CAA052B20799C007A0957 /* CalendarView.swift in Sources */,
+				4013B30F2B2F277D005ED53D /* SpecialDayView.swift in Sources */,
 				4023230C2B28C873009938E3 /* DevHelper.swift in Sources */,
 				40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */,
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
@@ -539,6 +554,7 @@
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */,
 				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,
+				4013B30D2B2F2760005ED53D /* SpecialDayViewModel.swift in Sources */,
 				40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */,
 				40DD88DF2B1F1EC1001A515A /* DateScrollView.swift in Sources */,
 				408CAA0B2B207A86007A0957 /* CalendarHelper.swift in Sources */,
@@ -592,6 +608,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -653,6 +670,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
