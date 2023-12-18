@@ -29,46 +29,53 @@ final class StorageProvider {
 // NOTE: Setup
 extension StorageProvider {
     func loadSettings () {
+        
+        
         let setUp: Setup? = loadSetUp()
+            
+        
+        
         if setUp == nil {
             // Run first SetUp
             let setUpClass = Setup(context: persistentConteiner.viewContext)
             setUpClass.lastDayReset = .now
             setUpClass.lastWeekReset = .now
-            save()
+           let _ = save()
             print("Saved initial Setting")
             return
-        }
-
-        guard let setUp = setUp else {
-            fatalError("There should habe been a propper setup")
-        }
-
-        let date = Date()
-
-        let days = calender.numberOfDaysBetween(from: setUp.lastDayReset!)
-        if days >= 1 {
-            setUp.lastDayReset = .now
-            save()
-            resetDayCheckAmount()
-        }
-
-        // Check if we are more then a week away
-        let week = calender.numberOfDaysBetween(from: setUp.lastWeekReset!)
-        if week > 7 && date.getWeekDay() == Date.WeekDay.sunday{
-            setUp.lastWeekReset = .now
-            save()
+        } else {
+            guard let setUp = setUp else {
+                fatalError("There should habe been a propper setup")
+            }
             
-            // TODO: Run Week cleenup function
-            resetWeekCheckAmount()
-        } else if week > 7 && date.getWeekDay().rawValue > Date.WeekDay.sunday.rawValue {
-            setUp.lastWeekReset = date.calculateSunday(day: date.getWeekDay())
-            save()
-
-            // TODO: Run Week cleenup function
-            resetWeekCheckAmount()
+            let date = Date()
+            
+            let days = calender.numberOfDaysBetween(from: setUp.lastDayReset!)
+            if days >= 1 {
+                setUp.lastDayReset = .now
+                let _ = save()
+                resetDayCheckAmount()
+            }
+            
+            // Check if we are more then a week away
+            let week = calender.numberOfDaysBetween(from: setUp.lastWeekReset!)
+            if week > 7 && date.getWeekDay() == Date.WeekDay.sunday{
+                setUp.lastWeekReset = .now
+                let _ = save()
+                
+                // TODO: Run Week cleenup function
+                resetWeekCheckAmount()
+            } else if week > 7 && date.getWeekDay().rawValue > Date.WeekDay.sunday.rawValue {
+                setUp.lastWeekReset = date.calculateSunday(day: date.getWeekDay())
+                let _ = save()
+                
+                // TODO: Run Week cleenup function
+                resetWeekCheckAmount()
+            }
+            // TODO: Handle Custom Time Frames
+            
+            let _ = save()
         }
-        // TODO: Handle Custom Time Frames
     }
 
     func resetDayCheckAmount () {
@@ -85,7 +92,7 @@ extension StorageProvider {
             for habit in result {
                 habit.habitCheckAmount = 0
             }
-            save()
+            let _ = save()
         } catch {
             print("Error")
         }
@@ -105,7 +112,7 @@ extension StorageProvider {
             for habit in result {
                 habit.habitCheckAmount = 0
             }
-            save()
+            let _ = save()
         } catch {
             print("Error")
         }
@@ -115,11 +122,21 @@ extension StorageProvider {
         let fetchRequest: NSFetchRequest<Setup> = Setup.fetchRequest()
         do {
             let result = try persistentConteiner.viewContext.fetch(fetchRequest)
-            if result.count == 0 { return nil}
+            if result.count == 0 { return nil }
             if result.count > 1 {
-                fatalError("Something went wrong there should onlybe one Setup Entity")
+             // NOTE: Uncomment to delet setup elements. Were generated to problamatic syncing
+             // while setting up the iCloud
+                
+//                for res in result {
+//                    persistentConteiner.viewContext.delete(res)
+//                }
+//                let _ = save()
+                
+
+                fatalError("Something went wrong there should only be one Setup Entity \(result.count)")
+            } else {
+                return result[0]
             }
-            return result[0]
         } catch {
             print(
                 """

@@ -42,7 +42,10 @@ struct ContentView: View {
                 .tag(Views.settings)
         }
         .onAppear {
+            
+            
             StorageProvider.shared.loadSettings()
+            
 //            userNotificationCenter.setBadgeCount(0)
 //            UIApplication.shared.applicationIconBadgeNumber = 0
         }
