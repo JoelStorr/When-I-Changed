@@ -7,22 +7,45 @@
 
 // swiftlint:disable todo
 
-import Foundation
+import SwiftUI
 import CoreData
 
-final class StorageProvider {
+final class StorageProvider: ObservableObject{
     static let shared = StorageProvider()
     let persistentConteiner: NSPersistentContainer
     let calender = Calendar.current
+    
+    
     private init() {
         persistentConteiner = NSPersistentCloudKitContainer(name: "Model")
+        
+        persistentConteiner.persistentStoreDescriptions.first!.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        persistentConteiner.persistentStoreDescriptions.first!.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        
         persistentConteiner.loadPersistentStores(completionHandler: {_, error in
             if let error = error {
                 fatalError("Core data store failed to load with error: \(error)")
             }
         })
         persistentConteiner.viewContext.automaticallyMergesChangesFromParent = true
-        persistentConteiner.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        persistentConteiner.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        
+        // Tells us when a change in cloudKit happens,
+       // so we can have Cloud and local storage in sync
+       persistentConteiner.persistentStoreDescriptions.first?.setOption(
+           true as NSNumber,
+           forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
+       )
+        
+        // When the change happens pleas call the remoteStoreChanged
+//       NotificationCenter.default.addObserver(
+//           forName: .NSPersistentStoreRemoteChange,
+//           object: persistentConteiner.persistentStoreCoordinator,
+//           queue: .main, using: remoteStoreChanaged
+//       )
+        
+        
     }
 }
 
@@ -348,13 +371,13 @@ extension StorageProvider {
                 if !dayComplete.isEmpty {
                     for checkdDay in dayComplete {
                         persistentConteiner.viewContext.delete(checkdDay)
-                        save()
+                        let _ = save()
                         print("Deleted Element")
                     }
                 }
             }
         }
-        save()
+        let _ = save()
     }
 
     func completeCheckToActiveHabit(_ habit: ActiveHabit) {
@@ -366,7 +389,7 @@ extension StorageProvider {
                 habit.addToCheckedDay(checkedDay)
             }
         }
-        save()
+        let _ = save()
     }
 
     func save () -> Bool{
@@ -451,15 +474,23 @@ extension StorageProvider {
         resetDate.resetDate = habit.latestDate
         habit.addToResetDates(resetDate)
         habit.latestDate = .now
-        save()
+        let _ = save()
     }
 }
 
-// NOTE: Add to active Habit
+// NOTE: Handle CloudKit
 extension StorageProvider {
-    func addToActiveHabit() {
-
-    }
+//    func remoteStoreChanaged(_ notification: Notification) {
+//        print("-------------------------------------------------------------------")
+//        print("Detected Changes")
+//        print(notification.object)
+//        print("-------------------------------------------------------------------")
+//        
+//            objectWillChange.send()
+//    }
 }
 
 // swiftlint:enable todo
+
+
+
