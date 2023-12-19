@@ -10,6 +10,12 @@
 import SwiftUI
 import CoreData
 
+
+enum SetupStatus {
+    case hasNoSetUp, hasMoreThenOneSetUp, hasSetup
+}
+
+
 final class StorageProvider: ObservableObject{
     static let shared = StorageProvider()
     let persistentConteiner: NSPersistentContainer
@@ -54,11 +60,11 @@ extension StorageProvider {
     func loadSettings () {
         
         
-        let setUp: Setup? = loadSetUp()
+        let setUp: (status: SetupStatus, setupElement: Setup?) = loadSetUp()
             
         
         
-        if setUp == nil {
+        if setUp.status == SetupStatus.hasNoSetUp {
             // Run first SetUp
             let setUpClass = Setup(context: persistentConteiner.viewContext)
             setUpClass.lastDayReset = .now
@@ -67,29 +73,29 @@ extension StorageProvider {
             print("Saved initial Setting")
             return
         } else {
-            guard let setUp = setUp else {
+            guard let setupElement = setUp.setupElement else {
                 fatalError("There should habe been a propper setup")
             }
             
             let date = Date()
             
-            let days = calender.numberOfDaysBetween(from: setUp.lastDayReset!)
+            let days = calender.numberOfDaysBetween(from: setupElement.lastDayReset!)
             if days >= 1 {
-                setUp.lastDayReset = .now
+                setupElement.lastDayReset = .now
                 let _ = save()
                 resetDayCheckAmount()
             }
             
             // Check if we are more then a week away
-            let week = calender.numberOfDaysBetween(from: setUp.lastWeekReset!)
+            let week = calender.numberOfDaysBetween(from: setupElement.lastWeekReset!)
             if week > 7 && date.getWeekDay() == Date.WeekDay.sunday{
-                setUp.lastWeekReset = .now
+                setupElement.lastWeekReset = .now
                 let _ = save()
                 
                 // TODO: Run Week cleenup function
                 resetWeekCheckAmount()
             } else if week > 7 && date.getWeekDay().rawValue > Date.WeekDay.sunday.rawValue {
-                setUp.lastWeekReset = date.calculateSunday(day: date.getWeekDay())
+                setupElement.lastWeekReset = date.calculateSunday(day: date.getWeekDay())
                 let _ = save()
                 
                 // TODO: Run Week cleenup function
@@ -141,24 +147,24 @@ extension StorageProvider {
         }
     }
 
-    func loadSetUp() -> Setup? {
+    func loadSetUp() -> (status: SetupStatus, setupElement: Setup?) {
         let fetchRequest: NSFetchRequest<Setup> = Setup.fetchRequest()
         do {
             let result = try persistentConteiner.viewContext.fetch(fetchRequest)
-            if result.count == 0 { return nil }
+            if result.count == 0 { return (status: SetupStatus.hasNoSetUp, setupElement: nil) }
             if result.count > 1 {
              // NOTE: Uncomment to delet setup elements. Were generated to problamatic syncing
              // while setting up the iCloud
                 
-//                for res in result {
-//                    persistentConteiner.viewContext.delete(res)
-//                }
-//                let _ = save()
+                for res in result {
+                    persistentConteiner.viewContext.delete(res)
+                }
+                let _ = save()
                 
 
                 fatalError("Something went wrong there should only be one Setup Entity \(result.count)")
             } else {
-                return result[0]
+                return (   status: SetupStatus.hasSetup, setupElement: result[0]         )
             }
         } catch {
             print(
@@ -168,7 +174,7 @@ extension StorageProvider {
                 """
                 + error.localizedDescription
             )
-            return nil
+            return (status: SetupStatus.hasNoSetUp, setupElement: nil)
         }
     }
 }
@@ -224,13 +230,13 @@ extension StorageProvider {
 
         // Repeattype: Day = 0, Week = 1, Month = 2
         
-        if reminderType == 0 && reminders {
+        if repeatInterval == RepeatType.day.rawValue && reminders {
             for unsavedReminder in addedDayReminders {
                 let reminder = DayReminder(context: persistentConteiner.viewContext)
                 reminder.time = unsavedReminder.time
                 habit.addToDayReminders(reminder)
             }
-        } else if reminderType == 1 && reminders {
+        } else if repeatInterval == RepeatType.week.rawValue && reminders {
             for unsavedReminder in addedWeekReminders {
                 let reminder = WeekReminder(context: persistentConteiner.viewContext)
                 reminder.day = Int16(unsavedReminder.day)
@@ -242,7 +248,7 @@ extension StorageProvider {
             try persistentConteiner.viewContext.save()
             print("Saved new Active habit")
             print(habit)
-            if reminders && reminderType == 0  {
+            if reminders && repeatInterval == RepeatType.day.rawValue  {
                 var notificationArray = [NotificationItem]()
                 for addedDayReminder in habit.habitDayReminders {
                     let item = NotificationItem(
@@ -308,15 +314,15 @@ extension StorageProvider {
             notificationIds.append(reminder.weekReminderNotificationId)
             persistentConteiner.viewContext.delete(reminder)
         }
-        NotificationHandler.deleteNotification(id: notificationIds)
+        NotificationHandler.deleteNotifications(id: notificationIds)
         
-        if reminderType == 0 && reminders {
+        if repeatInterval == RepeatType.day.rawValue && reminders {
             for unsavedReminder in addedDayReminders {
                 let reminder = DayReminder(context: persistentConteiner.viewContext)
                 reminder.time = unsavedReminder.time
                 habit.addToDayReminders(reminder)
             }
-        } else if reminderType == 1 && reminders {
+        } else if repeatInterval == RepeatType.week.rawValue && reminders {
             for unsavedReminder in addedWeekReminders {
                 let reminder = WeekReminder(context: persistentConteiner.viewContext)
                 reminder.day = Int16(unsavedReminder.day)
@@ -329,7 +335,7 @@ extension StorageProvider {
         
         // NOTE: Generate new Notifications
         if saved {
-            if reminders && reminderType == 0  {
+            if reminders && repeatInterval == RepeatType.day.rawValue  {
                 var notificationArray = [NotificationItem]()
                 for addedDayReminder in habit.habitDayReminders {
                     let item = NotificationItem(
@@ -423,6 +429,11 @@ extension StorageProvider {
         let fetchRequest: NSFetchRequest<ActiveHabit> = ActiveHabit.fetchRequest()
         do {
             let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
+            
+            // Set all reminders
+            resetAllReminders(habits: result)
+            
+            
             return result
         } catch {
             print("Failed to load ActiveHabits: \(error)")
@@ -453,7 +464,7 @@ extension StorageProvider {
 
                 idArray.append(reminder.dayReminderNotificationId)
             }
-            NotificationHandler.deleteNotification(id: idArray)
+            NotificationHandler.deleteNotifications(id: idArray)
         }
         
         
@@ -477,6 +488,62 @@ extension StorageProvider {
         let _ = save()
     }
 }
+
+
+// NOTE: Set reminders
+extension StorageProvider {
+    func resetAllReminders(habits: [ActiveHabit]) {
+        
+        var reminderIds = [String]()
+        
+        for habit in habits {
+            
+            for reminder in habit.habitDayReminders {
+                reminderIds.append(reminder.dayReminderNotificationId)
+            }
+            
+            for reminder in habit.habitWeekReminders {
+                reminderIds.append(reminder.weekReminderNotificationId)
+            }
+            
+            NotificationHandler.deleteNotifications(id: reminderIds)
+            
+            
+            if habit.habitHasReminders && habit.habitRepeatInterval == RepeatType.day.rawValue {
+                for remidner in habit.habitDayReminders {
+                    var notificationArray = [NotificationItem]()
+                    for addedDayReminder in habit.habitDayReminders {
+                        let item = NotificationItem(
+                            id: habit.habitId,
+                            title: habit.habitName,
+                            body: "You can do it",
+                            dateData: addedDayReminder,
+                            isDayli: true
+                        )
+                        notificationArray.append(item)
+                    }
+                    NotificationHandler.checkForPermission(notificationArray)
+                }
+            } else if habit.hasReminders && habit.habitRepeatInterval == RepeatType.week.rawValue {
+                // TODO: Add Week Reminders
+            } else if habit.hasReminders && habit.habitRepeatInterval == RepeatType.month.rawValue {
+                // TODO: Add Month Reminders
+            }
+        }
+        
+    }
+    
+    func resetReminder(habit: ActiveHabit){
+        
+    }
+    
+    
+}
+
+
+
+
+
 
 // NOTE: Handle CloudKit
 extension StorageProvider {

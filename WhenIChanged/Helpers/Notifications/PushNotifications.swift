@@ -27,12 +27,9 @@ class NotificationItem{
 
 
 class NotificationHandler{
-    
     static let notificationCenter = UNUserNotificationCenter.current()
-    
-    
+
     static func checkForPermission(_ notificationList: [NotificationItem]){
-       
         notificationCenter.getNotificationSettings(){ settings in
             // Tells what the current state of the App is regading permissions
             switch settings.authorizationStatus {
@@ -60,46 +57,38 @@ class NotificationHandler{
     static func dispatchNotification(_ notificationList: [NotificationItem]){
         
         let calendar = Calendar.current
-        
-        
-        
+
         for notification in notificationList {
-            
-            
-            
+
             // Notification Content
             let content = UNMutableNotificationContent()
             content.title = notification.title
             content.body = notification.body
             content.sound = .default
             //content.badge = 1
-            
-            
+
             // Sets when the Notification should run
             var dateComeponent = DateComponents(calendar: calendar, timeZone: TimeZone.current)
             dateComeponent.hour = CalendarHelper().getHour(notification.dateData.dayReminderTime)
             dateComeponent.minute = CalendarHelper().getMinute(notification.dateData.dayReminderTime)
-            
+
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComeponent, repeats: notification.isDayli)
             let id = UUID().uuidString
-            
+
             let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
-            
+
             notification.dateData.dayReminderNotificationId = id
-            
+
             // Add New Notification
             notificationCenter.add(request)
         }
         
-        StorageProvider.shared.save()
+        let _ = StorageProvider.shared.save()
     }
     
-    static func deleteNotification(id: [String]) {
+    static func deleteNotifications(id: [String]) {
         notificationCenter.removePendingNotificationRequests(withIdentifiers: id)
         notificationCenter.removeDeliveredNotifications(withIdentifiers: id)
     }
 
 }
-
-
-
