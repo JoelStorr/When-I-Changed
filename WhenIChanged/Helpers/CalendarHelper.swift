@@ -44,9 +44,15 @@ class CalendarHelper {
         return calendar.date(from: components)!
     }
     
-    func weekDay(_ date: Date) -> Int {
+    func weekDay(_ date: Date, startMonday: Bool) -> Int {
         let components = calendar.dateComponents([.weekday], from: date)
-        return components.weekday! - 1
+        
+        if startMonday {
+            return components.weekday! - 2
+        } else {
+            return components.weekday! - 1
+        }
+        
     }
     
     func dateInMonth(_ date: Date, monthValue: Date = .now) -> Bool {

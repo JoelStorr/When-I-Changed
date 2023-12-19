@@ -13,6 +13,7 @@ struct CalendarView: View {
     
     let habitColor: Color
     let checkedDays: [CheckedDay] 
+    var startMonday: Bool = false
     
     var body: some View {
         
@@ -26,22 +27,37 @@ struct CalendarView: View {
     }
     
     var dayOfWeekStack: some View {
-        HStack(spacing: 1) {
-            Text("Sun").dayOfWeek()
-            Text("Mon").dayOfWeek()
-            Text("Tue").dayOfWeek()
-            Text("Wed").dayOfWeek()
-            Text("Thu").dayOfWeek()
-            Text("Fri").dayOfWeek()
-            Text("Sat").dayOfWeek()
+        
+        if startMonday {
+            HStack(spacing: 1) {
+                Text("Mon").dayOfWeek()
+                Text("Tue").dayOfWeek()
+                Text("Wed").dayOfWeek()
+                Text("Thu").dayOfWeek()
+                Text("Fri").dayOfWeek()
+                Text("Sat").dayOfWeek()
+                Text("Sun").dayOfWeek()
+            }
+        } else {
+            HStack(spacing: 1) {
+                Text("Sun").dayOfWeek()
+                Text("Mon").dayOfWeek()
+                Text("Tue").dayOfWeek()
+                Text("Wed").dayOfWeek()
+                Text("Thu").dayOfWeek()
+                Text("Fri").dayOfWeek()
+                Text("Sat").dayOfWeek()
+            }
         }
+        
+        
     }
     
     var calanderGrid: some View {
         VStack(spacing: 1) {
             let daysInMonth = CalendarHelper().daysInMonth(dateHolder.date)
             let firstDayOfMonth = CalendarHelper().firstOfMonth(dateHolder.date)
-            let startingSpaces = CalendarHelper().weekDay(firstDayOfMonth)
+            let startingSpaces = CalendarHelper().weekDay(firstDayOfMonth, startMonday: startMonday)
             let previousMonth = CalendarHelper().minusMonth(dateHolder.date)
             let daysInPreviousMonth = CalendarHelper().daysInMonth(previousMonth)
             let dayInMonth = CalendarHelper().dateInMonth(dateHolder.date)
