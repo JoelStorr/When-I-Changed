@@ -20,8 +20,7 @@ final class StorageProvider: ObservableObject{
     static let shared = StorageProvider()
     let persistentConteiner: NSPersistentContainer
     let calender = Calendar.current
-    
-    
+
     private init() {
         persistentConteiner = NSPersistentCloudKitContainer(name: "Model")
         
@@ -50,20 +49,14 @@ final class StorageProvider: ObservableObject{
 //           object: persistentConteiner.persistentStoreCoordinator,
 //           queue: .main, using: remoteStoreChanaged
 //       )
-        
-        
     }
 }
 
 // NOTE: Setup
 extension StorageProvider {
     func loadSettings () {
-        
-        
         let setUp: (status: SetupStatus, setupElement: Setup?) = loadSetUp()
-            
-        
-        
+
         if setUp.status == SetupStatus.hasNoSetUp {
             // Run first SetUp
             let setUpClass = Setup(context: persistentConteiner.viewContext)
@@ -76,33 +69,33 @@ extension StorageProvider {
             guard let setupElement = setUp.setupElement else {
                 fatalError("There should habe been a propper setup")
             }
-            
+
             let date = Date()
-            
+
             let days = calender.numberOfDaysBetween(from: setupElement.lastDayReset!)
             if days >= 1 {
                 setupElement.lastDayReset = .now
                 let _ = save()
                 resetDayCheckAmount()
             }
-            
+
             // Check if we are more then a week away
             let week = calender.numberOfDaysBetween(from: setupElement.lastWeekReset!)
             if week > 7 && date.getWeekDay() == Date.WeekDay.sunday{
                 setupElement.lastWeekReset = .now
                 let _ = save()
-                
+
                 // TODO: Run Week cleenup function
                 resetWeekCheckAmount()
             } else if week > 7 && date.getWeekDay().rawValue > Date.WeekDay.sunday.rawValue {
                 setupElement.lastWeekReset = date.calculateSunday(day: date.getWeekDay())
                 let _ = save()
-                
+
                 // TODO: Run Week cleenup function
                 resetWeekCheckAmount()
             }
             // TODO: Handle Custom Time Frames
-            
+
             let _ = save()
         }
     }
@@ -155,16 +148,13 @@ extension StorageProvider {
             if result.count > 1 {
              // NOTE: Uncomment to delet setup elements. Were generated to problamatic syncing
              // while setting up the iCloud
-                
                 for res in result {
                     persistentConteiner.viewContext.delete(res)
                 }
                 let _ = save()
-                
-
                 fatalError("Something went wrong there should only be one Setup Entity \(result.count)")
             } else {
-                return (   status: SetupStatus.hasSetup, setupElement: result[0]         )
+                return (status: SetupStatus.hasSetup, setupElement: result[0])
             }
         } catch {
             print(
@@ -229,7 +219,7 @@ extension StorageProvider {
         }
 
         // Repeattype: Day = 0, Week = 1, Month = 2
-        
+
         if repeatInterval == RepeatType.day.rawValue && reminders {
             for unsavedReminder in addedDayReminders {
                 let reminder = DayReminder(context: persistentConteiner.viewContext)
@@ -269,9 +259,7 @@ extension StorageProvider {
             return nil
         }
     }
-    
-    
-    
+
     // NOTE: Update Extisting Active Habit
     func updateActiveHabit(
         habit: ActiveHabit,
@@ -287,8 +275,6 @@ extension StorageProvider {
         addedWeekReminders: [WeekReminderData],
         addedDayReminders: [DayReminderData]
     ){
-        
-        
         habit.name = name
         habit.color = color != nil ? color!.rawValue
             : positiveHabit ? ActiveHabitColor.green.rawValue
@@ -303,7 +289,7 @@ extension StorageProvider {
         if time != nil {
             habit.time = time
         }
-        
+
         // Repeattype: Day = 0, Week = 1, Month = 2
         var notificationIds = [String]()
         for reminder in habit.habitDayReminders {
@@ -315,7 +301,7 @@ extension StorageProvider {
             persistentConteiner.viewContext.delete(reminder)
         }
         NotificationHandler.deleteNotifications(id: notificationIds)
-        
+
         if repeatInterval == RepeatType.day.rawValue && reminders {
             for unsavedReminder in addedDayReminders {
                 let reminder = DayReminder(context: persistentConteiner.viewContext)
@@ -332,7 +318,7 @@ extension StorageProvider {
         }
 
       let saved = save()
-        
+
         // NOTE: Generate new Notifications
         if saved {
             if reminders && repeatInterval == RepeatType.day.rawValue  {
@@ -351,8 +337,6 @@ extension StorageProvider {
             }
         }
     }
-    
-    
 
     // NOTE: Save added Check for Active Habit
     func addCheckToActiveHabit(_ habit: ActiveHabit, date: Date = .now) {
@@ -366,7 +350,7 @@ extension StorageProvider {
         }
        let _ =  save()
     }
-    
+
     func removeCheckFromActiveHabit(_ habit: ActiveHabit) {
         habit.habitCheckAmount -= 1
         if habit.positiveHabit {
@@ -429,11 +413,8 @@ extension StorageProvider {
         let fetchRequest: NSFetchRequest<ActiveHabit> = ActiveHabit.fetchRequest()
         do {
             let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
-            
             // Set all reminders
             resetAllReminders(habits: result)
-            
-            
             return result
         } catch {
             print("Failed to load ActiveHabits: \(error)")
@@ -493,22 +474,21 @@ extension StorageProvider {
 // NOTE: Set reminders
 extension StorageProvider {
     func resetAllReminders(habits: [ActiveHabit]) {
-        
+
         var reminderIds = [String]()
-        
+
         for habit in habits {
-            
+
             for reminder in habit.habitDayReminders {
                 reminderIds.append(reminder.dayReminderNotificationId)
             }
-            
+
             for reminder in habit.habitWeekReminders {
                 reminderIds.append(reminder.weekReminderNotificationId)
             }
-            
+
             NotificationHandler.deleteNotifications(id: reminderIds)
-            
-            
+
             if habit.habitHasReminders && habit.habitRepeatInterval == RepeatType.day.rawValue {
                 for remidner in habit.habitDayReminders {
                     var notificationArray = [NotificationItem]()
@@ -530,20 +510,8 @@ extension StorageProvider {
                 // TODO: Add Month Reminders
             }
         }
-        
     }
-    
-    func resetReminder(habit: ActiveHabit){
-        
-    }
-    
-    
 }
-
-
-
-
-
 
 // NOTE: Handle CloudKit
 extension StorageProvider {
