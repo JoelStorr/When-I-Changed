@@ -213,7 +213,7 @@ extension StorageProvider {
         habit.repeatInterval = repeatInterval ?? RepeatType.day.rawValue
         habit.startDate = .now
         habit.hasReminders = reminders
-        habit.position = 1 // TODO: Set Habit Position
+        habit.position = Int16(loadAllActiveHabits().count) // TODO: Rethink how to get Positioning value
 
         if time != nil {
             habit.time = time
@@ -286,13 +286,14 @@ extension StorageProvider {
         habit.repeatInterval = repeatInterval ?? RepeatType.day.rawValue
         habit.startDate = .now
         habit.hasReminders = reminders
-        habit.position = 1 // TODO: Sett Position
+        // NOTE: Does not have to be reset ?
+        // habit.position = 1 // TODO: Sett Position
 
         if time != nil {
             habit.time = time
         }
 
-        // Repeattype: Day = 0, Week = 1, Month = 2
+        
         var notificationIds = [String]()
         for reminder in habit.habitDayReminders {
             notificationIds.append(reminder.dayReminderNotificationId)
@@ -417,7 +418,9 @@ extension StorageProvider {
             let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
             // Set all reminders
             resetAllReminders(habits: result)
-            return result
+            
+
+            return result.sorted{ $0.position < $1.position}
         } catch {
             print("Failed to load ActiveHabits: \(error)")
             return[]
