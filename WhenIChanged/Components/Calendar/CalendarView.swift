@@ -13,7 +13,7 @@ struct CalendarView: View {
     
     let habitColor: Color
     let checkedDays: [CheckedDay] 
-    var startMonday: Bool = false
+    @State var startMonday: Bool = false
     
     var body: some View {
         
@@ -23,6 +23,9 @@ struct CalendarView: View {
                 .padding()
             dayOfWeekStack
             calanderGrid
+        }
+        .onAppear{
+            startMonday = StorageProvider.shared.globalSetupClass.weekStartsMonday
         }
     }
     

@@ -39,8 +39,10 @@
         <relationship name="habit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PassivHabit" inverseName="resetDates" inverseEntity="PassivHabit"/>
     </entity>
     <entity name="Setup" representedClassName="Setup" syncable="YES" codeGenerationType="class">
+        <attribute name="colorMode" optional="YES" attributeType="String"/>
         <attribute name="lastDayReset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastWeekReset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="weekStartsMonday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
     </entity>
     <entity name="Statistic" representedClassName="Statistic" syncable="YES" codeGenerationType="class"/>
     <entity name="WeekReminder" representedClassName="WeekReminder" syncable="YES" codeGenerationType="class">

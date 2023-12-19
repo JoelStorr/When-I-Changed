@@ -35,9 +35,9 @@ struct ContentView: View {
                     Label("Special Day", systemImage: "calendar")
                 }
                 .tag(Views.calander)
-            SettingsView()
+            MoreView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("More", systemImage: "list.bullet")
                 }
                 .tag(Views.settings)
         }

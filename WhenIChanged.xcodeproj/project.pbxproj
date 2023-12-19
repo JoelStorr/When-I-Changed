@@ -14,7 +14,7 @@
 		400DC0802A839425000349E3 /* WhenIChangedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC07F2A839425000349E3 /* WhenIChangedTests.swift */; };
 		400DC08A2A839425000349E3 /* WhenIChangedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0892A839425000349E3 /* WhenIChangedUITests.swift */; };
 		400DC08C2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC08B2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift */; };
-		400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* SettingsView.swift */; };
+		400DC09E2A8398E6000349E3 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC09D2A8398E6000349E3 /* MoreView.swift */; };
 		400DC0A12A8399E0000349E3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DC0A02A8399E0000349E3 /* Card.swift */; };
 		4013B30D2B2F2760005ED53D /* SpecialDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4013B30C2B2F2760005ED53D /* SpecialDayViewModel.swift */; };
 		4013B30F2B2F277D005ED53D /* SpecialDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4013B30E2B2F277D005ED53D /* SpecialDayView.swift */; };
@@ -22,6 +22,8 @@
 		402A1F342B0E24A700678C3A /* ActiveHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A1F332B0E24A700678C3A /* ActiveHabitViewModel.swift */; };
 		402A1F362B0E4EC600678C3A /* ActiveHabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */; };
 		4038B9982A84DA0D008E17C7 /* PassivDetailAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */; };
+		40458E332B3236AE0055CB17 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40458E322B3236AE0055CB17 /* SettingsView.swift */; };
+		40458E352B3236E00055CB17 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40458E342B3236E00055CB17 /* StatisticsView.swift */; };
 		406E08502B06362600BCB4EE /* AddDayReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E084F2B06362600BCB4EE /* AddDayReminderView.swift */; };
 		406E08522B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E08512B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift */; };
 		40707C572B31C68000371CF0 /* ActiveHabitOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40707C562B31C68000371CF0 /* ActiveHabitOrderView.swift */; };
@@ -93,7 +95,7 @@
 		400DC0852A839425000349E3 /* WhenIChangedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhenIChangedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		400DC0892A839425000349E3 /* WhenIChangedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedUITests.swift; sourceTree = "<group>"; };
 		400DC08B2A839425000349E3 /* WhenIChangedUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		400DC09D2A8398E6000349E3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		400DC09D2A8398E6000349E3 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		400DC0A02A8399E0000349E3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4013B30C2B2F2760005ED53D /* SpecialDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDayViewModel.swift; sourceTree = "<group>"; };
 		4013B30E2B2F277D005ED53D /* SpecialDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDayView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,8 @@
 		402A1F332B0E24A700678C3A /* ActiveHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitViewModel.swift; sourceTree = "<group>"; };
 		402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitDetailView.swift; sourceTree = "<group>"; };
 		4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivDetailAndEditView.swift; sourceTree = "<group>"; };
+		40458E322B3236AE0055CB17 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		40458E342B3236E00055CB17 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		406E084F2B06362600BCB4EE /* AddDayReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayReminderView.swift; sourceTree = "<group>"; };
 		406E08512B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveHabit-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40707C562B31C68000371CF0 /* ActiveHabitOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitOrderView.swift; sourceTree = "<group>"; };
@@ -224,10 +228,10 @@
 		400DC0982A839655000349E3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				40458E362B3237110055CB17 /* MoreView */,
 				4013B30B2B2F2703005ED53D /* SpecialDays */,
 				40D211DD2B0127570054A8B8 /* ActiveHabit */,
 				40A79AF72AFBB83F006A56F5 /* PassivHabit */,
-				400DC09D2A8398E6000349E3 /* SettingsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -260,6 +264,32 @@
 				40FA54E02AFCDFC6000B0E83 /* Model.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		40458E302B32368E0055CB17 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				40458E322B3236AE0055CB17 /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		40458E312B3236980055CB17 /* StatisticsView */ = {
+			isa = PBXGroup;
+			children = (
+				40458E342B3236E00055CB17 /* StatisticsView.swift */,
+			);
+			path = StatisticsView;
+			sourceTree = "<group>";
+		};
+		40458E362B3237110055CB17 /* MoreView */ = {
+			isa = PBXGroup;
+			children = (
+				400DC09D2A8398E6000349E3 /* MoreView.swift */,
+				40458E302B32368E0055CB17 /* SettingsView */,
+				40458E312B3236980055CB17 /* StatisticsView */,
+			);
+			path = MoreView;
 			sourceTree = "<group>";
 		};
 		40707C552B31C66800371CF0 /* ActiveHabitOrderView */ = {
@@ -556,14 +586,16 @@
 				408CAA052B20799C007A0957 /* CalendarView.swift in Sources */,
 				4013B30F2B2F277D005ED53D /* SpecialDayView.swift in Sources */,
 				4023230C2B28C873009938E3 /* DevHelper.swift in Sources */,
+				40458E332B3236AE0055CB17 /* SettingsView.swift in Sources */,
 				40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */,
-				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
+				400DC09E2A8398E6000349E3 /* MoreView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
 				40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */,
 				40A1091D2B2B8CB700635A2D /* ActiveHabit-Helper.swift in Sources */,
 				40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */,
 				407198CC2B1DE66C00C095BD /* RoundProgressBar.swift in Sources */,
 				40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */,
+				40458E352B3236E00055CB17 /* StatisticsView.swift in Sources */,
 				40A1091B2B2B7F8C00635A2D /* ActiveHabitEditView.swift in Sources */,
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */,

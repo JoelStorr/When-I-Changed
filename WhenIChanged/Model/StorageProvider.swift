@@ -20,6 +20,8 @@ final class StorageProvider: ObservableObject{
     static let shared = StorageProvider()
     let persistentConteiner: NSPersistentContainer
     let calender = Calendar.current
+    
+    @Published var globalSetupClass: Setup = Setup()
 
     private init() {
         persistentConteiner = NSPersistentCloudKitContainer(name: "Model")
@@ -62,7 +64,11 @@ extension StorageProvider {
             let setUpClass = Setup(context: persistentConteiner.viewContext)
             setUpClass.lastDayReset = .now
             setUpClass.lastWeekReset = .now
+            setUpClass.colorMode = ""
+            setUpClass.weekStartsMonday = true
            let _ = save()
+            
+            globalSetupClass = setUpClass
             print("Saved initial Setting")
             return
         } else {
@@ -97,6 +103,8 @@ extension StorageProvider {
             // TODO: Handle Custom Time Frames
 
             let _ = save()
+            
+            globalSetupClass = setupElement
         }
     }
 
