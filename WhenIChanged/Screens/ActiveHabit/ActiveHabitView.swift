@@ -10,14 +10,19 @@ import SwiftUI
 struct ActiveHabitView: View {
 
     @StateObject var viewModel: ViewModel = ViewModel()
+    
+    @GestureState var press = false
+    @State var goToDetail = false
+    @State var goToChangeOder = false
+    @State var path: [ActiveHabit] = []
 
     var body: some View {
 
-        NavigationStack {
+        NavigationStack(path: $path) {
                 List {
                     ForEach($viewModel.activeHabits, id: \.id) { $habit in
                         ZStack {
-                            NavigationLink(destination: ActiveHabitDetailView(habit: habit)) { }.opacity(0.0)
+//                            NavigationLink(destination: ActiveHabitDetailView(habit: habit)) { }.opacity(0.0)
                             HStack {
                                 Text("\(habit.habitName.count != 0 ? habit.habitName : "No Name")")
                                     .fontWeight(.bold)
@@ -55,23 +60,50 @@ struct ActiveHabitView: View {
                                     Text("\(habit.habitCheckAmount) / \(habit.habitRepeatAmount)")
                                         .foregroundStyle(cardColorConverter(color: habit.habitColor))
                                         .fontWeight(.bold)
-                                   Text("per \(habit.habitRepeatInterval)")
+                                    Text("per \(habit.habitRepeatInterval)")
                                         .foregroundStyle(cardColorConverter(color: habit.habitColor))
                                         .font(.caption)
                                 }
-                            }                         }
+                            }
+                        }
                         .padding()
-//                        .background(Color.green.opacity(0.4))
+                        .background(Color.white.opacity(0.001))
+                        .onTapGesture {
+                            path.append(habit)
+                        }
+                        .onLongPressGesture(minimumDuration: 0.5) {
+                            path.append(habit)
+                            goToChangeOder.toggle()
+                        }
+                        
+//                        .onLongPressGesture(minimumDuration: 0.5) {
+//                            NavigationLink(destination: ActiveHabitOrderView()) { }
+//                        }
+                        
+                        
 //                        .clipShape(RoundedRectangle(cornerRadius: 5.0))
 //                        .listRowSeparator(.hidden)
                     }
             }
+                .navigationDestination(for: ActiveHabit.self){ value in
+                        
+                        
+                    if goToChangeOder {
+                        
+                        ActiveHabitOrderView()
+                    } else {
+                        ActiveHabitDetailView(habit: value)
+                    }
+                    
+                }
+                .navigationTitle("Active Habit")
             .listStyle(DefaultListStyle())
             .toolbar {
                 ToolbarAddHabitButton()
             }
             .onAppear {
                 viewModel.activeHabits = StorageProvider.shared.loadAllActiveHabits()
+                goToChangeOder = false
             }
         }
     }
