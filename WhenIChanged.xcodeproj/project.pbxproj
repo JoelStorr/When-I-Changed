@@ -22,22 +22,6 @@
 		402A1F342B0E24A700678C3A /* ActiveHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A1F332B0E24A700678C3A /* ActiveHabitViewModel.swift */; };
 		402A1F362B0E4EC600678C3A /* ActiveHabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */; };
 		4038B9982A84DA0D008E17C7 /* PassivDetailAndEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */; };
-		4039FE0C2B2F651A009BBF84 /* DayReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FDFC2B2F6519009BBF84 /* DayReminder+CoreDataClass.swift */; };
-		4039FE0D2B2F651A009BBF84 /* DayReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FDFD2B2F6519009BBF84 /* DayReminder+CoreDataProperties.swift */; };
-		4039FE0E2B2F651A009BBF84 /* Setup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FDFE2B2F6519009BBF84 /* Setup+CoreDataClass.swift */; };
-		4039FE0F2B2F651A009BBF84 /* Setup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FDFF2B2F6519009BBF84 /* Setup+CoreDataProperties.swift */; };
-		4039FE102B2F651A009BBF84 /* WeekReminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE002B2F6519009BBF84 /* WeekReminder+CoreDataClass.swift */; };
-		4039FE112B2F651A009BBF84 /* WeekReminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE012B2F651A009BBF84 /* WeekReminder+CoreDataProperties.swift */; };
-		4039FE122B2F651A009BBF84 /* CheckedDay+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE022B2F651A009BBF84 /* CheckedDay+CoreDataClass.swift */; };
-		4039FE132B2F651A009BBF84 /* CheckedDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE032B2F651A009BBF84 /* CheckedDay+CoreDataProperties.swift */; };
-		4039FE142B2F651A009BBF84 /* PassivHabit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE042B2F651A009BBF84 /* PassivHabit+CoreDataClass.swift */; };
-		4039FE152B2F651A009BBF84 /* PassivHabit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE052B2F651A009BBF84 /* PassivHabit+CoreDataProperties.swift */; };
-		4039FE162B2F651A009BBF84 /* ActiveHabit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE062B2F651A009BBF84 /* ActiveHabit+CoreDataClass.swift */; };
-		4039FE172B2F651A009BBF84 /* ActiveHabit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE072B2F651A009BBF84 /* ActiveHabit+CoreDataProperties.swift */; };
-		4039FE182B2F651A009BBF84 /* PastResets+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE082B2F651A009BBF84 /* PastResets+CoreDataClass.swift */; };
-		4039FE192B2F651A009BBF84 /* PastResets+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE092B2F651A009BBF84 /* PastResets+CoreDataProperties.swift */; };
-		4039FE1A2B2F651A009BBF84 /* Statistic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE0A2B2F651A009BBF84 /* Statistic+CoreDataClass.swift */; };
-		4039FE1B2B2F651A009BBF84 /* Statistic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4039FE0B2B2F651A009BBF84 /* Statistic+CoreDataProperties.swift */; };
 		406E08502B06362600BCB4EE /* AddDayReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E084F2B06362600BCB4EE /* AddDayReminderView.swift */; };
 		406E08522B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E08512B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift */; };
 		407198CC2B1DE66C00C095BD /* RoundProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407198CB2B1DE66C00C095BD /* RoundProgressBar.swift */; };
@@ -117,22 +101,6 @@
 		402A1F332B0E24A700678C3A /* ActiveHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitViewModel.swift; sourceTree = "<group>"; };
 		402A1F352B0E4EC600678C3A /* ActiveHabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitDetailView.swift; sourceTree = "<group>"; };
 		4038B9972A84DA0D008E17C7 /* PassivDetailAndEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivDetailAndEditView.swift; sourceTree = "<group>"; };
-		4039FDFC2B2F6519009BBF84 /* DayReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FDFD2B2F6519009BBF84 /* DayReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DayReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4039FDFE2B2F6519009BBF84 /* Setup+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setup+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FDFF2B2F6519009BBF84 /* Setup+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setup+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4039FE002B2F6519009BBF84 /* WeekReminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeekReminder+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FE012B2F651A009BBF84 /* WeekReminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeekReminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4039FE022B2F651A009BBF84 /* CheckedDay+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedDay+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FE032B2F651A009BBF84 /* CheckedDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckedDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4039FE042B2F651A009BBF84 /* PassivHabit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassivHabit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FE052B2F651A009BBF84 /* PassivHabit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassivHabit+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4039FE062B2F651A009BBF84 /* ActiveHabit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveHabit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FE072B2F651A009BBF84 /* ActiveHabit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveHabit+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4039FE082B2F651A009BBF84 /* PastResets+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PastResets+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FE092B2F651A009BBF84 /* PastResets+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PastResets+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4039FE0A2B2F651A009BBF84 /* Statistic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistic+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4039FE0B2B2F651A009BBF84 /* Statistic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Statistic+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		406E084F2B06362600BCB4EE /* AddDayReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDayReminderView.swift; sourceTree = "<group>"; };
 		406E08512B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActiveHabit-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		407198CB2B1DE66C00C095BD /* RoundProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundProgressBar.swift; sourceTree = "<group>"; };
@@ -191,22 +159,6 @@
 		400DC0622A839422000349E3 = {
 			isa = PBXGroup;
 			children = (
-				4039FDFC2B2F6519009BBF84 /* DayReminder+CoreDataClass.swift */,
-				4039FDFD2B2F6519009BBF84 /* DayReminder+CoreDataProperties.swift */,
-				4039FDFE2B2F6519009BBF84 /* Setup+CoreDataClass.swift */,
-				4039FDFF2B2F6519009BBF84 /* Setup+CoreDataProperties.swift */,
-				4039FE002B2F6519009BBF84 /* WeekReminder+CoreDataClass.swift */,
-				4039FE012B2F651A009BBF84 /* WeekReminder+CoreDataProperties.swift */,
-				4039FE022B2F651A009BBF84 /* CheckedDay+CoreDataClass.swift */,
-				4039FE032B2F651A009BBF84 /* CheckedDay+CoreDataProperties.swift */,
-				4039FE042B2F651A009BBF84 /* PassivHabit+CoreDataClass.swift */,
-				4039FE052B2F651A009BBF84 /* PassivHabit+CoreDataProperties.swift */,
-				4039FE062B2F651A009BBF84 /* ActiveHabit+CoreDataClass.swift */,
-				4039FE072B2F651A009BBF84 /* ActiveHabit+CoreDataProperties.swift */,
-				4039FE082B2F651A009BBF84 /* PastResets+CoreDataClass.swift */,
-				4039FE092B2F651A009BBF84 /* PastResets+CoreDataProperties.swift */,
-				4039FE0A2B2F651A009BBF84 /* Statistic+CoreDataClass.swift */,
-				4039FE0B2B2F651A009BBF84 /* Statistic+CoreDataProperties.swift */,
 				400DC06D2A839422000349E3 /* WhenIChanged */,
 				400DC07E2A839425000349E3 /* WhenIChangedTests */,
 				400DC0882A839425000349E3 /* WhenIChangedUITests */,
@@ -581,30 +533,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4039FE0C2B2F651A009BBF84 /* DayReminder+CoreDataClass.swift in Sources */,
-				4039FE0E2B2F651A009BBF84 /* Setup+CoreDataClass.swift in Sources */,
-				4039FE162B2F651A009BBF84 /* ActiveHabit+CoreDataClass.swift in Sources */,
-				4039FE132B2F651A009BBF84 /* CheckedDay+CoreDataProperties.swift in Sources */,
-				4039FE102B2F651A009BBF84 /* WeekReminder+CoreDataClass.swift in Sources */,
 				40EBD0B62B036889000F4C12 /* ActiveHabitAddView.swift in Sources */,
 				40A79AFD2AFBC241006A56F5 /* PassivHabitAddView.swift in Sources */,
 				40FA54F22AFD0288000B0E83 /* ColorHelper.swift in Sources */,
 				40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */,
-				4039FE182B2F651A009BBF84 /* PastResets+CoreDataClass.swift in Sources */,
 				40A79AFB2AFBBA67006A56F5 /* PassivHabitView.swift in Sources */,
 				4038B9982A84DA0D008E17C7 /* PassivDetailAndEditView.swift in Sources */,
 				408CAA072B207A0E007A0957 /* CalendarCell.swift in Sources */,
-				4039FE0D2B2F651A009BBF84 /* DayReminder+CoreDataProperties.swift in Sources */,
 				406E08522B066F9200BCB4EE /* ActiveHabit-CoreDataHelper.swift in Sources */,
-				4039FE112B2F651A009BBF84 /* WeekReminder+CoreDataProperties.swift in Sources */,
 				408CAA052B20799C007A0957 /* CalendarView.swift in Sources */,
-				4039FE122B2F651A009BBF84 /* CheckedDay+CoreDataClass.swift in Sources */,
 				4013B30F2B2F277D005ED53D /* SpecialDayView.swift in Sources */,
 				4023230C2B28C873009938E3 /* DevHelper.swift in Sources */,
 				40A3DD522AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift in Sources */,
 				400DC09E2A8398E6000349E3 /* SettingsView.swift in Sources */,
 				400DC0A12A8399E0000349E3 /* Card.swift in Sources */,
-				4039FE0F2B2F651A009BBF84 /* Setup+CoreDataProperties.swift in Sources */,
 				40FA54E42AFCDFF7000B0E83 /* StorageProvider.swift in Sources */,
 				40A1091D2B2B8CB700635A2D /* ActiveHabit-Helper.swift in Sources */,
 				40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */,
@@ -616,24 +558,18 @@
 				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,
 				4013B30D2B2F2760005ED53D /* SpecialDayViewModel.swift in Sources */,
 				40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */,
-				4039FE172B2F651A009BBF84 /* ActiveHabit+CoreDataProperties.swift in Sources */,
 				40DD88DF2B1F1EC1001A515A /* DateScrollView.swift in Sources */,
-				4039FE1B2B2F651A009BBF84 /* Statistic+CoreDataProperties.swift in Sources */,
 				408CAA0B2B207A86007A0957 /* CalendarHelper.swift in Sources */,
 				40EB66092B29E42600B0D840 /* PushNotifications.swift in Sources */,
 				406E08502B06362600BCB4EE /* AddDayReminderView.swift in Sources */,
 				40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */,
-				4039FE192B2F651A009BBF84 /* PastResets+CoreDataProperties.swift in Sources */,
-				4039FE142B2F651A009BBF84 /* PassivHabit+CoreDataClass.swift in Sources */,
 				408CAA092B207A35007A0957 /* MonthStruct.swift in Sources */,
 				402A1F362B0E4EC600678C3A /* ActiveHabitDetailView.swift in Sources */,
 				40B819442B060D610014A8DF /* AddWeekReminderView.swift in Sources */,
 				40FA54E22AFCDFC6000B0E83 /* Model.xcdatamodeld in Sources */,
 				40CD3FF62B04032E00DA3780 /* ToolbarAddHabitButton.swift in Sources */,
-				4039FE1A2B2F651A009BBF84 /* Statistic+CoreDataClass.swift in Sources */,
 				402A1F342B0E24A700678C3A /* ActiveHabitViewModel.swift in Sources */,
 				400DC06F2A839422000349E3 /* WhenIChangedApp.swift in Sources */,
-				4039FE152B2F651A009BBF84 /* PassivHabit+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

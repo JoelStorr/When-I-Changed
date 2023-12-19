@@ -213,6 +213,7 @@ extension StorageProvider {
         habit.repeatInterval = repeatInterval ?? RepeatType.day.rawValue
         habit.startDate = .now
         habit.hasReminders = reminders
+        habit.position = 1 // TODO: Set Habit Position
 
         if time != nil {
             habit.time = time
@@ -285,6 +286,7 @@ extension StorageProvider {
         habit.repeatInterval = repeatInterval ?? RepeatType.day.rawValue
         habit.startDate = .now
         habit.hasReminders = reminders
+        habit.position = 1 // TODO: Sett Position
 
         if time != nil {
             habit.time = time
