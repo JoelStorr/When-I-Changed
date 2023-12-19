@@ -16,7 +16,7 @@ extension ActiveHabit {
     
     
     var habitCheckAmount: Int {
-        get { Int(checkAmount) ?? 0 }
+        get { Int(checkAmount)  }
         set { checkAmount = Int16(newValue)}
     }
 
@@ -26,7 +26,7 @@ extension ActiveHabit {
     }
 
     var habitHasReminders: Bool {
-        get { hasReminders ?? false }
+        get { hasReminders  }
         set { hasReminders = newValue }
     }
 
@@ -36,12 +36,12 @@ extension ActiveHabit {
     }
 
     var habitPositiveHabit: Bool {
-        get { positiveHabit ?? true }
+        get { positiveHabit  }
         set { positiveHabit = newValue }
     }
 
     var habitRepeatAmount: Int {
-        get { Int(repeatAmount) ?? 0 }
+        get { Int(repeatAmount) }
         set { repeatAmount = Int16(newValue)}
     }
 
@@ -64,7 +64,12 @@ extension ActiveHabit {
         get { unit ?? "" }
         set { unit = newValue }
     }
-
+    
+    var habitPosition: Int {
+        get { Int(position) }
+        set { position = Int16(newValue) }
+    }
+    
     var habitCheckedDay: [CheckedDay] {
         let set = checkedDay as? Set<CheckedDay> ?? []
         return set.sorted {

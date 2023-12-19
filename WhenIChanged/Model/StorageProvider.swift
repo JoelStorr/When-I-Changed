@@ -428,6 +428,20 @@ extension StorageProvider {
     }
 }
 
+
+// NOTE: Edit Data
+extension StorageProvider {
+    func updateActiveHabitOrder(habits: [ActiveHabit]){
+        for index in 0..<habits.count{
+            habits[index].habitPosition = index
+        }
+        
+        let _ = save()
+        
+    }
+}
+
+
 // NOTE: Delete Elements
 extension StorageProvider {
     func deletePassiveHabit(_ habit: PassivHabit) {
@@ -495,7 +509,7 @@ extension StorageProvider {
             NotificationHandler.deleteNotifications(id: reminderIds)
 
             if habit.habitHasReminders && habit.habitRepeatInterval == RepeatType.day.rawValue {
-                for remidner in habit.habitDayReminders {
+                for _ in habit.habitDayReminders {
                     var notificationArray = [NotificationItem]()
                     for addedDayReminder in habit.habitDayReminders {
                         let item = NotificationItem(

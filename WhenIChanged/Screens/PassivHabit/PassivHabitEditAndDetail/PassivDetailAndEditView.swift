@@ -41,7 +41,7 @@ struct PassivDetailAndEditView: View {
                         if viewModel.selectedColor != nil {
                             viewModel.selectedHabit.habitColor = viewModel.selectedColor!
                         }
-                        StorageProvider.shared.save()
+                        let _ = StorageProvider.shared.save()
                         viewModel.editing.toggle()
                         // changeView = .editPassivHabitView
                     }

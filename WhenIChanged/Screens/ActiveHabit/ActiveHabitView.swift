@@ -90,7 +90,7 @@ struct ActiveHabitView: View {
                         
                     if goToChangeOder {
                         
-                        ActiveHabitOrderView()
+                        ActiveHabitOrderView(habitArray: $viewModel.activeHabits)
                     } else {
                         ActiveHabitDetailView(habit: value)
                     }

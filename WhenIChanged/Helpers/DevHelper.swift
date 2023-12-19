@@ -93,7 +93,7 @@ class DevHelper {
             StorageProvider.shared.addCheckToActiveHabit(activeHabit, date: date)
             
             activeHabit.habitCheckAmount = 0
-            StorageProvider.shared.save()
+            let _ = StorageProvider.shared.save()
         }
     }
     
