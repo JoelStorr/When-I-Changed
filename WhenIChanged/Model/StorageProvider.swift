@@ -179,13 +179,13 @@ extension StorageProvider {
 
 // NOTE: Save Data
 extension StorageProvider {
-    func savePassiveHabit(name: String) {
+    func savePassiveHabit(name: String, startDate: Date, cardColor: String) {
         let habit = PassivHabit(context: persistentConteiner.viewContext)
         habit.id = UUID()
         habit.name = name
-        habit.cardColor = CardColor.red.rawValue
-        habit.startDate = .now
-        habit.latestDate = .now
+        habit.cardColor = cardColor
+        habit.startDate = startDate
+        habit.latestDate = startDate
         habit.position = Int16(loadAllPassivHabits().count)
         do {
             try persistentConteiner.viewContext.save()
