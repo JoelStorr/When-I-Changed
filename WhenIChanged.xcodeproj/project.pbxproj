@@ -42,6 +42,7 @@
 		40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */; };
 		40B819442B060D610014A8DF /* AddWeekReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B819432B060D610014A8DF /* AddWeekReminderView.swift */; };
 		40BC302A2B32D7FC002FF6BA /* PassivHabitOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC30292B32D7FC002FF6BA /* PassivHabitOrderView.swift */; };
+		40BC302D2B3303EB002FF6BA /* SpecialDayAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC302C2B3303EB002FF6BA /* SpecialDayAddView.swift */; };
 		40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */; };
 		40CD3FF62B04032E00DA3780 /* ToolbarAddHabitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */; };
 		40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */; };
@@ -125,6 +126,7 @@
 		40A79AFE2AFBEC65006A56F5 /* PassivViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivViewModel.swift; sourceTree = "<group>"; };
 		40B819432B060D610014A8DF /* AddWeekReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeekReminderView.swift; sourceTree = "<group>"; };
 		40BC30292B32D7FC002FF6BA /* PassivHabitOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassivHabitOrderView.swift; sourceTree = "<group>"; };
+		40BC302C2B3303EB002FF6BA /* SpecialDayAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDayAddView.swift; sourceTree = "<group>"; };
 		40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassivHabit-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarAddHabitButton.swift; sourceTree = "<group>"; };
 		40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		4013B30B2B2F2703005ED53D /* SpecialDays */ = {
 			isa = PBXGroup;
 			children = (
+				40BC302B2B3303C3002FF6BA /* SpecialDayAddView */,
 				4013B30C2B2F2760005ED53D /* SpecialDayViewModel.swift */,
 				4013B30E2B2F277D005ED53D /* SpecialDayView.swift */,
 			);
@@ -346,6 +349,14 @@
 				40BC30292B32D7FC002FF6BA /* PassivHabitOrderView.swift */,
 			);
 			path = PassivHabitOrderView;
+			sourceTree = "<group>";
+		};
+		40BC302B2B3303C3002FF6BA /* SpecialDayAddView */ = {
+			isa = PBXGroup;
+			children = (
+				40BC302C2B3303EB002FF6BA /* SpecialDayAddView.swift */,
+			);
+			path = SpecialDayAddView;
 			sourceTree = "<group>";
 		};
 		40D211DD2B0127570054A8B8 /* ActiveHabit */ = {
@@ -612,6 +623,7 @@
 				400DC0712A839422000349E3 /* ContentView.swift in Sources */,
 				40932D8B2B04B9EA00F44929 /* View+Ext.swift in Sources */,
 				40A3DD542AFE4D6300F32C66 /* DateHelper.swift in Sources */,
+				40BC302D2B3303EB002FF6BA /* SpecialDayAddView.swift in Sources */,
 				4013B30D2B2F2760005ED53D /* SpecialDayViewModel.swift in Sources */,
 				40EBD0BB2B03791A000F4C12 /* PassivDetailAndEditViewModel.swift in Sources */,
 				40DD88DF2B1F1EC1001A515A /* DateScrollView.swift in Sources */,
