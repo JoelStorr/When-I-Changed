@@ -17,6 +17,9 @@ enum SpecialDayEditMode {
 struct SpecialDayAddView: View {
     
     let pageArray = ["Name", "Design", "Color", "Font"]
+    private let iconSize: CGFloat = 30.0
+    
+    
     
     @State var editMode: SpecialDayEditMode = SpecialDayEditMode.name
     @State var pageIndex = 0
@@ -25,7 +28,18 @@ struct SpecialDayAddView: View {
     private let dotAppearance = UIPageControl.appearance()
     
     
+    // NOTE: Form Varaibles
+    @State var name: String = ""
+    @State var date: Date = .now
+    
+    let dateFormatter = DateFormatter()
+    
+    
+    
     var body: some View {
+        
+        
+        
         VStack(alignment: .center) {
             HStack{
                 Button{}label: {
@@ -38,9 +52,21 @@ struct SpecialDayAddView: View {
             Spacer()
                 .frame(height: 10)
             
-            RoundedRectangle(cornerRadius: 25.0)
-                .fill(Color.orange)
-                .frame(width: 120, height: 120)
+            
+            ZStack{
+                RoundedRectangle(cornerRadius: 25.0)
+                    .fill(Color.orange)
+                    .frame(width: 200, height: 200)
+                
+                VStack{
+                    Spacer()
+                    Text(name)
+                    Text(formatDate(date:date))
+                }
+            }
+            .frame(width: 200, height: 200)
+            
+            
             Spacer()
                 .frame(height: 50)
             HStack() {
@@ -53,9 +79,9 @@ struct SpecialDayAddView: View {
                     Image(systemName: "calendar")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 35, height: 35)
+                        .frame(width: iconSize, height: iconSize)
                         .foregroundStyle(pageIndex == 0 ? .red : .blue)
-                        
+                    
                 }
                 Spacer()
                 Button {
@@ -65,7 +91,7 @@ struct SpecialDayAddView: View {
                     Image(systemName: "paintpalette")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 35, height: 35)
+                        .frame(width: iconSize, height: iconSize)
                         .foregroundStyle(pageIndex == 1 ? .red : .blue)
                 }
                 Spacer()
@@ -76,7 +102,7 @@ struct SpecialDayAddView: View {
                     Image(systemName: "photo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 35, height: 35)
+                        .frame(width: iconSize, height: iconSize)
                         .foregroundStyle(pageIndex == 2 ? .red : .blue)
                 }
                 Spacer()
@@ -87,7 +113,7 @@ struct SpecialDayAddView: View {
                     Image(systemName: "character.textbox")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 35, height: 35)
+                        .frame(width: iconSize, height: iconSize)
                         .foregroundStyle(pageIndex == 3 ? .red : .blue)
                 }
                 Spacer()
@@ -97,12 +123,22 @@ struct SpecialDayAddView: View {
             
             
             TabView(selection: $pageIndex){
-                ForEach(0..<pageArray.count, id: \.self) { (index) in
-                    
-                    Text(pageArray[index])
-                        .tag(index)
-                    
-                }
+                
+                
+                
+                SpecialDayNameView(name: $name, date: $date)
+                    .tag(0)
+                
+                SpecialDayDesignView()
+                    .tag(1)
+                
+                
+                SpecialDayColorView()
+                    .tag(2)
+                
+                SpecialDayFontView()
+                    .tag(3)
+                
             }
             .animation(.easeInOut, value: pageIndex)
             .tabViewStyle(.page)
@@ -120,10 +156,20 @@ struct SpecialDayAddView: View {
         }
         .onAppear{
             isAnimating.toggle()
-//            dotAppearance.currentPageIndicatorTintColor = .blue
+            //            dotAppearance.currentPageIndicatorTintColor = .blue
             dotAppearance.isHidden = true
         }
     }
+    
+    
+    func formatDate(date: Date)-> String {
+        dateFormatter.dateFormat = "dd/MM/yy"
+        dateFormatter.locale = Locale.autoupdatingCurrent
+        return dateFormatter.string(from: date)
+    }
+    
+    
+    
 }
 
 #Preview {
