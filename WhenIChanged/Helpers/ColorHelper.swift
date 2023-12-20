@@ -8,11 +8,11 @@
 import SwiftUI
 
 enum CardColor: String, CaseIterable {
-    case red, green, blue
+    case red, green, blue, yellow, purple, teal, indigo, mint, orange
 }
 
 enum ActiveHabitColor: String, CaseIterable {
-    case red, green, blue, yellow, purple
+    case red, green, blue, yellow, purple, teal, indigo, mint, orange
 }
 
 func cardColorConverter(color: String) -> Color {
@@ -27,6 +27,15 @@ func cardColorConverter(color: String) -> Color {
         return Color.yellow
     case "purple":
         return Color.purple
+    case "teal":
+        return Color.teal
+    case "indigo":
+        return Color.indigo
+    case "mint":
+        return Color.mint
+    case "orange":
+        return Color.orange
+        
     default:
         return Color.red
     }

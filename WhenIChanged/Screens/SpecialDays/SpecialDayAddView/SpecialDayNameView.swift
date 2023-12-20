@@ -17,7 +17,6 @@ struct SpecialDayNameView: View {
         List{
             TextField("Event name", text: $name)
             DatePicker("Special Date", selection: $date, displayedComponents: [.date])
-            
         }
         
     }
