@@ -186,6 +186,7 @@ extension StorageProvider {
         habit.cardColor = CardColor.red.rawValue
         habit.startDate = .now
         habit.latestDate = .now
+        habit.position = Int16(loadAllPassivHabits().count)
         do {
             try persistentConteiner.viewContext.save()
             print("Saved new habit")
@@ -413,7 +414,8 @@ extension StorageProvider {
     func loadAllPassivHabits() -> [PassivHabit] {
         let fetchRequest: NSFetchRequest<PassivHabit> = PassivHabit.fetchRequest()
         do {
-            return try persistentConteiner.viewContext.fetch(fetchRequest)
+            let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
+            return result.sorted {$0.position < $1.position}
         } catch {
             print("Failed to fetch PassivHabts: \(error)")
             return []
@@ -439,6 +441,18 @@ extension StorageProvider {
 
 // NOTE: Edit Data
 extension StorageProvider {
+    
+    func updatePassivHabitOrder(habits: [PassivHabit]){
+        for index in 0..<habits.count{
+            habits[index].habitPosition = index
+        }
+        
+        let _ = save()
+    }
+    
+    
+    
+    
     func updateActiveHabitOrder(habits: [ActiveHabit]){
         for index in 0..<habits.count{
             habits[index].habitPosition = index

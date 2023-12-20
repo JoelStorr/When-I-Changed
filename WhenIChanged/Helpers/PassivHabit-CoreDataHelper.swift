@@ -26,6 +26,11 @@ extension PassivHabit {
     var habitLatestDate: Date {
         latestDate ?? .now
     }
+    
+    var habitPosition: Int {
+        get { Int(position) }
+        set { position = Int16(newValue) }
+    }
 
     var habitResetDates: [PastResets] {
         let set = resetDates as? Set<PastResets> ?? []
