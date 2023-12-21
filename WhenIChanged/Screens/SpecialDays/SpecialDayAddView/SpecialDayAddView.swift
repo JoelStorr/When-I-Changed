@@ -30,11 +30,14 @@ struct SpecialDayAddView: View {
     
     // NOTE: Form Varaibles
     @State var name: String = ""
-    @State var date: Date = .now
+    @State var selectedDate: Date = .now
     
     @State var selectedColor: String = CardColor.orange.rawValue
     @State var bgImage: Image?
+    @State var selectedFont: String = "SF Pro"
     
+    @State var interval = Date() - Date()
+    @State var toggleDate: Bool = false
     
     
     let dateFormatter = DateFormatter()
@@ -77,8 +80,21 @@ struct SpecialDayAddView: View {
                 
                 VStack{
                     Spacer()
+                    
+                    Text("\(interval.day!)")
+                        .fontWeight(.black)
+                        .font(.custom(selectedFont, size: 80))
+                        .foregroundStyle(bgImage == nil ? Color.white : cardColorConverter(color: selectedColor))
+                    Spacer()
                     Text(name)
-                    Text(formatDate(date:date))
+                        .font(.custom(selectedFont, size: 30))
+                        .fontWeight(.black)
+                        .foregroundStyle(bgImage == nil ? Color.white : cardColorConverter(color: selectedColor))
+                    if !toggleDate {
+                        Text(formatDate(date:selectedDate))
+                            .font(.custom(selectedFont, size: 15))
+                            .foregroundStyle(bgImage == nil ? Color.white : cardColorConverter(color: selectedColor))                        
+                    }
                 }
             }
             .frame(width: 200, height: 200)
@@ -143,7 +159,7 @@ struct SpecialDayAddView: View {
                 
                 
                 
-                SpecialDayNameView(name: $name, date: $date)
+                SpecialDayNameView(name: $name, date: $selectedDate, toggleDate: $toggleDate)
                     .tag(0)
                 
                 SpecialDayDesignView()
@@ -153,7 +169,7 @@ struct SpecialDayAddView: View {
                 SpecialDayColorView(selectedColor: $selectedColor, image: $bgImage)
                     .tag(2)
                 
-                SpecialDayFontView()
+                SpecialDayFontView(selectedFont: $selectedFont)
                     .tag(3)
                 
             }
@@ -175,6 +191,10 @@ struct SpecialDayAddView: View {
             isAnimating.toggle()
             //            dotAppearance.currentPageIndicatorTintColor = .blue
             dotAppearance.isHidden = true
+            interval = Date() - selectedDate
+        }
+        .onChange(of: selectedDate){ newDate in
+            interval = newDate - Date()
         }
     }
     

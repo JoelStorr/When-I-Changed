@@ -27,14 +27,29 @@ struct SpecialDayColorView: View {
         HStack{
             
             
-            
-            PhotosPicker("Select Background", selection: $avatarItem, matching: .images)
+            VStack{
+                ZStack {
+                    PhotosPicker("        ", selection: $avatarItem, matching: .images)
+                    VStack{
+                        Image(systemName: "photo.on.rectangle.angled")
+                        Text(image == nil ? "Add Image": "Change Image")
+                    }
+                    
+                }
+                Spacer()
+                    .frame(height: 20)
+                if image != nil {
+                    Button{
+                        image = nil
+                    } label: {Text("Remove")}
+                }                
+            }
             
             
             LazyVGrid(columns: columns) {
                 ForEach(CardColor.allCases, id: \.self){cardColor in
                     
-                    if selectedColor == cardColor.rawValue && image == nil {
+                    if selectedColor == cardColor.rawValue {
                         ZStack {
                             Circle()
                                 .stroke(cardColorConverter(color: cardColor.rawValue), lineWidth: 1.5)
@@ -54,7 +69,6 @@ struct SpecialDayColorView: View {
                             .frame(width: 30, height: 30)
                             .padding()
                             .onTapGesture {
-                                image = nil
                                 selectedColor = cardColor.rawValue
                             }
                     }
