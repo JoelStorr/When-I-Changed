@@ -30,7 +30,7 @@ struct Card: View {
             Text(timeString)
                 .fontWeight(.bold)
 
-            Text("Started: \(habit.startDateString)")
+            Text("Startet: \(habit.startDateString)")
                 .font(.caption)
         }
         .frame(width: 175, height: 100)

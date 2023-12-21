@@ -37,7 +37,7 @@ struct PassivHabitView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Home")
+            .navigationTitle("Passiv Habit")
             .navigationDestination(for: PassivHabit.self){ value in
                 if goToChangeOder {
                     PassivHabitOrderView(habitArray: $viewModel.cards)
