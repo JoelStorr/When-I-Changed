@@ -33,6 +33,9 @@ struct SpecialDayAddView: View {
     @State var date: Date = .now
     
     @State var selectedColor: String = CardColor.orange.rawValue
+    @State var bgImage: Image?
+    
+    
     
     let dateFormatter = DateFormatter()
     
@@ -56,9 +59,21 @@ struct SpecialDayAddView: View {
             
             
             ZStack{
-                RoundedRectangle(cornerRadius: 25.0)
-                    .fill(cardColorConverter(color: selectedColor))
-                    .frame(width: 200, height: 200)
+                
+                if bgImage == nil {
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .fill(
+                            bgImage != nil ?  Color.black.opacity(0) : cardColorConverter(color: selectedColor))
+                        
+                        .frame(width: 200, height: 200)
+                    
+                } else {
+                    bgImage!
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 200, height: 200)
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                }
                 
                 VStack{
                     Spacer()
@@ -135,7 +150,7 @@ struct SpecialDayAddView: View {
                     .tag(1)
                 
                 
-                SpecialDayColorView(selectedColor: $selectedColor)
+                SpecialDayColorView(selectedColor: $selectedColor, image: $bgImage)
                     .tag(2)
                 
                 SpecialDayFontView()
