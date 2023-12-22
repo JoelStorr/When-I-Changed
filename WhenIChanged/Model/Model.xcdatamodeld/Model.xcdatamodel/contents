@@ -48,11 +48,14 @@
     <entity name="SpecialDay" representedClassName="SpecialDay" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateToggle" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="font" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="position" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="repeatNextYear" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="widgetSize" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Statistic" representedClassName="Statistic" syncable="YES" codeGenerationType="class"/>
     <entity name="WeekReminder" representedClassName="WeekReminder" syncable="YES" codeGenerationType="class">

@@ -15,7 +15,7 @@ struct SpecialDayColorView: View {
     
     
     @State var selectedImage: PhotosPickerItem?
-    @State private var selectedImageData: Data? = nil
+    @Binding var selectedImageData: Data? 
     @Binding var image : Image?
     
     let columns = [

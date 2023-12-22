@@ -13,6 +13,10 @@ enum SpecialDayEditMode {
     case name, design, color, font
 }
 
+enum WidgetSize: String {
+    case small, medium
+}
+
 
 struct SpecialDayAddView: View {
     
@@ -31,14 +35,19 @@ struct SpecialDayAddView: View {
     // NOTE: Form Varaibles
     @State var name: String = ""
     @State var selectedDate: Date = .now
+    @State var interval = Date() - Date()
+    @State var toggleDate: Bool = false
+
     
     @State var selectedColor: String = CardColor.orange.rawValue
+    @State var selectedImageData: Data? 
+    @State var repeatNextYear: Bool = true // TODO: Implement
+    
     @State var bgImage: Image?
     @State var selectedFont: String = "SF Pro"
     
-    @State var interval = Date() - Date()
-    @State var toggleDate: Bool = false
-    
+        
+    @State var widgetSize: WidgetSize = WidgetSize.small
     
     let dateFormatter = DateFormatter()
     
@@ -166,7 +175,11 @@ struct SpecialDayAddView: View {
                     .tag(1)
                 
                 
-                SpecialDayColorView(selectedColor: $selectedColor, image: $bgImage)
+                SpecialDayColorView(
+                    selectedColor: $selectedColor,
+                    selectedImageData: $selectedImageData,
+                    image: $bgImage
+                )
                     .tag(2)
                 
                 SpecialDayFontView(selectedFont: $selectedFont)
@@ -182,7 +195,24 @@ struct SpecialDayAddView: View {
         }
         .toolbar{
             ToolbarItem(placement: .topBarTrailing){
-                Button{}label: {
+                Button{
+                    
+                    if selectedImageData == nil {return}
+                    
+                    
+                    
+                  let _ = StorageProvider.shared.saveSpecialDay(
+                        name: name,
+                        date: selectedDate,
+                        color: selectedColor,
+                        repeatNextYear: repeatNextYear,
+                        dateToggle: toggleDate,
+                        font: selectedFont,
+                        image: selectedImageData!,
+                        widgetSize: widgetSize.rawValue
+                    )
+                    
+                }label: {
                     Text("Save")
                 }
             }

@@ -269,6 +269,42 @@ extension StorageProvider {
             return nil
         }
     }
+    
+    
+    func saveSpecialDay(
+        name: String,
+        date: Date,
+        color: String,
+        repeatNextYear: Bool,
+        
+        dateToggle: Bool,
+        font: String,
+        image: Data,
+        widgetSize: String
+        
+        
+        
+    
+    )-> SpecialDay{
+    
+        
+        let specialDay = SpecialDay(context: persistentConteiner.viewContext)
+        
+        specialDay.name = name
+        specialDay.date = date
+        specialDay.color = color
+        specialDay.repeatNextYear = repeatNextYear
+        specialDay.position = Int16(1) // TODO: Get the lenght of array to set position dynamically
+        specialDay.dateToggle = dateToggle
+        specialDay.font = font
+        specialDay.image = image
+        specialDay.widgetSize = widgetSize
+        
+        let _ = save()
+        return specialDay
+        
+    }
+    
 
     // NOTE: Update Extisting Active Habit
     func updateActiveHabit(
