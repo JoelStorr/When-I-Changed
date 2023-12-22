@@ -48,6 +48,7 @@
 		40BC30332B33425C002FF6BA /* SpecialDayColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC30322B33425C002FF6BA /* SpecialDayColorView.swift */; };
 		40BC30352B334288002FF6BA /* SpecialDayFontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC30342B334288002FF6BA /* SpecialDayFontView.swift */; };
 		40C32C6D2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */; };
+		40C3EF5C2B35F63C000BF27B /* Image-Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C3EF5B2B35F63C000BF27B /* Image-Helper.swift */; };
 		40CD3FF62B04032E00DA3780 /* ToolbarAddHabitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */; };
 		40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */; };
 		40DD88DF2B1F1EC1001A515A /* DateScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DD88DE2B1F1EC1001A515A /* DateScrollView.swift */; };
@@ -136,6 +137,7 @@
 		40BC30322B33425C002FF6BA /* SpecialDayColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDayColorView.swift; sourceTree = "<group>"; };
 		40BC30342B334288002FF6BA /* SpecialDayFontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialDayFontView.swift; sourceTree = "<group>"; };
 		40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PassivHabit-CoreDataHelper.swift"; sourceTree = "<group>"; };
+		40C3EF5B2B35F63C000BF27B /* Image-Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image-Helper.swift"; sourceTree = "<group>"; };
 		40CD3FF52B04032E00DA3780 /* ToolbarAddHabitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarAddHabitButton.swift; sourceTree = "<group>"; };
 		40D211DE2B0127710054A8B8 /* ActiveHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveHabitView.swift; sourceTree = "<group>"; };
 		40DD88DE2B1F1EC1001A515A /* DateScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateScrollView.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				40EB660A2B29F5CF00B0D840 /* Notifications */,
+				40C3EF5B2B35F63C000BF27B /* Image-Helper.swift */,
 				40FA54F12AFD0288000B0E83 /* ColorHelper.swift */,
 				40C32C6C2AFD1677003F9637 /* PassivHabit-CoreDataHelper.swift */,
 				40A3DD512AFE40E200F32C66 /* PastRestes-CoreDataHelper.swift */,
@@ -630,6 +633,7 @@
 				40A1091D2B2B8CB700635A2D /* ActiveHabit-Helper.swift in Sources */,
 				40D211DF2B0127710054A8B8 /* ActiveHabitView.swift in Sources */,
 				407198CC2B1DE66C00C095BD /* RoundProgressBar.swift in Sources */,
+				40C3EF5C2B35F63C000BF27B /* Image-Helper.swift in Sources */,
 				40BC302A2B32D7FC002FF6BA /* PassivHabitOrderView.swift in Sources */,
 				40A79AFF2AFBEC65006A56F5 /* PassivViewModel.swift in Sources */,
 				40458E352B3236E00055CB17 /* StatisticsView.swift in Sources */,

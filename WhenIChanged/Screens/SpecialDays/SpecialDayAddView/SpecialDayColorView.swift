@@ -14,7 +14,8 @@ struct SpecialDayColorView: View {
     @Binding var selectedColor: String
     
     
-    @State var avatarItem: PhotosPickerItem?
+    @State var selectedImage: PhotosPickerItem?
+    @State private var selectedImageData: Data? = nil
     @Binding var image : Image?
     
     let columns = [
@@ -29,7 +30,7 @@ struct SpecialDayColorView: View {
             
             VStack{
                 ZStack {
-                    PhotosPicker("        ", selection: $avatarItem, matching: .images)
+                    PhotosPicker("        ", selection: $selectedImage, matching: .images)
                     VStack{
                         Image(systemName: "photo.on.rectangle.angled")
                         Text(image == nil ? "Add Image": "Change Image")
@@ -77,14 +78,21 @@ struct SpecialDayColorView: View {
             }
         }
         .padding(.horizontal)
-        .onChange(of: avatarItem) { newItem in
+        .onChange(of: selectedImage) { newItem in
             
             Task{
-                if let loaded = try? await newItem?.loadTransferable(type: Image.self) {
-                    image = loaded
+                if let imageData = try? await newItem?.loadTransferable(type: Data.self) {
+                    selectedImageData = imageData
                 } else {
                     print("Failed to load image")
                 }
+                
+                if let newImage = try? await newItem?.loadTransferable(type: Image.self) {
+                    image = newImage
+                } else {
+                    print("Fialed to load image")
+                }
+                
             }
             
         }
