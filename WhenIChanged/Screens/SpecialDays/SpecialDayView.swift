@@ -20,9 +20,12 @@ struct SpecialDayView: View {
                 
                 // TODO: Handle list propperly
                 ForEach(allSpecialDay) {item in
-                    SpecialDayListItem()
+                    SpecialDayListItem(specialDay: item)
                         .onTapGesture {
                             path.append(item)
+                        }
+                        .onLongPressGesture{
+                            goToChangeOder = true
                         }
                 }
                 
@@ -39,7 +42,7 @@ struct SpecialDayView: View {
                 }
                 
             }
-            .navigationTitle("Active Habit")
+            .navigationTitle("Special Day")
         .listStyle(DefaultListStyle())
         .toolbar {
             ToolbarAddHabitButton()
