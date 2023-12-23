@@ -281,10 +281,7 @@ extension StorageProvider {
         font: String,
         image: Data,
         widgetSize: String
-        
-        
-        
-    
+ 
     )-> SpecialDay{
     
         
@@ -294,7 +291,7 @@ extension StorageProvider {
         specialDay.date = date
         specialDay.color = color
         specialDay.repeatNextYear = repeatNextYear
-        specialDay.position = Int16(1) // TODO: Get the lenght of array to set position dynamically
+        specialDay.position = Int16(loadAllSpecialDays().count) // TODO: Get the lenght of array to set position dynamically
         specialDay.dateToggle = dateToggle
         specialDay.font = font
         specialDay.image = image
@@ -464,6 +461,21 @@ extension StorageProvider {
             let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
             // Set all reminders
             resetAllReminders(habits: result)
+            
+
+            return result.sorted{ $0.position < $1.position}
+        } catch {
+            print("Failed to load ActiveHabits: \(error)")
+            return[]
+        }
+    }
+    
+    func loadAllSpecialDays() -> [SpecialDay] {
+        let fetchRequest: NSFetchRequest<SpecialDay> = SpecialDay.fetchRequest()
+        do {
+            let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
+            
+            
             
 
             return result.sorted{ $0.position < $1.position}

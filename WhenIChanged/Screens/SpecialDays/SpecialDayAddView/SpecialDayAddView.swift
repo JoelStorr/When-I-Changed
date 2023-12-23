@@ -197,6 +197,10 @@ struct SpecialDayAddView: View {
             ToolbarItem(placement: .topBarTrailing){
                 Button{
                     
+                    
+                    // TODO: Handled both existing and new Habits
+                    
+                    
                     if selectedImageData == nil {return}
                     
                     
@@ -211,7 +215,6 @@ struct SpecialDayAddView: View {
                         image: selectedImageData!,
                         widgetSize: widgetSize.rawValue
                     )
-                    
                 }label: {
                     Text("Save")
                 }
