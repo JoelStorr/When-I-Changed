@@ -20,9 +20,12 @@ enum WidgetSize: String {
 
 struct SpecialDayAddView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     let pageArray = ["Name", "Design", "Color", "Font"]
     private let iconSize: CGFloat = 30.0
     
+    let specialDay: SpecialDay?
     
     
     @State var editMode: SpecialDayEditMode = SpecialDayEditMode.name
@@ -198,23 +201,37 @@ struct SpecialDayAddView: View {
                 Button{
                     
                     
-                    // TODO: Handled both existing and new Habits
+                    // NOTE: Handles both existing and new Habits
+                   // TODO: add propper validation
+                   let trim =  name.trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    if trim.count == 0 {
+                        return
+                    }
                     
                     
-                    if selectedImageData == nil {return}
+                    if specialDay == nil {
+                        // Make new speical day
+                        if selectedImageData == nil {return}
+
+                        let _ = StorageProvider.shared.saveSpecialDay(
+                            name: name,
+                            date: selectedDate,
+                            color: selectedColor,
+                            repeatNextYear: repeatNextYear,
+                            dateToggle: toggleDate,
+                            font: selectedFont,
+                            image: selectedImageData!,
+                            widgetSize: widgetSize.rawValue
+                        )
+                        
+                    } else {
+                        // TODO: Change enxiting habit
+                    }
                     
                     
+                    dismiss()
                     
-                  let _ = StorageProvider.shared.saveSpecialDay(
-                        name: name,
-                        date: selectedDate,
-                        color: selectedColor,
-                        repeatNextYear: repeatNextYear,
-                        dateToggle: toggleDate,
-                        font: selectedFont,
-                        image: selectedImageData!,
-                        widgetSize: widgetSize.rawValue
-                    )
                 }label: {
                     Text("Save")
                 }
@@ -242,6 +259,4 @@ struct SpecialDayAddView: View {
     
 }
 
-#Preview {
-    SpecialDayAddView()
-}
+

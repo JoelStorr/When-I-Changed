@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpecialDayView: View {
     
+    @State var allSpecialDay: [SpecialDay] = []
     @State var path: [SpecialDay] = []
     @State var goToChangeOder: Bool = false
     
@@ -17,15 +18,24 @@ struct SpecialDayView: View {
         NavigationStack(path: $path) {
             List{
                 
+                // TODO: Handle list propperly
+                ForEach(allSpecialDay) {item in
+                    SpecialDayListItem()
+                        .onTapGesture {
+                            path.append(item)
+                        }
+                }
+                
+                
             }
-            .navigationDestination(for: ActiveHabit.self){ value in
+            .navigationDestination(for: SpecialDay.self){ value in
                     
                     
                 if goToChangeOder {
                     
 //                    ActiveHabitOrderView(habitArray: $viewModel.activeHabits)
                 } else {
-                    SpecialDayAddView() // TODO: Feed habit back in
+                    SpecialDayAddView(specialDay: value ) // TODO: Feed habit back in
                 }
                 
             }
@@ -35,7 +45,7 @@ struct SpecialDayView: View {
             ToolbarAddHabitButton()
         }
         .onAppear {
-            path = StorageProvider.shared.loadAllSpecialDays()
+            allSpecialDay = StorageProvider.shared.loadAllSpecialDays()
             goToChangeOder = false
         }
         }
