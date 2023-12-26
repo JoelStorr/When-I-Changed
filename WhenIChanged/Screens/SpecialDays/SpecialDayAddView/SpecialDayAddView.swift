@@ -260,3 +260,6 @@ struct SpecialDayAddView: View {
 }
 
 
+#Preview {
+    SpecialDayAddView(specialDay: nil)
+}
