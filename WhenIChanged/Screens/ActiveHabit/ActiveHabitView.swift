@@ -108,3 +108,7 @@ struct ActiveHabitView: View {
         }
     }
 }
+
+#Preview {
+    ActiveHabitView()
+}
