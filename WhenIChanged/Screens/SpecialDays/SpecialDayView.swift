@@ -27,10 +27,12 @@ struct SpecialDayView: View {
                         .onLongPressGesture{
                             goToChangeOder = true
                         }
+                        
                 }
                 
                 
             }
+            .listSectionSeparator(.hidden)
             .navigationDestination(for: SpecialDay.self){ value in
                     
                     

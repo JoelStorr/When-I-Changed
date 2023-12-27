@@ -279,7 +279,7 @@ extension StorageProvider {
         
         dateToggle: Bool,
         font: String,
-        image: Data,
+        image: Data?,
         widgetSize: String
  
     )-> SpecialDay{

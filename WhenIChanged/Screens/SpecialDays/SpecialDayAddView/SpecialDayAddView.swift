@@ -212,7 +212,7 @@ struct SpecialDayAddView: View {
                     
                     if specialDay == nil {
                         // Make new speical day
-                        if selectedImageData == nil {return}
+//                        if selectedImageData == nil {return}
 
                         let _ = StorageProvider.shared.saveSpecialDay(
                             name: name,
@@ -221,7 +221,7 @@ struct SpecialDayAddView: View {
                             repeatNextYear: repeatNextYear,
                             dateToggle: toggleDate,
                             font: selectedFont,
-                            image: selectedImageData!,
+                            image: selectedImageData,
                             widgetSize: widgetSize.rawValue
                         )
                         
