@@ -19,40 +19,40 @@ struct SpecialDayView: View {
             List{
                 
                 // TODO: Handle list propperly
-                ForEach(allSpecialDay) {item in
-                    SpecialDayListItem(specialDay: item)
+                ForEach( 0..<allSpecialDay.count, id: \.self) { index in
+                    SpecialDayListItem(specialDay: $allSpecialDay[index])
                         .onTapGesture {
-                            path.append(item)
+                            
+                            path.append(allSpecialDay[index])
                         }
                         .onLongPressGesture{
                             goToChangeOder = true
                         }
-                        
                 }
                 
                 
             }
             .listSectionSeparator(.hidden)
             .navigationDestination(for: SpecialDay.self){ value in
-                    
-                    
+                
+                
                 if goToChangeOder {
                     
-//                    ActiveHabitOrderView(habitArray: $viewModel.activeHabits)
+                    //                    ActiveHabitOrderView(habitArray: $viewModel.activeHabits)
                 } else {
                     SpecialDayAddView(specialDay: value ) // TODO: Feed habit back in
                 }
                 
             }
             .navigationTitle("Special Day")
-        .listStyle(DefaultListStyle())
-        .toolbar {
-            ToolbarAddHabitButton()
-        }
-        .onAppear {
-            allSpecialDay = StorageProvider.shared.loadAllSpecialDays()
-            goToChangeOder = false
-        }
+            .listStyle(DefaultListStyle())
+            .toolbar {
+                ToolbarAddHabitButton()
+            }
+            .onAppear {
+                allSpecialDay = StorageProvider.shared.loadAllSpecialDays()
+                goToChangeOder = false
+            }
         }
     }
 }

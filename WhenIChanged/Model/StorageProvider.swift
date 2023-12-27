@@ -475,9 +475,6 @@ extension StorageProvider {
         do {
             let result =  try persistentConteiner.viewContext.fetch(fetchRequest)
             
-            
-            
-
             return result.sorted{ $0.position < $1.position}
         } catch {
             print("Failed to load ActiveHabits: \(error)")

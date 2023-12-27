@@ -10,7 +10,7 @@ import SwiftUI
 struct SpecialDayListItem: View {
     
     
-    let specialDay: SpecialDay
+    @Binding var specialDay: SpecialDay
     
     @State var interval = Date() - Date()
     
