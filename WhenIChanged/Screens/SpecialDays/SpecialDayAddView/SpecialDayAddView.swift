@@ -239,9 +239,32 @@ struct SpecialDayAddView: View {
         }
         .onAppear{
             isAnimating.toggle()
-            //            dotAppearance.currentPageIndicatorTintColor = .blue
+            // dotAppearance.currentPageIndicatorTintColor = .blue
             dotAppearance.isHidden = true
+            
+            
+            // TODO: Add the getters and setters for SpecialDay class
+            if specialDay != nil {
+                name = specialDay!.name!
+                selectedDate = specialDay!.date!
+                toggleDate = specialDay!.dateToggle
+                selectedColor = specialDay!.color!
+                selectedImageData = specialDay!.image
+                repeatNextYear = specialDay!.repeatNextYear
+                
+                if specialDay!.image != nil {
+                    let uiImage = UIImage(data: specialDay!.image!)
+                    bgImage = Image(uiImage: uiImage!)
+                }
+                selectedFont =  specialDay!.font!
+                widgetSize = WidgetSize(rawValue: specialDay!.widgetSize!)!
+                
+                
+                
+            }
+            
             interval = Date() - selectedDate
+            
         }
         .onChange(of: selectedDate){ newDate in
             interval = newDate - Date()
