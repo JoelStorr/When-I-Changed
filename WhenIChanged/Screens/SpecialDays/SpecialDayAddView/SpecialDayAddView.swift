@@ -210,6 +210,11 @@ struct SpecialDayAddView: View {
                     }
                     
                     
+                    if interval.day == nil || interval.day! <= 0 {
+                        // TODO: Add alert
+                        return
+                    }
+                    
                     if specialDay == nil {
                         // Make new speical day
 //                        if selectedImageData == nil {return}
