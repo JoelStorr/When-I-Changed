@@ -231,7 +231,21 @@ struct SpecialDayAddView: View {
                         )
                         
                     } else {
-                        // TODO: Change enxiting habit
+
+                        specialDay?.specialDayName = name
+                        specialDay?.specialDayDate = selectedDate
+                        specialDay?.specialDayColor = selectedColor
+                        specialDay?.specialDayRepeatNextYear = repeatNextYear
+                        specialDay?.specialDayDateToggle = toggleDate
+                        specialDay?.specialDayFont = selectedFont
+                        
+                        guard let selectedImageData = selectedImageData else { return }
+                        
+                        specialDay?.specialDayImage = selectedImageData
+                        specialDay?.specialDayWidgetSize = widgetSize.rawValue
+                        
+                        let _ = StorageProvider.shared.save()
+                        
                     }
                     
                     

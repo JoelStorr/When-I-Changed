@@ -19,7 +19,7 @@ extension SpecialDay {
         set { name = newValue }
     }
     
-    var specialDateColor: String {
+    var specialDayColor: String {
         get { color ?? "red"}
         set { color = newValue }
     }
