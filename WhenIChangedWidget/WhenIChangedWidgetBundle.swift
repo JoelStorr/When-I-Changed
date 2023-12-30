@@ -12,6 +12,5 @@ import SwiftUI
 struct WhenIChangedWidgetBundle: WidgetBundle {
     var body: some Widget {
         WhenIChangedWidget()
-        WhenIChangedWidgetLiveActivity()
     }
 }
