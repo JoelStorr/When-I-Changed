@@ -35,9 +35,16 @@
 		408762902B401E8700D51958 /* WhenIChangedWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4087628F2B401E8700D51958 /* WhenIChangedWidgetBundle.swift */; };
 		408762922B401E8700D51958 /* WhenIChangedWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408762912B401E8700D51958 /* WhenIChangedWidgetLiveActivity.swift */; };
 		408762942B401E8700D51958 /* WhenIChangedWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408762932B401E8700D51958 /* WhenIChangedWidget.swift */; };
-		408762962B401E8700D51958 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408762952B401E8700D51958 /* AppIntent.swift */; };
 		408762982B401E8800D51958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 408762972B401E8800D51958 /* Assets.xcassets */; };
 		4087629C2B401E8800D51958 /* WhenIChangedWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 408762882B401E8700D51958 /* WhenIChangedWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		408762A22B403B0A00D51958 /* StorageProvider-Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408762A12B403B0A00D51958 /* StorageProvider-Widget.swift */; };
+		408762A32B403E3700D51958 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54E32AFCDFF7000B0E83 /* StorageProvider.swift */; };
+		408762A52B40432400D51958 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408762A42B40432400D51958 /* AppIntent.swift */; };
+		408762A62B4043F400D51958 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54E02AFCDFC6000B0E83 /* Model.xcdatamodeld */; };
+		408762A72B4047CA00D51958 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FA54F12AFD0288000B0E83 /* ColorHelper.swift */; };
+		408762A82B40493A00D51958 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3DD532AFE4D6300F32C66 /* DateHelper.swift */; };
+		408762A92B40499C00D51958 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CAA0A2B207A86007A0957 /* CalendarHelper.swift */; };
+		408762AB2B40554F00D51958 /* WhenIChangedIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 408762AA2B40554F00D51958 /* WhenIChangedIntents.intentdefinition */; };
 		408CAA052B20799C007A0957 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CAA042B20799C007A0957 /* CalendarView.swift */; };
 		408CAA072B207A0E007A0957 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CAA062B207A0E007A0957 /* CalendarCell.swift */; };
 		408CAA092B207A35007A0957 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408CAA082B207A35007A0957 /* MonthStruct.swift */; };
@@ -143,9 +150,12 @@
 		4087628F2B401E8700D51958 /* WhenIChangedWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedWidgetBundle.swift; sourceTree = "<group>"; };
 		408762912B401E8700D51958 /* WhenIChangedWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		408762932B401E8700D51958 /* WhenIChangedWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhenIChangedWidget.swift; sourceTree = "<group>"; };
-		408762952B401E8700D51958 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		408762972B401E8800D51958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		408762992B401E8800D51958 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		408762A02B40329D00D51958 /* WhenIChangedWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhenIChangedWidgetExtension.entitlements; sourceTree = "<group>"; };
+		408762A12B403B0A00D51958 /* StorageProvider-Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageProvider-Widget.swift"; sourceTree = "<group>"; };
+		408762A42B40432400D51958 /* AppIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		408762AA2B40554F00D51958 /* WhenIChangedIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = WhenIChangedIntents.intentdefinition; sourceTree = "<group>"; };
 		408CAA042B20799C007A0957 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		408CAA062B207A0E007A0957 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		408CAA082B207A35007A0957 /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
@@ -217,6 +227,7 @@
 		400DC0622A839422000349E3 = {
 			isa = PBXGroup;
 			children = (
+				408762A02B40329D00D51958 /* WhenIChangedWidgetExtension.entitlements */,
 				400DC06D2A839422000349E3 /* WhenIChanged */,
 				400DC07E2A839425000349E3 /* WhenIChangedTests */,
 				400DC0882A839425000349E3 /* WhenIChangedUITests */,
@@ -318,6 +329,7 @@
 			children = (
 				40FA54E32AFCDFF7000B0E83 /* StorageProvider.swift */,
 				40FA54E02AFCDFC6000B0E83 /* Model.xcdatamodeld */,
+				408762A12B403B0A00D51958 /* StorageProvider-Widget.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,9 +383,10 @@
 				4087628F2B401E8700D51958 /* WhenIChangedWidgetBundle.swift */,
 				408762912B401E8700D51958 /* WhenIChangedWidgetLiveActivity.swift */,
 				408762932B401E8700D51958 /* WhenIChangedWidget.swift */,
-				408762952B401E8700D51958 /* AppIntent.swift */,
+				408762A42B40432400D51958 /* AppIntent.swift */,
 				408762972B401E8800D51958 /* Assets.xcassets */,
 				408762992B401E8800D51958 /* Info.plist */,
+				408762AA2B40554F00D51958 /* WhenIChangedIntents.intentdefinition */,
 			);
 			path = WhenIChangedWidget;
 			sourceTree = "<group>";
@@ -748,6 +761,7 @@
 				40EBD0BD2B039192000F4C12 /* PastResetsView.swift in Sources */,
 				408CAA092B207A35007A0957 /* MonthStruct.swift in Sources */,
 				402A1F362B0E4EC600678C3A /* ActiveHabitDetailView.swift in Sources */,
+				408762A22B403B0A00D51958 /* StorageProvider-Widget.swift in Sources */,
 				40BC30332B33425C002FF6BA /* SpecialDayColorView.swift in Sources */,
 				40BC30352B334288002FF6BA /* SpecialDayFontView.swift in Sources */,
 				40B819442B060D610014A8DF /* AddWeekReminderView.swift in Sources */,
@@ -780,9 +794,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				408762942B401E8700D51958 /* WhenIChangedWidget.swift in Sources */,
-				408762962B401E8700D51958 /* AppIntent.swift in Sources */,
+				408762A92B40499C00D51958 /* CalendarHelper.swift in Sources */,
+				408762A82B40493A00D51958 /* DateHelper.swift in Sources */,
 				408762902B401E8700D51958 /* WhenIChangedWidgetBundle.swift in Sources */,
+				408762A52B40432400D51958 /* AppIntent.swift in Sources */,
 				408762922B401E8700D51958 /* WhenIChangedWidgetLiveActivity.swift in Sources */,
+				408762A32B403E3700D51958 /* StorageProvider.swift in Sources */,
+				408762AB2B40554F00D51958 /* WhenIChangedIntents.intentdefinition in Sources */,
+				408762A72B4047CA00D51958 /* ColorHelper.swift in Sources */,
+				408762A62B4043F400D51958 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,6 +1092,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WhenIChangedWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7D3GWZL49;
@@ -1080,7 +1101,7 @@
 				INFOPLIST_FILE = WhenIChangedWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WhenIChangedWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1088,7 +1109,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.joelstorr.WhenIChanged.WhenIChangedWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelstorr.WhenIChangedWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -1103,6 +1124,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WhenIChangedWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7D3GWZL49;
@@ -1111,7 +1133,7 @@
 				INFOPLIST_FILE = WhenIChangedWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WhenIChangedWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1119,7 +1141,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.joelstorr.WhenIChanged.WhenIChangedWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelstorr.WhenIChangedWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

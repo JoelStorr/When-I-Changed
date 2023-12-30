@@ -20,15 +20,33 @@ final class StorageProvider: ObservableObject{
     static let shared = StorageProvider()
     let persistentConteiner: NSPersistentContainer
     let calender = Calendar.current
+    let databaseName = "Model.sqlite"
+    
+    var oldStoreURL: URL {
+            let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            return directory.appendingPathComponent(databaseName)
+        }
+    
+    
+    var sharedStoreURL : URL{
+        let container = FileManager.default.containerURL(
+            forSecurityApplicationGroupIdentifier: "group.com.joelstorr.WhenIChanged"
+        )!
+        return container.appendingPathComponent(databaseName)
+    }
+    
+    
     
     @Published var globalSetupClass: Setup = Setup()
 
     private init() {
         persistentConteiner = NSPersistentCloudKitContainer(name: "Model")
         
+        persistentConteiner.persistentStoreDescriptions.first!.url = sharedStoreURL
+        
         persistentConteiner.persistentStoreDescriptions.first!.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         persistentConteiner.persistentStoreDescriptions.first!.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-
+        
         
         persistentConteiner.loadPersistentStores(completionHandler: {_, error in
             if let error = error {
@@ -44,13 +62,17 @@ final class StorageProvider: ObservableObject{
            true as NSNumber,
            forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
        )
-        
+            
         // When the change happens pleas call the remoteStoreChanged
 //       NotificationCenter.default.addObserver(
 //           forName: .NSPersistentStoreRemoteChange,
 //           object: persistentConteiner.persistentStoreCoordinator,
 //           queue: .main, using: remoteStoreChanaged
 //       )
+        
+        
+        //Migrates container
+        migrateStore(for: persistentConteiner)
     }
 }
 
@@ -614,4 +636,43 @@ extension StorageProvider {
 // swiftlint:enable todo
 
 
+// ----------------------------------------------------------------------------------------
+// NOTE: Extension for Widgets
+// ----------------------------------------------------------------------------------------
 
+// NOTE: Handles migration to shared storage
+
+extension StorageProvider {
+    func migrateStore(for container: NSPersistentContainer){
+            print("➡️ Went into migrate store function")
+            let coordinator = container.persistentStoreCoordinator
+            
+            //Check if a persistence Store exists
+            guard let oldStore = coordinator.persistentStore(for: oldStoreURL) else {
+                 return
+            }
+            
+            print("🛡️ old store deleted")
+            
+            do{
+                //Migrate old store to the new shared Store
+                let _ = try coordinator.migratePersistentStore(
+                    oldStore,
+                    to: sharedStoreURL,
+                    type: .sqlite
+                )
+                print("🏁 Mirgateion successfullt")
+                
+            }catch{
+                fatalError("⭕️ Unable to migrate to shared store")
+            }
+            
+            //Delete the old store
+            do{
+                try FileManager.default.removeItem(at: oldStoreURL)
+                print("🗑️ Old store deleted")
+            }catch {
+                print("⭕️ Unable to delete old store")
+            }
+        }
+}
